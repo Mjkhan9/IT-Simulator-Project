@@ -2698,3 +2698,80 @@ Remove-Printer -Name "Office Printer"
                 ]
             }
         };
+function openArticle(articleId) {
+            const modal = document.getElementById('kbModal');
+            const title = document.getElementById('kbModalTitle');
+            const body = document.getElementById('kbModalBody');
+            
+            const article = kbArticles[articleId];
+            
+            if (!article) {
+                body.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">📚</div>
+                        <h3 style="color: #0F172A; margin-bottom: 16px; font-size: 1.5rem;">Article Coming Soon</h3>
+                        <p style="color: #64748B; font-size: 1.1rem;">This comprehensive troubleshooting guide is being developed.</p>
+                        <p style="color: #64748B;">Check back soon for detailed step-by-step instructions!</p>
+                    </div>
+                `;
+                title.textContent = 'Knowledge Base Article';
+            } else {
+                title.textContent = article.title;
+                
+                let stepsHTML = '';
+                article.steps.forEach(step => {
+                    stepsHTML += `
+                        <div class="kb-step">
+                            <div class="kb-step-title">
+                                <span class="kb-step-number">${step.number}</span>
+                                ${step.title}
+                            </div>
+                            <div class="kb-step-content">
+                                ${step.content}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                body.innerHTML = stepsHTML;
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeKBModal() {
+            document.getElementById('kbModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('kbModal');
+            if (event.target === modal) {
+                closeKBModal();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeKBModal();
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+---
+
+**So your file should end like:**
+```
+            }  // Last closing brace of 'printer-offline' article
+        };  // Closing brace of kbArticles object
+
+        function openArticle(articleId) {
+            // ... ALL THE CODE I JUST GAVE YOU ...
+        });
+    </script>
+</body>
+</html>
