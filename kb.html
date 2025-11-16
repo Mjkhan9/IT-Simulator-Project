@@ -764,7 +764,2003 @@ Remove-Item "$env:LOCALAPPDATA\\Microsoft\\Outlook\\*.ost" -Force
                     }
                 ]
             }
+        },
+            'mfa-issues': {
+                title: 'MFA Authentication Problems',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify the MFA Method and Error',
+                        content: `
+                            <p><strong>Ask diagnostic questions:</strong></p>
+                            <ul>
+                                <li>"What MFA method are you using?" (Microsoft Authenticator app, SMS, phone call, hardware token)</li>
+                                <li>"What error message do you see?" 
+                                    <ul>
+                                        <li>"Incorrect code"</li>
+                                        <li>"Verification timed out"</li>
+                                        <li>"Cannot contact verification server"</li>
+                                        <li>"This code has already been used"</li>
+                                    </ul>
+                                </li>
+                                <li>"When did this start?" (Today, after phone upgrade, after app update)</li>
+                                <li>"Have you changed phones recently?" (Very common cause)</li>
+                                <li>"Can you receive regular text messages?" (For SMS MFA)</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Common Causes:</strong> Time sync issues, new phone without app transfer, disabled/deleted authenticator app, phone number changed.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Verify User Identity and Check Account Status',
+                        content: `
+                            <p><strong>CRITICAL - Enhanced verification required for MFA issues:</strong></p>
+                            <ul>
+                                <li><strong>Verify identity thoroughly:</strong>
+                                    <ul>
+                                        <li>Employee ID verification</li>
+                                        <li>Manager approval/verification</li>
+                                        <li>Security questions (if configured)</li>
+                                        <li>Alternate email verification</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Check account in Azure AD/Office 365:</strong>
+                                    <ul>
+                                        <li>Sign in to Azure Active Directory admin center</li>
+                                        <li>Navigate to Users → Select user</li>
+                                        <li>Check Authentication methods</li>
+                                        <li>Verify MFA status (Enabled/Enforced/Disabled)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Security Warning:</strong> MFA resets are high-risk. Never reset MFA without proper identity verification. This is a common social engineering attack vector.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Troubleshoot Common MFA Issues',
+                        content: `
+                            <p><strong>Issue: "Incorrect code" with Authenticator app</strong></p>
+                            <ul>
+                                <li><strong>Check time synchronization on phone:</strong>
+                                    <ul>
+                                        <li>iPhone: Settings → General → Date & Time → Set Automatically (ON)</li>
+                                        <li>Android: Settings → System → Date & Time → Set Automatically (ON)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Verify correct account in app:</strong> User may have multiple accounts</li>
+                                <li><strong>Try using backup codes</strong> if available</li>
+                            </ul>
+
+                            <p><strong>Issue: "Verification timed out" or "Cannot contact server"</strong></p>
+                            <ul>
+                                <li>Check internet connectivity on mobile device</li>
+                                <li>Try cellular data instead of WiFi (or vice versa)</li>
+                                <li>Verify phone can receive push notifications</li>
+                                <li>Check if Microsoft Authenticator has permissions:
+                                    <ul>
+                                        <li>Notifications enabled</li>
+                                        <li>Background app refresh enabled</li>
+                                        <li>Not in battery saver mode</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <p><strong>Issue: New phone, old phone lost/broken</strong></p>
+                            <ul>
+                                <li>This requires MFA reset (proceed to next step)</li>
+                                <li>User will need to re-register new device</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Reset MFA Registration (if needed)',
+                        content: `
+                            <p><strong>When to reset MFA:</strong></p>
+                            <ul>
+                                <li>User has new phone and cannot access old device</li>
+                                <li>Authenticator app was deleted and cannot be restored</li>
+                                <li>Phone was lost, stolen, or broken</li>
+                                <li>User never successfully registered MFA initially</li>
+                            </ul>
+
+                            <p><strong>Steps to reset MFA in Azure AD:</strong></p>
+                            <ul>
+                                <li><strong>Azure Active Directory admin center:</strong>
+                                    <ul>
+                                        <li>Navigate to: Users → All users</li>
+                                        <li>Search for and select the user</li>
+                                        <li>Click: <strong>Authentication methods</strong></li>
+                                        <li>Click: <strong>Require re-register multifactor authentication</strong></li>
+                                        <li>Confirm the action</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell method (requires Azure AD module):
+Connect-AzureAD
+Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationMethods @()
+
+# OR use Microsoft Graph PowerShell:
+Connect-MgGraph -Scopes "UserAuthenticationMethod.ReadWrite.All"
+Remove-MgUserAuthenticationMethod -UserId user@domain.com -AuthenticationMethodId <method-id>
+                            </div>
+
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> After resetting MFA, the user will be prompted to register their authentication method on next login. Walk them through this process.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Guide User Through MFA Re-registration',
+                        content: `
+                            <p><strong>Walk user through setup (stay on call/chat):</strong></p>
+                            <ul>
+                                <li><strong>Step 1: User logs in</strong>
+                                    <ul>
+                                        <li>They'll see "More information required" or MFA setup prompt</li>
+                                        <li>Click "Next"</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Step 2: Choose authentication method</strong>
+                                    <ul>
+                                        <li>Recommended: Microsoft Authenticator app</li>
+                                        <li>Alternative: Phone (calls or SMS)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Step 3: Install Microsoft Authenticator</strong>
+                                    <ul>
+                                        <li>iPhone: App Store → Search "Microsoft Authenticator"</li>
+                                        <li>Android: Play Store → Search "Microsoft Authenticator"</li>
+                                        <li>Download and open the app</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Step 4: Scan QR code</strong>
+                                    <ul>
+                                        <li>In Authenticator app: Tap "+" or "Add account"</li>
+                                        <li>Select "Work or school account"</li>
+                                        <li>Point camera at QR code on screen</li>
+                                        <li>Account will be added automatically</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Step 5: Test the setup</strong>
+                                    <ul>
+                                        <li>User will receive test notification</li>
+                                        <li>Approve the notification in app</li>
+                                        <li>Setup complete!</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>Important:</strong> Remind user to:
+                                <ul>
+                                    <li>Keep authenticator app updated</li>
+                                    <li>Never delete the app</li>
+                                    <li>If getting new phone, transfer accounts first</li>
+                                    <li>Save backup codes if organization provides them</li>
+                                </ul>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: 'Document and Provide User Education',
+                        content: `
+                            <p><strong>Update ticket with:</strong></p>
+                            <ul>
+                                <li>MFA issue type and error messages</li>
+                                <li>Troubleshooting steps taken</li>
+                                <li>Whether MFA was reset</li>
+                                <li>Verification method used</li>
+                                <li>New authentication method registered</li>
+                                <li>User successfully logged in with MFA</li>
+                            </ul>
+
+                            <p><strong>Educate user on MFA best practices:</strong></p>
+                            <ul>
+                                <li><strong>Keep phone time synchronized:</strong> Settings → Auto time</li>
+                                <li><strong>Don't delete authenticator app:</strong> Causes immediate lockout</li>
+                                <li><strong>Getting new phone?</strong> Transfer accounts BEFORE wiping old phone</li>
+                                <li><strong>Enable cloud backup:</strong> Microsoft Authenticator can backup to iCloud/Google</li>
+                                <li><strong>Multiple devices:</strong> Can add same account to tablet as backup</li>
+                            </ul>
+
+                            <p><strong>Common mistakes to warn against:</strong></p>
+                            <ul>
+                                <li>❌ Deleting authenticator app to "fix" issues</li>
+                                <li>❌ Switching to new phone without transferring accounts</li>
+                                <li>❌ Having phone time set manually (causes code mismatch)</li>
+                                <li>❌ Disabling notifications for authenticator app</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            'permissions': {
+                title: 'Permission Denied Errors',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify What User Cannot Access',
+                        content: `
+                            <p><strong>Ask detailed questions:</strong></p>
+                            <ul>
+                                <li>"What exactly are you trying to access?"
+                                    <ul>
+                                        <li>Specific file or folder</li>
+                                        <li>Network drive/mapped drive</li>
+                                        <li>SharePoint site</li>
+                                        <li>Application</li>
+                                        <li>Printer</li>
+                                    </ul>
+                                </li>
+                                <li>"What is the exact error message?"
+                                    <ul>
+                                        <li>"Access Denied"</li>
+                                        <li>"You don't have permission to access this folder"</li>
+                                        <li>"Contact your administrator"</li>
+                                        <li>"Destination Folder Access Denied"</li>
+                                    </ul>
+                                </li>
+                                <li>"What are you trying to do?"
+                                    <ul>
+                                        <li>Open/read file</li>
+                                        <li>Edit/save file</li>
+                                        <li>Delete file/folder</li>
+                                        <li>Move or rename</li>
+                                    </ul>
+                                </li>
+                                <li>"Could you access this before?" (Was this working previously?)</li>
+                                <li>"Can other people access it?" (Is it just this user?)</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Check Current Permissions',
+                        content: `
+                            <p><strong>For File/Folder on File Server:</strong></p>
+                            <ul>
+                                <li>Navigate to the file/folder on the file server</li>
+                                <li>Right-click → <strong>Properties</strong></li>
+                                <li>Go to <strong>Security</strong> tab</li>
+                                <li>Check if user or their group is listed</li>
+                                <li>Click <strong>Advanced</strong> to see effective permissions</li>
+                                <li>Click <strong>Effective Access</strong> tab</li>
+                                <li>Select user → <strong>View effective access</strong></li>
+                            </ul>
+
+                            <p><strong>For Network Share:</strong></p>
+                            <ul>
+                                <li>On file server, open <strong>Computer Management</strong></li>
+                                <li>Navigate to: System Tools → Shared Folders → Shares</li>
+                                <li>Find the share → Right-click → Properties</li>
+                                <li>Check <strong>Share Permissions</strong> tab</li>
+                                <li>Check <strong>Security</strong> tab (NTFS permissions)</li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>Remember:</strong> BOTH share permissions AND NTFS permissions apply. User needs access in BOTH places.
+                            </div>
+
+                            <div class="kb-command">
+# PowerShell: Check permissions
+Get-Acl "\\\\server\\share\\folder" | Format-List
+
+# See who has access:
+(Get-Acl "\\\\server\\share\\folder").Access | Format-Table IdentityReference, FileSystemRights
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Verify Group Memberships',
+                        content: `
+                            <p><strong>Check user's group memberships:</strong></p>
+                            <ul>
+                                <li>Open <strong>Active Directory Users and Computers</strong></li>
+                                <li>Find the user → Right-click → <strong>Properties</strong></li>
+                                <li>Go to <strong>Member Of</strong> tab</li>
+                                <li>Verify user is in correct security groups</li>
+                                <li>Common groups to check:
+                                    <ul>
+                                        <li>Department groups (HR, Finance, IT, etc.)</li>
+                                        <li>Location groups (NYC Office, Remote Users, etc.)</li>
+                                        <li>Application-specific groups</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Get user's group memberships
+Get-ADUser -Identity username -Properties MemberOf | Select -ExpandProperty MemberOf
+
+# Check if user is in specific group:
+Get-ADGroupMember -Identity "GroupName" | Where-Object {$_.SamAccountName -eq "username"}
+                            </div>
+
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> Group membership changes can take up to 15 minutes to replicate. User may need to log off and back on for changes to take effect.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Grant Appropriate Permissions',
+                        content: `
+                            <p><strong>Best Practice - Use Groups, Not Individual Users:</strong></p>
+                            <ul>
+                                <li>✅ Add user to appropriate security group</li>
+                                <li>❌ Don't add individual users to folder permissions</li>
+                                <li>Why? Easier to manage, audit, and remove access later</li>
+                            </ul>
+
+                            <p><strong>Adding user to security group:</strong></p>
+                            <ul>
+                                <li>In Active Directory Users and Computers</li>
+                                <li>Find the appropriate group</li>
+                                <li>Right-click → <strong>Properties</strong> → <strong>Members</strong> tab</li>
+                                <li>Click <strong>Add</strong></li>
+                                <li>Type username → <strong>Check Names</strong> → <strong>OK</strong></li>
+                            </ul>
+
+                            <p><strong>If you MUST add individual permissions:</strong></p>
+                            <ul>
+                                <li>Right-click file/folder → <strong>Properties</strong> → <strong>Security</strong> tab</li>
+                                <li>Click <strong>Edit</strong> → <strong>Add</strong></li>
+                                <li>Enter username → <strong>Check Names</strong> → <strong>OK</strong></li>
+                                <li>Select appropriate permissions:
+                                    <ul>
+                                        <li><strong>Read:</strong> View files only</li>
+                                        <li><strong>Read & Execute:</strong> View and run programs</li>
+                                        <li><strong>Modify:</strong> Read, write, delete</li>
+                                        <li><strong>Full Control:</strong> Everything including permissions changes</li>
+                                    </ul>
+                                </li>
+                                <li>Click <strong>Apply</strong> → <strong>OK</strong></li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Grant permissions
+$acl = Get-Acl "\\\\server\\share\\folder"
+$permission = "DOMAIN\\username","Modify","Allow"
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule $permission
+$acl.SetAccessRule($accessRule)
+Set-Acl "\\\\server\\share\\folder" $acl
+                            </div>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Test and Verify Access',
+                        content: `
+                            <p><strong>User must log off and back on:</strong></p>
+                            <ul>
+                                <li>Group membership changes require new login session</li>
+                                <li>Simply locking/unlocking is NOT enough</li>
+                                <li>User must fully log off (Start → User icon → Sign out)</li>
+                                <li>Log back in</li>
+                            </ul>
+
+                            <p><strong>Test access:</strong></p>
+                            <ul>
+                                <li>User tries to access the resource again</li>
+                                <li>Verify they can perform required actions:
+                                    <ul>
+                                        <li>Open files</li>
+                                        <li>Save changes</li>
+                                        <li>Create new files (if needed)</li>
+                                        <li>Delete (if required)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <p><strong>If still not working:</strong></p>
+                            <ul>
+                                <li>Check if file is open by someone else (File Server → Open Files)</li>
+                                <li>Verify inheritance isn't broken on the folder</li>
+                                <li>Check for explicit "Deny" permissions (Deny overrides Allow)</li>
+                                <li>Verify no AppLocker or Group Policy restrictions</li>
+                                <li>Check antivirus isn't blocking access</li>
+                            </ul>
+
+                            <div class="kb-tip">
+                                <strong>Troubleshooting Tip:</strong> If user can access from their account on another computer, it's a local profile or caching issue, not a permissions problem.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: 'Document Changes and Follow Security Policy',
+                        content: `
+                            <p><strong>Document in ticket:</strong></p>
+                            <ul>
+                                <li>Resource user was trying to access</li>
+                                <li>Permission level granted</li>
+                                <li>Group user was added to (or individual permissions added)</li>
+                                <li>Approval received (if required)</li>
+                                <li>Date and time of change</li>
+                            </ul>
+
+                            <p><strong>Security best practices:</strong></p>
+                            <ul>
+                                <li><strong>Get approval:</strong> Manager or data owner approval for sensitive folders</li>
+                                <li><strong>Principle of least privilege:</strong> Grant minimum permissions needed</li>
+                                <li><strong>Regular audits:</strong> Review permissions quarterly</li>
+                                <li><strong>Remove access:</strong> When user changes roles or leaves</li>
+                            </ul>
+
+                            <p><strong>Common permission mistakes to avoid:</strong></p>
+                            <ul>
+                                <li>❌ Granting "Full Control" when "Modify" is sufficient</li>
+                                <li>❌ Adding users individually instead of using groups</li>
+                                <li>❌ Breaking permission inheritance unnecessarily</li>
+                                <li>❌ Not documenting who approved the access</li>
+                                <li>❌ Forgetting to remove access when no longer needed</li>
+                            </ul>
+                        `
+                    }
+                ]
+            }, 'bitlocker': {
+                title: 'BitLocker Recovery',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify BitLocker Recovery Scenario',
+                        content: `
+                            <p><strong>Ask diagnostic questions:</strong></p>
+                            <ul>
+                                <li>"What message do you see on the screen?"
+                                    <ul>
+                                        <li>"Enter the recovery key for this drive"</li>
+                                        <li>"BitLocker recovery key required"</li>
+                                        <li>"The drive is locked. Unlock it with BitLocker"</li>
+                                    </ul>
+                                </li>
+                                <li>"When did this start?" (After Windows update, hardware change, BIOS update)</li>
+                                <li>"Did anything change recently?"
+                                    <ul>
+                                        <li>Motherboard or hardware replacement</li>
+                                        <li>BIOS/UEFI update</li>
+                                        <li>TPM cleared or disabled</li>
+                                        <li>Windows update</li>
+                                    </ul>
+                                </li>
+                                <li>"Can you boot into Windows at all?" (At login screen vs. pre-boot recovery)</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Common Causes:</strong> Hardware changes, BIOS updates, TPM issues, corrupted boot files, USB devices left plugged in during boot.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Locate the BitLocker Recovery Key',
+                        content: `
+                            <p><strong>Where to find recovery keys:</strong></p>
+                            <ul>
+                                <li><strong>Azure AD / Microsoft 365:</strong>
+                                    <ul>
+                                        <li>Go to: https://myaccount.microsoft.com/</li>
+                                        <li>Sign in with user's account</li>
+                                        <li>Click "Devices" → Select device</li>
+                                        <li>Click "Manage or view details"</li>
+                                        <li>View BitLocker keys</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Active Directory (on-premises):</strong>
+                                    <ul>
+                                        <li>Open Active Directory Users and Computers</li>
+                                        <li>Find the computer object</li>
+                                        <li>Right-click → Properties</li>
+                                        <li>Look for "BitLocker Recovery Passwords" tab</li>
+                                    </ul>
+                                </li>
+                                <li><strong>User may have saved it:</strong>
+                                    <ul>
+                                        <li>Printed and filed physically</li>
+                                        <li>Saved to USB drive</li>
+                                        <li>Saved to Microsoft account</li>
+                                        <li>Emailed to themselves</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="kb-command">
+# PowerShell: Get BitLocker recovery keys from AD
+Get-ADObject -Filter 'objectClass -eq "msFVE-RecoveryInformation"' -SearchBase "CN=ComputerName,OU=Computers,DC=domain,DC=com" -Properties msFVE-RecoveryPassword
+
+# Get all recovery keys for a specific computer:
+Get-ADComputer -Identity "ComputerName" -Properties * | Select-Object -ExpandProperty 'msTPM-OwnerInformation'
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Provide Recovery Key to User',
+                        content: `
+                            <p><strong>Security verification (CRITICAL):</strong></p>
+                            <ul>
+                                <li><strong>Verify user identity thoroughly:</strong>
+                                    <ul>
+                                        <li>Employee ID verification</li>
+                                        <li>Manager confirmation</li>
+                                        <li>Security questions</li>
+                                        <li>Video call to confirm physical possession of device</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Why this matters:</strong> BitLocker protects against data theft. Never provide keys without proper verification.</li>
+                            </ul>
+
+                            <p><strong>Providing the key securely:</strong></p>
+                            <ul>
+                                <li>✅ Read key over phone call (verify caller ID)</li>
+                                <li>✅ In-person if user is on-site</li>
+                                <li>✅ Encrypted email (if organization policy allows)</li>
+                                <li>❌ NEVER via unencrypted email, Slack, Teams chat</li>
+                                <li>❌ NEVER via SMS text message</li>
+                            </ul>
+
+                            <p><strong>Recovery key format:</strong></p>
+                            <ul>
+                                <li>48-digit numerical key</li>
+                                <li>Divided into 8 groups of 6 digits</li>
+                                <li>Example: 123456-234567-345678-456789-567890-678901-789012-890123</li>
+                                <li>User enters it at the recovery screen</li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>Important:</strong> Read the key slowly and clearly. Have user repeat back each group of 6 digits to confirm accuracy.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'User Enters Recovery Key',
+                        content: `
+                            <p><strong>Guide user through entering the key:</strong></p>
+                            <ul>
+                                <li>"You'll see a blue screen asking for the recovery key"</li>
+                                <li>"Type the 48-digit key carefully"</li>
+                                <li>"You can include or skip the hyphens - both work"</li>
+                                <li>"Press Enter when done"</li>
+                                <li>"The computer should boot into Windows"</li>
+                            </ul>
+
+                            <p><strong>If key doesn't work:</strong></p>
+                            <ul>
+                                <li>Verify you provided the correct key ID (there may be multiple keys)</li>
+                                <li>Check for typos - re-read the key slowly</li>
+                                <li>Ensure keyboard layout is correct (US vs. UK keyboard)</li>
+                                <li>Try alternate recovery keys if multiple exist</li>
+                            </ul>
+
+                            <p><strong>If no recovery key exists:</strong></p>
+                            <ul>
+                                <li>Data is unrecoverable (that's the point of BitLocker)</li>
+                                <li>Drive will need to be formatted and Windows reinstalled</li>
+                                <li>All data on drive will be lost</li>
+                                <li>Restore from backups if available</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Prevent Future BitLocker Recovery Prompts',
+                        content: `
+                            <p><strong>Once user is logged into Windows:</strong></p>
+                            <ul>
+                                <li><strong>Suspend BitLocker temporarily:</strong>
+                                    <ul>
+                                        <li>Open: Control Panel → BitLocker Drive Encryption</li>
+                                        <li>Click "Suspend protection" (if making hardware changes)</li>
+                                        <li>Resume after changes complete</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Update BIOS/Firmware:</strong>
+                                    <ul>
+                                        <li>If BIOS update triggered the issue, it should work now</li>
+                                        <li>Recommend suspending BitLocker before future BIOS updates</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Remove external devices:</strong>
+                                    <ul>
+                                        <li>Unplug USB drives before booting</li>
+                                        <li>Sometimes external drives trigger BitLocker recovery</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Suspend/Resume BitLocker
+Suspend-BitLocker -MountPoint "C:" -RebootCount 1
+
+# Resume BitLocker:
+Resume-BitLocker -MountPoint "C:"
+
+# Check BitLocker status:
+Get-BitLockerVolume
+                            </div>
+
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> Always suspend BitLocker BEFORE making hardware changes, BIOS updates, or other major system modifications to avoid recovery prompts.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: 'Document and Backup Recovery Key',
+                        content: `
+                            <p><strong>Document the incident:</strong></p>
+                            <ul>
+                                <li>What triggered the BitLocker recovery</li>
+                                <li>Verification method used</li>
+                                <li>Recovery key provided (key ID, not the actual key)</li>
+                                <li>Whether issue was resolved</li>
+                                <li>Preventive measures recommended</li>
+                            </ul>
+
+                            <p><strong>Ensure recovery key is properly backed up:</strong></p>
+                            <ul>
+                                <li>Verify key is in Azure AD or Active Directory</li>
+                                <li>Encourage user to save key in multiple locations:
+                                    <ul>
+                                        <li>Microsoft account (if personal device)</li>
+                                        <li>Print and store securely</li>
+                                        <li>Save to USB drive (stored separately from computer)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <p><strong>User education:</strong></p>
+                            <ul>
+                                <li><strong>What is BitLocker:</strong> Encryption that protects data if device is stolen</li>
+                                <li><strong>Why recovery happens:</strong> Hardware or firmware changes</li>
+                                <li><strong>Prevention:</strong> Don't update BIOS without IT assistance</li>
+                                <li><strong>Keep key safe:</strong> But don't store it ON the encrypted device</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            'teams-loading': {
+                title: 'Teams Stuck on Loading Screen',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify the Specific Teams Issue',
+                        content: `
+                            <p><strong>Ask diagnostic questions:</strong></p>
+                            <ul>
+                                <li>"What exactly do you see?"
+                                    <ul>
+                                        <li>"We're getting things ready" (stuck on loading)</li>
+                                        <li>Spinning circle that never stops</li>
+                                        <li>White/gray screen</li>
+                                        <li>Teams starts then immediately closes</li>
+                                    </ul>
+                                </li>
+                                <li>"When did this start?" (Today, after update, after reboot)</li>
+                                <li>"Can you access Teams on mobile or web?" (https://teams.microsoft.com)</li>
+                                <li>"Did you recently update Windows or Teams?"</li>
+                                <li>"Do other Office apps work?" (Outlook, Word, Excel)</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Common Causes:</strong> Corrupted cache, profile issues, pending updates, network/proxy problems, conflicting applications.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Clear Teams Cache (First Step)',
+                        content: `
+                            <p><strong>This fixes 80% of Teams loading issues!</strong></p>
+
+                            <p><strong>Steps to clear Teams cache:</strong></p>
+                            <ul>
+                                <li><strong>1. Close Teams completely</strong>
+                                    <ul>
+                                        <li>Right-click Teams icon in system tray → Quit</li>
+                                        <li>Open Task Manager (Ctrl+Shift+Esc)</li>
+                                        <li>End any "Microsoft Teams" processes</li>
+                                        <li>Look for "Teams.exe" and end all instances</li>
+                                    </ul>
+                                </li>
+                                <li><strong>2. Delete Teams cache folders</strong>
+                                    <ul>
+                                        <li>Press Windows + R</li>
+                                        <li>Type: <code>%appdata%\\Microsoft\\Teams</code></li>
+                                        <li>Press Enter</li>
+                                        <li>Delete these folders:
+                                            <ul>
+                                                <li><strong>Cache</strong></li>
+                                                <li><strong>blob_storage</strong></li>
+                                                <li><strong>databases</strong></li>
+                                                <li><strong>GPUcache</strong></li>
+                                                <li><strong>IndexedDB</strong></li>
+                                                <li><strong>Local Storage</strong></li>
+                                                <li><strong>tmp</strong></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><strong>3. Restart Teams</strong>
+                                    <ul>
+                                        <li>Start → Search "Teams"</li>
+                                        <li>Click Microsoft Teams</li>
+                                        <li>Wait for it to rebuild cache</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell script to clear Teams cache:
+Get-Process teams | Stop-Process -Force
+Remove-Item -Path "$env:APPDATA\\Microsoft\\Teams\\Cache" -Recurse -Force
+Remove-Item -Path "$env:APPDATA\\Microsoft\\Teams\\blob_storage" -Recurse -Force
+Remove-Item -Path "$env:APPDATA\\Microsoft\\Teams\\databases" -Recurse -Force
+Remove-Item -Path "$env:APPDATA\\Microsoft\\Teams\\GPUcache" -Recurse -Force
+Remove-Item -Path "$env:APPDATA\\Microsoft\\Teams\\IndexedDB" -Recurse -Force
+Remove-Item -Path "$env:APPDATA\\Microsoft\\Teams\\Local Storage" -Recurse -Force
+Remove-Item -Path "$env:APPDATA\\Microsoft\\Teams\\tmp" -Recurse -Force
+Start-Process -FilePath "$env:LOCALAPPDATA\\Microsoft\\Teams\\Update.exe" -ArgumentList "--processStart Teams.exe"
+                            </div>
+
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> Clearing cache is safe - it only removes temporary files. All your chats, files, and settings remain intact.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Disable GPU Hardware Acceleration',
+                        content: `
+                            <p><strong>If clearing cache didn't work, try this:</strong></p>
+
+                            <p><strong>Steps to disable GPU acceleration:</strong></p>
+                            <ul>
+                                <li><strong>1. Open Teams settings file</strong>
+                                    <ul>
+                                        <li>Press Windows + R</li>
+                                        <li>Type: <code>%appdata%\\Microsoft\\Teams</code></li>
+                                        <li>Press Enter</li>
+                                        <li>Look for <strong>desktop-config.json</strong></li>
+                                        <li>Right-click → Open with Notepad</li>
+                                    </ul>
+                                </li>
+                                <li><strong>2. Add this line</strong>
+                                    <ul>
+                                        <li>Find the opening <code>{</code> at the top</li>
+                                        <li>Add this line after it: <code>"disableGpu": true,</code></li>
+                                        <li>Save the file (Ctrl+S)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>3. Restart Teams</strong>
+                                    <ul>
+                                        <li>Close Teams completely</li>
+                                        <li>Restart Teams</li>
+                                        <li>Should load without GPU acceleration</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <p><strong>OR use Teams settings (if you can open Teams):</strong></p>
+                            <ul>
+                                <li>Click profile picture → Settings</li>
+                                <li>General tab</li>
+                                <li>Uncheck "Disable GPU hardware acceleration"</li>
+                                <li>Restart Teams</li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>Why this works:</strong> Some graphics drivers conflict with Teams. Disabling GPU acceleration makes Teams use software rendering instead.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Update or Reinstall Teams',
+                        content: `
+                            <p><strong>Option A: Force Teams Update</strong></p>
+                            <ul>
+                                <li>Close Teams completely</li>
+                                <li>Press Windows + R</li>
+                                <li>Type: <code>%localappdata%\\Microsoft\\Teams\\Update.exe --update</code></li>
+                                <li>Press Enter</li>
+                                <li>Wait for update to complete</li>
+                                <li>Restart Teams</li>
+                            </ul>
+
+                            <p><strong>Option B: Uninstall and Reinstall Teams (if update doesn't work)</strong></p>
+                            <ul>
+                                <li><strong>1. Uninstall Teams</strong>
+                                    <ul>
+                                        <li>Settings → Apps → Apps & features</li>
+                                        <li>Search for "Microsoft Teams"</li>
+                                        <li>Click → Uninstall</li>
+                                    </ul>
+                                </li>
+                                <li><strong>2. Delete leftover files</strong>
+                                    <ul>
+                                        <li>Press Windows + R</li>
+                                        <li>Type: <code>%appdata%</code> → Delete "Microsoft Teams" folder</li>
+                                        <li>Type: <code>%localappdata%</code> → Delete "Microsoft Teams" folder</li>
+                                    </ul>
+                                </li>
+                                <li><strong>3. Download fresh copy</strong>
+                                    <ul>
+                                        <li>Go to: https://teams.microsoft.com/downloads</li>
+                                        <li>Download Teams for desktop</li>
+                                        <li>Install</li>
+                                        <li>Sign in</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Uninstall Teams completely
+Get-Process teams | Stop-Process -Force
+Get-AppxPackage *Teams* | Remove-AppxPackage
+Remove-Item -Path "$env:APPDATA\\Microsoft\\Teams" -Recurse -Force
+Remove-Item -Path "$env:LOCALAPPDATA\\Microsoft\\Teams" -Recurse -Force
+Remove-Item -Path "$env:LOCALAPPDATA\\Microsoft\\TeamsMeetingAddin" -Recurse -Force
+
+# Download and install Teams:
+Start-Process "https://teams.microsoft.com/downloads"
+                            </div>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Check Network and Proxy Settings',
+                        content: `
+                            <p><strong>Teams requires specific network access:</strong></p>
+                            <ul>
+                                <li><strong>Check internet connectivity:</strong>
+                                    <ul>
+                                        <li>Open browser, test if websites load</li>
+                                        <li>Try accessing https://teams.microsoft.com</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Check proxy settings:</strong>
+                                    <ul>
+                                        <li>Settings → Network & Internet → Proxy</li>
+                                        <li>Ensure correct proxy configuration</li>
+                                        <li>Try "Automatically detect settings" ON</li>
+                                        <li>Or try turning proxy OFF temporarily to test</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Check firewall:</strong>
+                                    <ul>
+                                        <li>Windows Defender Firewall → Allow an app</li>
+                                        <li>Ensure "Microsoft Teams" is checked for both Private and Public</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Check antivirus:</strong>
+                                    <ul>
+                                        <li>Some antivirus software blocks Teams</li>
+                                        <li>Add Teams to exclusions list</li>
+                                        <li>Temporarily disable antivirus to test</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <p><strong>Required URLs (whitelist these):</strong></p>
+                            <ul>
+                                <li>*.teams.microsoft.com</li>
+                                <li>teams.microsoft.com</li>
+                                <li>*.skype.com</li>
+                                <li>*.office365.com</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: 'Verify Resolution and Document',
+                        content: `
+                            <p><strong>Test Teams functionality:</strong></p>
+                            <ul>
+                                <li>✅ Teams opens and loads completely</li>
+                                <li>✅ Can see chat history</li>
+                                <li>✅ Can send messages</li>
+                                <li>✅ Can join meetings</li>
+                                <li>✅ Can see calendar</li>
+                                <li>✅ Can access files</li>
+                            </ul>
+
+                            <p><strong>Document in ticket:</strong></p>
+                            <ul>
+                                <li>Symptoms observed</li>
+                                <li>Troubleshooting steps taken:
+                                    <ul>
+                                        <li>Cache cleared</li>
+                                        <li>GPU acceleration disabled</li>
+                                        <li>Teams reinstalled</li>
+                                        <li>Network checked</li>
+                                    </ul>
+                                </li>
+                                <li>What fixed the issue</li>
+                                <li>Time spent</li>
+                            </ul>
+
+                            <p><strong>Educate user on prevention:</strong></p>
+                            <ul>
+                                <li>"If Teams acts slow or buggy, clear cache first"</li>
+                                <li>"Keep Teams updated (it auto-updates usually)"</li>
+                                <li>"Close Teams overnight to let updates install"</li>
+                                <li>"Don't force-close Teams during updates"</li>
+                            </ul>
+
+                            <div class="kb-tip">
+                                <strong>Quick Fix for Future:</strong> User can bookmark this: Clear cache, restart Teams. Fixes 80% of issues in 2 minutes!
+                            </div>
+                        `
+                    }
+                ]
+            }, 'dns-issues': {
+                title: 'DNS Resolution Issues',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify DNS-Specific Symptoms',
+                        content: `
+                            <p><strong>Ask diagnostic questions:</strong></p>
+                            <ul>
+                                <li>"What exactly happens when you try to visit a website?"
+                                    <ul>
+                                        <li>"This site can't be reached"</li>
+                                        <li>"DNS_PROBE_FINISHED_NXDOMAIN"</li>
+                                        <li>"Server IP address could not be found"</li>
+                                        <li>"ERR_NAME_NOT_RESOLVED"</li>
+                                    </ul>
+                                </li>
+                                <li>"Can you access websites by IP address?" 
+                                    <ul>
+                                        <li>Try: http://8.8.8.8 (Google's DNS)</li>
+                                        <li>If YES → DNS issue confirmed</li>
+                                        <li>If NO → Broader connectivity issue</li>
+                                    </ul>
+                                </li>
+                                <li>"Does it affect all websites or just some?"</li>
+                                <li>"Can other devices on the same network access websites?"</li>
+                                <li>"Are you on corporate network or home WiFi?"</li>
+                            </ul>
+                            <div class="kb-tip">
+                                <strong>Quick Test:</strong> Can ping IP (8.8.8.8) but not domain (google.com)? = DNS issue!
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Test and Diagnose DNS Resolution',
+                        content: `
+                            <p><strong>Run diagnostic commands:</strong></p>
+                            <ul>
+                                <li><strong>Test DNS resolution:</strong>
+                                    <ul>
+                                        <li>Open Command Prompt (cmd)</li>
+                                        <li>Type: <code>nslookup google.com</code></li>
+                                        <li>Should return IP addresses</li>
+                                        <li>If timeout or error → DNS problem confirmed</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Check current DNS server:</strong>
+                                    <ul>
+                                        <li>Type: <code>ipconfig /all</code></li>
+                                        <li>Look for "DNS Servers" line</li>
+                                        <li>Note the IP addresses listed</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Ping DNS server:</strong>
+                                    <ul>
+                                        <li>Type: <code>ping [DNS server IP]</code></li>
+                                        <li>If fails → DNS server unreachable</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# Test DNS resolution:
+nslookup google.com
+
+# Check DNS configuration:
+ipconfig /all
+
+# Test specific DNS server:
+nslookup google.com 8.8.8.8
+
+# Ping DNS server:
+ping 8.8.8.8
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Flush DNS Cache',
+                        content: `
+                            <p><strong>Clear corrupted DNS cache (try this first!):</strong></p>
+                            <ul>
+                                <li>Open Command Prompt as Administrator
+                                    <ul>
+                                        <li>Start → Type "cmd"</li>
+                                        <li>Right-click → Run as administrator</li>
+                                    </ul>
+                                </li>
+                                <li>Run these commands in order:
+                                    <ol>
+                                        <li><code>ipconfig /flushdns</code> - Clear DNS cache</li>
+                                        <li><code>ipconfig /registerdns</code> - Re-register DNS</li>
+                                        <li><code>ipconfig /release</code> - Release IP</li>
+                                        <li><code>ipconfig /renew</code> - Renew IP</li>
+                                        <li><code>netsh winsock reset</code> - Reset network stack</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Restart computer</strong> (important!)</li>
+                                <li>Test if websites load</li>
+                            </ul>
+
+                            <div class="kb-command">
+# Complete DNS reset script:
+ipconfig /flushdns
+ipconfig /registerdns
+ipconfig /release
+ipconfig /renew
+netsh winsock reset
+netsh int ip reset
+
+# Restart required after these commands
+                            </div>
+
+                            <div class="kb-note">
+                                <strong>Why this works:</strong> Corrupted DNS cache stores bad/old IP addresses. Flushing forces fresh lookups.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Change DNS Servers',
+                        content: `
+                            <p><strong>Try using public DNS servers (Google or Cloudflare):</strong></p>
+                            <ul>
+                                <li><strong>Steps to change DNS:</strong>
+                                    <ol>
+                                        <li>Open Control Panel → Network and Sharing Center</li>
+                                        <li>Click your connection → Properties</li>
+                                        <li>Select "Internet Protocol Version 4 (TCP/IPv4)"</li>
+                                        <li>Click Properties</li>
+                                        <li>Select "Use the following DNS server addresses"</li>
+                                        <li>Enter DNS servers:
+                                            <ul>
+                                                <li><strong>Google DNS:</strong> Preferred: 8.8.8.8, Alternate: 8.8.4.4</li>
+                                                <li><strong>Cloudflare:</strong> Preferred: 1.1.1.1, Alternate: 1.0.0.1</li>
+                                            </ul>
+                                        </li>
+                                        <li>Click OK</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Test immediately:</strong> Open browser, try websites</li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Set Google DNS
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses ("8.8.8.8","8.8.4.4")
+
+# Set Cloudflare DNS:
+Set-DnsClientServerAddress -InterfaceAlias "Wi-Fi" -ServerAddresses ("1.1.1.1","1.0.0.1")
+
+# Revert to automatic DNS:
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ResetServerAddresses
+                            </div>
+
+                            <div class="kb-tip">
+                                <strong>Corporate Networks:</strong> Check with IT before changing DNS on work computers. Some organizations require specific DNS servers.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Check Hosts File for Blocks',
+                        content: `
+                            <p><strong>The hosts file can block specific websites:</strong></p>
+                            <ul>
+                                <li><strong>Open hosts file:</strong>
+                                    <ul>
+                                        <li>Press Windows + R</li>
+                                        <li>Type: <code>notepad C:\\Windows\\System32\\drivers\\etc\\hosts</code></li>
+                                        <li>Press Enter (may need admin rights)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Look for suspicious entries:</strong>
+                                    <ul>
+                                        <li>Lines starting with IP addresses followed by domains</li>
+                                        <li>Example: <code>127.0.0.1 facebook.com</code> (blocks Facebook)</li>
+                                        <li>Lines starting with # are comments (harmless)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Remove malicious entries:</strong>
+                                    <ul>
+                                        <li>Delete any lines blocking websites user needs</li>
+                                        <li>Save the file (Ctrl+S)</li>
+                                        <li>Close Notepad</li>
+                                        <li>Run: <code>ipconfig /flushdns</code></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>What is hosts file?</strong> Local file that overrides DNS. Malware often edits it to block security sites or redirect to phishing sites.
+                            </div>
+
+                            <div class="kb-command">
+# PowerShell: View hosts file
+Get-Content C:\\Windows\\System32\\drivers\\etc\\hosts
+
+# Backup hosts file before editing:
+Copy-Item C:\\Windows\\System32\\drivers\\etc\\hosts C:\\Windows\\System32\\drivers\\etc\\hosts.backup
+                            </div>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: 'Verify Resolution and Document',
+                        content: `
+                            <p><strong>Test DNS resolution thoroughly:</strong></p>
+                            <ul>
+                                <li>✅ Can access major websites (Google, Microsoft, etc.)</li>
+                                <li>✅ Can access internal company sites</li>
+                                <li>✅ nslookup returns IPs for test domains</li>
+                                <li>✅ No DNS errors in browser</li>
+                            </ul>
+
+                            <p><strong>Document in ticket:</strong></p>
+                            <ul>
+                                <li>Original DNS error messages</li>
+                                <li>DNS servers that were configured</li>
+                                <li>Steps taken:
+                                    <ul>
+                                        <li>DNS cache flushed</li>
+                                        <li>DNS servers changed to X.X.X.X</li>
+                                        <li>Hosts file checked/cleaned</li>
+                                        <li>Network stack reset</li>
+                                    </ul>
+                                </li>
+                                <li>Final DNS configuration</li>
+                            </ul>
+
+                            <p><strong>Educate user on prevention:</strong></p>
+                            <ul>
+                                <li>"DNS issues usually caused by network or malware"</li>
+                                <li>"Keep antivirus updated"</li>
+                                <li>"Don't modify hosts file manually"</li>
+                                <li>"Contact IT if this happens again"</li>
+                            </ul>
+
+                            <p><strong>For corporate environments:</strong></p>
+                            <ul>
+                                <li>Verify computer is using correct corporate DNS</li>
+                                <li>Check if DNS servers are accessible from user's location</li>
+                                <li>Escalate to network team if widespread issue</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            'wifi-no-internet': {
+                title: 'WiFi Connected but No Internet',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Verify the Problem',
+                        content: `
+                            <p><strong>Confirm symptoms:</strong></p>
+                            <ul>
+                                <li>"WiFi icon shows connected (with or without yellow warning triangle?)"</li>
+                                <li>"Can you access ANY websites?"</li>
+                                <li>"Can other devices use the same WiFi network successfully?"</li>
+                                <li>"What do you see when you try to browse?"
+                                    <ul>
+                                        <li>"No internet connection"</li>
+                                        <li>"Limited connectivity"</li>
+                                        <li>"Connected, no internet"</li>
+                                        <li>Pages timeout/won't load</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="kb-tip">
+                                <strong>Quick Test:</strong> If other devices work fine, it's THIS computer. If ALL devices fail, it's the router/modem.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Check IP Configuration',
+                        content: `
+                            <p><strong>Verify computer has valid IP address:</strong></p>
+                            <ul>
+                                <li>Open Command Prompt</li>
+                                <li>Type: <code>ipconfig</code></li>
+                                <li>Look for IPv4 Address under WiFi adapter</li>
+                            </ul>
+
+                            <p><strong>Check for problems:</strong></p>
+                            <ul>
+                                <li><strong>169.254.x.x address:</strong>
+                                    <ul>
+                                        <li>= APIPA (Automatic Private IP)</li>
+                                        <li>= Computer couldn't reach DHCP server</li>
+                                        <li>= No valid IP = No internet</li>
+                                    </ul>
+                                </li>
+                                <li><strong>No Default Gateway:</strong>
+                                    <ul>
+                                        <li>= Can't reach router</li>
+                                        <li>= Trapped on local network</li>
+                                    </ul>
+                                </li>
+                                <li><strong>No DNS Servers:</strong>
+                                    <ul>
+                                        <li>= Can't resolve website names</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# Check IP configuration:
+ipconfig /all
+
+# Good example:
+#   IPv4 Address: 192.168.1.100
+#   Default Gateway: 192.168.1.1
+#   DNS Servers: 192.168.1.1
+
+# Bad example (APIPA):
+#   IPv4 Address: 169.254.x.x
+#   Default Gateway: (empty)
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Release and Renew IP Address',
+                        content: `
+                            <p><strong>Force computer to get fresh IP from router:</strong></p>
+                            <ul>
+                                <li>Open Command Prompt as Administrator</li>
+                                <li>Run these commands:</li>
+                            </ul>
+
+                            <div class="kb-command">
+# Release current IP:
+ipconfig /release
+
+# Renew IP from DHCP:
+ipconfig /renew
+
+# Flush DNS cache:
+ipconfig /flushdns
+
+# Check new IP:
+ipconfig
+                            </div>
+
+                            <ul>
+                                <li><strong>Check the new IP address:</strong>
+                                    <ul>
+                                        <li>Should be 192.168.x.x or 10.x.x.x (not 169.254.x.x)</li>
+                                        <li>Should have Default Gateway</li>
+                                        <li>Should have DNS Servers</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Test internet:</strong> Try opening a website</li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>If still getting 169.254.x.x:</strong> Router's DHCP server isn't responding. Check router or contact network admin.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Reset Network Adapter',
+                        content: `
+                            <p><strong>Method 1: Reset via Settings</strong></p>
+                            <ul>
+                                <li>Settings → Network & Internet</li>
+                                <li>Click "Network reset" (at bottom)</li>
+                                <li>Click "Reset now"</li>
+                                <li>Confirm → Computer will restart</li>
+                                <li>After restart, reconnect to WiFi</li>
+                            </ul>
+
+                            <p><strong>Method 2: Reset via Command Prompt</strong></p>
+                            <div class="kb-command">
+# Complete network reset:
+netsh winsock reset
+netsh int ip reset
+netsh advfirewall reset
+
+# Reset WiFi adapter specifically:
+netsh interface set interface "Wi-Fi" disable
+netsh interface set interface "Wi-Fi" enable
+
+# Or use PowerShell:
+Restart-NetAdapter -Name "Wi-Fi"
+                            </div>
+
+                            <p><strong>Method 3: Disable/Re-enable Adapter Manually</strong></p>
+                            <ul>
+                                <li>Right-click Start → Device Manager</li>
+                                <li>Expand "Network adapters"</li>
+                                <li>Right-click WiFi adapter → Disable device</li>
+                                <li>Wait 10 seconds</li>
+                                <li>Right-click again → Enable device</li>
+                                <li>Reconnect to WiFi network</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Check Router and Network Issues',
+                        content: `
+                            <p><strong>If problem persists, check the router:</strong></p>
+                            <ul>
+                                <li><strong>Restart the router:</strong>
+                                    <ul>
+                                        <li>Unplug power cable</li>
+                                        <li>Wait 30 seconds</li>
+                                        <li>Plug back in</li>
+                                        <li>Wait 2-3 minutes for full boot</li>
+                                        <li>Try connecting again</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Check router lights:</strong>
+                                    <ul>
+                                        <li>Power: ON (solid)</li>
+                                        <li>Internet/WAN: ON (solid or blinking)</li>
+                                        <li>WiFi: ON (solid or blinking)</li>
+                                        <li>If Internet light OFF/red = ISP problem</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Test wired connection:</strong>
+                                    <ul>
+                                        <li>Plug ethernet cable into router</li>
+                                        <li>If wired works but WiFi doesn't = Router WiFi issue</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <p><strong>For corporate networks:</strong></p>
+                            <ul>
+                                <li>Check if MAC address filtering is blocking device</li>
+                                <li>Verify device is authorized on corporate WiFi</li>
+                                <li>Check if WiFi profile needs updating</li>
+                                <li>Escalate to network team if needed</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: 'Update WiFi Driver (if nothing else worked)',
+                        content: `
+                            <p><strong>Outdated or corrupted driver can cause connectivity issues:</strong></p>
+                            <ul>
+                                <li><strong>Update driver:</strong>
+                                    <ul>
+                                        <li>Right-click Start → Device Manager</li>
+                                        <li>Expand "Network adapters"</li>
+                                        <li>Right-click WiFi adapter → "Update driver"</li>
+                                        <li>Choose "Search automatically for drivers"</li>
+                                        <li>Install if update found</li>
+                                        <li>Restart computer</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Or reinstall driver:</strong>
+                                    <ul>
+                                        <li>Right-click WiFi adapter → "Uninstall device"</li>
+                                        <li>Check "Delete the driver software" (if option appears)</li>
+                                        <li>Click Uninstall</li>
+                                        <li>Restart computer</li>
+                                        <li>Windows will reinstall driver automatically</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Update WiFi driver
+$adapter = Get-NetAdapter -Name "Wi-Fi"
+Update-NetAdapterDriver -Name $adapter.Name
+
+# Or force driver reinstall:
+pnputil /delete-driver oem##.inf /uninstall
+# (Get OEM number from Device Manager)
+                            </div>
+
+                            <p><strong>Document resolution:</strong></p>
+                            <ul>
+                                <li>✅ WiFi shows connected</li>
+                                <li>✅ Valid IP address (192.168.x.x)</li>
+                                <li>✅ Can ping gateway</li>
+                                <li>✅ Can access websites</li>
+                                <li>✅ No yellow warning triangle on WiFi icon</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            'vpn-failure': {
+                title: 'VPN Connection Failures',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify VPN Error and Type',
+                        content: `
+                            <p><strong>Ask diagnostic questions:</strong></p>
+                            <ul>
+                                <li>"What VPN client are you using?" (Cisco AnyConnect, Pulse Secure, FortiClient, Windows built-in, etc.)</li>
+                                <li>"What is the exact error message?"
+                                    <ul>
+                                        <li>"Authentication failed"</li>
+                                        <li>"Connection timeout"</li>
+                                        <li>"Unable to contact VPN server"</li>
+                                        <li>"Certificate error"</li>
+                                        <li>"User credentials incorrect"</li>
+                                    </ul>
+                                </li>
+                                <li>"When did this stop working?" (Today, after reboot, never worked)</li>
+                                <li>"Are you on home WiFi or public WiFi?"</li>
+                                <li>"Can you access company websites without VPN?"</li>
+                                <li>"Did you recently change your password?"</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Common Causes:</strong> Password expired, MFA issues, network firewall blocking, VPN client outdated, certificate expired.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Verify Credentials and MFA',
+                        content: `
+                            <p><strong>Check authentication first:</strong></p>
+                            <ul>
+                                <li><strong>Verify username format:</strong>
+                                    <ul>
+                                        <li>Some VPNs require: username@domain.com</li>
+                                        <li>Others require: DOMAIN\\username</li>
+                                        <li>Or just: username</li>
+                                        <li>Ask user what format they're using</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Password issues:</strong>
+                                    <ul>
+                                        <li>"Did you recently change your password?"</li>
+                                        <li>"Are you using the same password as Windows login?"</li>
+                                        <li>Try logging into Office 365 or company portal with same credentials</li>
+                                        <li>If that fails → password is wrong, needs reset</li>
+                                    </ul>
+                                </li>
+                                <li><strong>MFA/2FA issues:</strong>
+                                    <ul>
+                                        <li>Some VPNs require MFA code</li>
+                                        <li>Format might be: password + MFA code (concatenated)</li>
+                                        <li>Or: separate MFA prompt after password</li>
+                                        <li>Check if user has authenticator app installed</li>
+                                        <li>Verify MFA device is registered</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> Some VPNs want password+MFAcode as one string (no space). Example: MyPassword123456 where 123456 is MFA code.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Test Network Connectivity to VPN Server',
+                        content: `
+                            <p><strong>Verify user can reach VPN server:</strong></p>
+                            <ul>
+                                <li><strong>Get VPN server address:</strong>
+                                    <ul>
+                                        <li>Check VPN client settings for server URL/IP</li>
+                                        <li>Example: vpn.company.com or 203.0.113.5</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Test connectivity:</strong>
+                                    <ul>
+                                        <li>Open Command Prompt</li>
+                                        <li>Type: <code>ping vpn.company.com</code></li>
+                                        <li>If replies → server is reachable</li>
+                                        <li>If timeout → network blocking or server down</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Test VPN port:</strong>
+                                    <ul>
+                                        <li>Common VPN ports: 443 (HTTPS), 1723 (PPTP), 500/4500 (IPSec)</li>
+                                        <li>Use telnet or online port checker</li>
+                                        <li>Type: <code>telnet vpn.company.com 443</code></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# Test VPN server connectivity:
+ping vpn.company.com
+
+# Test specific port (requires telnet client):
+telnet vpn.company.com 443
+
+# Or use PowerShell:
+Test-NetConnection -ComputerName vpn.company.com -Port 443
+                            </div>
+
+                            <p><strong>If server unreachable:</strong></p>
+                            <ul>
+                                <li>Check if user's network blocks VPN (hotel, airport WiFi often do)</li>
+                                <li>Try different WiFi network or mobile hotspot</li>
+                                <li>Check firewall on user's computer</li>
+                                <li>Verify VPN server is actually online (check status page)</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Clear VPN Cache and Saved Credentials',
+                        content: `
+                            <p><strong>Cached credentials can cause authentication failures:</strong></p>
+                            <ul>
+                                <li><strong>Clear Windows Credential Manager:</strong>
+                                    <ul>
+                                        <li>Control Panel → Credential Manager</li>
+                                        <li>Click "Windows Credentials"</li>
+                                        <li>Find any VPN-related entries</li>
+                                        <li>Click → Remove</li>
+                                        <li>Try VPN again (will prompt for fresh credentials)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>For Cisco AnyConnect:</strong>
+                                    <ul>
+                                        <li>Close AnyConnect</li>
+                                        <li>Delete: C:\\ProgramData\\Cisco\\Cisco AnyConnect Secure Mobility Client\\Profile</li>
+                                        <li>Delete: C:\\Users\\[username]\\AppData\\Local\\Cisco\\Cisco AnyConnect Secure Mobility Client</li>
+                                        <li>Restart AnyConnect</li>
+                                    </ul>
+                                </li>
+                                <li><strong>For other VPN clients:</strong>
+                                    <ul>
+                                        <li>Look for "Clear saved credentials" in settings</li>
+                                        <li>Or reinstall VPN client to clear all cache</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Clear stored credentials
+cmdkey /list
+# Look for VPN-related entries
+
+# Delete specific credential:
+cmdkey /delete:vpn.company.com
+
+# Or delete all:
+cmdkey /list | ForEach-Object {if($_ -like "*Target:*"){cmdkey /del:($_ -replace " ","" -replace "Target:","")}}
+                            </div>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Reinstall or Update VPN Client',
+                        content: `
+                            <p><strong>If nothing else worked, reinstall VPN client:</strong></p>
+                            <ul>
+                                <li><strong>1. Uninstall current VPN client:</strong>
+                                    <ul>
+                                        <li>Settings → Apps → Apps & features</li>
+                                        <li>Find VPN client (Cisco AnyConnect, etc.)</li>
+                                        <li>Click → Uninstall</li>
+                                        <li>Restart computer</li>
+                                    </ul>
+                                </li>
+                                <li><strong>2. Download latest version:</strong>
+                                    <ul>
+                                        <li>Go to company IT portal or self-service site</li>
+                                        <li>Download latest VPN client installer</li>
+                                        <li>Verify it's the correct version for your OS</li>
+                                    </ul>
+                                </li>
+                                <li><strong>3. Install as Administrator:</strong>
+                                    <ul>
+                                        <li>Right-click installer → "Run as administrator"</li>
+                                        <li>Follow installation wizard</li>
+                                        <li>Use default settings unless told otherwise</li>
+                                        <li>Restart computer after installation</li>
+                                    </ul>
+                                </li>
+                                <li><strong>4. Configure VPN connection:</strong>
+                                    <ul>
+                                        <li>Open VPN client</li>
+                                        <li>Enter VPN server address</li>
+                                        <li>Enter credentials</li>
+                                        <li>Test connection</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>Before reinstalling:</strong> Check with IT for correct VPN server address, profile files, or certificates needed.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: 'Verify Connection and Document',
+                        content: `
+                            <p><strong>Test VPN functionality completely:</strong></p>
+                            <ul>
+                                <li>✅ VPN connects successfully</li>
+                                <li>✅ Can access internal company resources (file shares, intranet)</li>
+                                <li>✅ Can ping internal servers</li>
+                                <li>✅ Can RDP to office computer (if applicable)</li>
+                                <li>✅ Internet browsing still works (split-tunnel) or routes through VPN (full-tunnel)</li>
+                            </ul>
+
+                            <p><strong>Document in ticket:</strong></p>
+                            <ul>
+                                <li>VPN client type and version</li>
+                                <li>Error messages encountered</li>
+                                <li>Troubleshooting steps:
+                                    <ul>
+                                        <li>Credentials verified/reset</li>
+                                        <li>Network connectivity tested</li>
+                                        <li>Cache cleared</li>
+                                        <li>VPN client reinstalled</li>
+                                    </ul>
+                                </li>
+                                <li>Final resolution</li>
+                            </ul>
+
+                            <p><strong>Educate user:</strong></p>
+                            <ul>
+                                <li>"Always use VPN when accessing company resources remotely"</li>
+                                <li>"If password changes, reconnect VPN with new password"</li>
+                                <li>"Some public WiFi networks block VPN - try mobile hotspot"</li>
+                                <li>"Keep VPN client updated - check for updates monthly"</li>
+                                <li>"Don't disable firewall to make VPN work"</li>
+                            </ul>
+
+                            <div class="kb-tip">
+                                <strong>Prevention Tip:</strong> Most VPN issues are authentication-related. Keep credentials updated and MFA device accessible!
+                            </div>
+                        `
+                    }
+                ]
+            },
+            'printer-offline': {
+                title: 'Printer Shows Offline',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Verify Physical Connectivity',
+                        content: `
+                            <p><strong>Check the basics first:</strong></p>
+                            <ul>
+                                <li><strong>Is printer powered on?</strong>
+                                    <ul>
+                                        <li>Check if display screen is lit</li>
+                                        <li>Press power button to wake from sleep</li>
+                                        <li>Look for any error lights/messages on printer</li>
+                                    </ul>
+                                </li>
+                                <li><strong>How is printer connected?</strong>
+                                    <ul>
+                                        <li><strong>USB:</strong> Check cable is plugged in both ends</li>
+                                        <li><strong>Network:</strong> Check ethernet cable or WiFi connection</li>
+                                        <li><strong>Wireless:</strong> Verify printer WiFi is connected</li>
+                                    </ul>
+                                </li>
+                                <li><strong>For network printers:</strong>
+                                    <ul>
+                                        <li>Check if printer shows IP address on display</li>
+                                        <li>Print network configuration page (usually in printer menu)</li>
+                                        <li>Verify printer and computer are on same network</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# Test if computer can reach network printer:
+ping [printer IP address]
+
+# Example:
+ping 192.168.1.100
+
+# If replies = printer is online on network
+# If timeout = network issue or wrong IP
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Set Printer to Online in Windows',
+                        content: `
+                            <p><strong>Windows sometimes incorrectly marks printers offline:</strong></p>
+                            <ul>
+                                <li><strong>Method 1: From Settings</strong>
+                                    <ul>
+                                        <li>Settings → Devices → Printers & scanners</li>
+                                        <li>Click the printer</li>
+                                        <li>Click "Open queue"</li>
+                                        <li>Click "Printer" menu at top</li>
+                                        <li>If "Use Printer Offline" is checked, UNCHECK it</li>
+                                        <li>Close window</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Method 2: From Control Panel</strong>
+                                    <ul>
+                                        <li>Control Panel → Devices and Printers</li>
+                                        <li>Right-click printer</li>
+                                        <li>Click "See what's printing"</li>
+                                        <li>Printer menu → Uncheck "Use Printer Offline"</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> If "Use Printer Offline" keeps getting re-checked automatically, there's a connection issue.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Clear Print Queue and Restart Print Spooler',
+                        content: `
+                            <p><strong>Stuck print jobs cause offline status:</strong></p>
+                            <ul>
+                                <li><strong>Clear print queue:</strong>
+                                    <ul>
+                                        <li>Open printer queue (Settings → Printers)</li>
+                                        <li>Click "Printer" → "Cancel All Documents"</li>
+                                        <li>If documents won't clear, continue to spooler restart</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Restart Print Spooler service:</strong>
+                                    <ul>
+                                        <li>Press Windows + R</li>
+                                        <li>Type: <code>services.msc</code></li>
+                                        <li>Press Enter</li>
+                                        <li>Find "Print Spooler"</li>
+                                        <li>Right-click → Restart</li>
+                                        <li>Wait 10 seconds</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Restart print spooler and clear queue
+Stop-Service -Name Spooler -Force
+Remove-Item -Path "C:\\Windows\\System32\\spool\\PRINTERS\\*" -Force
+Start-Service -Name Spooler
+
+# Verify spooler is running:
+Get-Service -Name Spooler
+                            </div>
+
+                            <div class="kb-note">
+                                <strong>What is Print Spooler?</strong> Windows service that manages print jobs. If it crashes or hangs, printers show offline.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Remove and Re-add Printer',
+                        content: `
+                            <p><strong>If printer still offline, reinstall it:</strong></p>
+                            <ul>
+                                <li><strong>1. Remove printer:</strong>
+                                    <ul>
+                                        <li>Settings → Devices → Printers & scanners</li>
+                                        <li>Click the printer</li>
+                                        <li>Click "Remove device"</li>
+                                        <li>Confirm removal</li>
+                                    </ul>
+                                </li>
+                                <li><strong>2. Restart computer</strong> (important!)</li>
+                                <li><strong>3. Re-add printer:</strong>
+                                    <ul>
+                                        <li>Settings → Devices → Printers & scanners</li>
+                                        <li>Click "Add a printer or scanner"</li>
+                                        <li><strong>For network printer:</strong>
+                                            <ul>
+                                                <li>Wait for Windows to find it</li>
+                                                <li>OR click "The printer that I want isn't listed"</li>
+                                                <li>Select "Add a printer using TCP/IP address"</li>
+                                                <li>Enter printer IP address</li>
+                                                <li>Follow wizard</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>For USB printer:</strong>
+                                            <ul>
+                                                <li>Unplug USB cable</li>
+                                                <li>Wait 10 seconds</li>
+                                                <li>Plug back in</li>
+                                                <li>Windows should auto-detect</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Add network printer by IP
+Add-PrinterPort -Name "IP_192.168.1.100" -PrinterHostAddress "192.168.1.100"
+Add-Printer -Name "Office Printer" -DriverName "HP LaserJet Pro" -PortName "IP_192.168.1.100"
+
+# List installed printers:
+Get-Printer
+
+# Remove printer:
+Remove-Printer -Name "Office Printer"
+                            </div>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Update or Reinstall Printer Driver',
+                        content: `
+                            <p><strong>Outdated drivers cause offline issues:</strong></p>
+                            <ul>
+                                <li><strong>Update driver:</strong>
+                                    <ul>
+                                        <li>Control Panel → Devices and Printers</li>
+                                        <li>Right-click printer → "Printer properties"</li>
+                                        <li>Click "Advanced" tab</li>
+                                        <li>Click "New Driver" button</li>
+                                        <li>Follow wizard to select newer driver</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Or download from manufacturer:</strong>
+                                    <ul>
+                                        <li>Go to HP, Canon, Epson, Brother website</li>
+                                        <li>Enter printer model number</li>
+                                        <li>Download latest Windows driver</li>
+                                        <li>Run installer</li>
+                                    </ul>
+                                </li>
+                                <li><strong>For corporate/network printers:</strong>
+                                    <ul>
+                                        <li>Contact IT for correct driver package</li>
+                                        <li>May need specific print server driver</li>
+                                        <li>Don't download drivers yourself for shared printers</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-tip">
+                                <strong>Universal Print Driver:</strong> Many printers work with Windows universal print driver if specific driver unavailable.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: 'Verify Resolution and Document',
+                        content: `
+                            <p><strong>Test printing thoroughly:</strong></p>
+                            <ul>
+                                <li>✅ Printer shows "Ready" status (not offline)</li>
+                                <li>✅ Print test page successfully</li>
+                                <li>✅ Print from Word/Excel/browser</li>
+                                <li>✅ No errors in print queue</li>
+                                <li>✅ Print spooler service running</li>
+                            </ul>
+
+                            <p><strong>Document in ticket:</strong></p>
+                            <ul>
+                                <li>Printer make and model</li>
+                                <li>Connection type (USB, network, WiFi)</li>
+                                <li>Error messages seen</li>
+                                <li>Steps taken:
+                                    <ul>
+                                        <li>Physical connections checked</li>
+                                        <li>Set to online manually</li>
+                                        <li>Print spooler restarted</li>
+                                        <li>Printer removed/re-added</li>
+                                        <li>Driver updated</li>
+                                    </ul>
+                                </li>
+                                <li>Final resolution</li>
+                            </ul>
+
+                            <p><strong>Educate user:</strong></p>
+                            <ul>
+                                <li>"Always check if printer is powered on first"</li>
+                                <li>"For network printers, check network cable"</li>
+                                <li>"If paper jam, clear it completely before printing"</li>
+                                <li>"Don't send multiple print jobs if first one doesn't print"</li>
+                                <li>"Contact IT if offline status keeps returning"</li>
+                            </ul>
+
+                            <p><strong>Common causes to prevent future issues:</strong></p>
+                            <ul>
+                                <li>Printer goes to sleep mode - disable power saving</li>
+                                <li>Network issues - ensure stable connection</li>
+                                <li>IP address changed - use DNS name or reserve static IP</li>
+                                <li>Windows updates - may need driver update after major updates</li>
+                            </ul>
+                        `
+                    }
+                ]
+            }
         };
+
+        function openArticle(articleId) {
+            const modal = document.getElementById('kbModal');
+            const title = document.getElementById('kbModalTitle');
+            const body = document.getElementById('kbModalBody');
+            
+            const article = kbArticles[articleId];
+            
+            if (!article) {
+                body.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">📚</div>
+                        <h3 style="color: #0F172A; margin-bottom: 16px; font-size: 1.5rem;">Article Coming Soon</h3>
+                        <p style="color: #64748B; font-size: 1.1rem;">This comprehensive troubleshooting guide is being developed.</p>
+                        <p style="color: #64748B;">Check back soon for detailed step-by-step instructions!</p>
+                    </div>
+                `;
+                title.textContent = 'Knowledge Base Article';
+            } else {
+                title.textContent = article.title;
+                
+                let stepsHTML = '';
+                article.steps.forEach(step => {
+                    stepsHTML += `
+                        <div class="kb-step">
+                            <div class="kb-step-title">
+                                <span class="kb-step-number">${step.number}</span>
+                                ${step.title}
+                            </div>
+                            <div class="kb-step-content">
+                                ${step.content}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                body.innerHTML = stepsHTML;
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeKBModal() {
+            document.getElementById('kbModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('kbModal');
+            if (event.target === modal) {
+                closeKBModal();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeKBModal();
+            }
+        });
+    </script>
+</body>
+</html>
 
         function openArticle(articleId) {
             const modal = document.getElementById('kbModal');
