@@ -1209,7 +1209,8 @@ Set-Acl "\\\\server\\share\\folder" $acl
                         `
                     }
                 ]
-            }, 'bitlocker': {
+            }, 
+        'bitlocker': {
                 title: 'BitLocker Recovery',
                 steps: [
                     {
@@ -1704,7 +1705,8 @@ Start-Process "https://teams.microsoft.com/downloads"
                         `
                     }
                 ]
-            }, 'dns-issues': {
+            }, 
+        'dns-issues': {
                 title: 'DNS Resolution Issues',
                 steps: [
                     {
@@ -2764,14 +2766,3 @@ function openArticle(articleId) {
 
 ---
 
-**So your file should end like:**
-```
-            }  // Last closing brace of 'printer-offline' article
-        };  // Closing brace of kbArticles object
-
-        function openArticle(articleId) {
-            // ... ALL THE CODE I JUST GAVE YOU ...
-        });
-    </script>
-</body>
-</html>
