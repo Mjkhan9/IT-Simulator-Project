@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base - ITAS</title>
+    <link rel="stylesheet" href="css/fluent-core.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="6" fill="#2563EB"/>
+                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="white"/>
+                    <circle cx="16" cy="16" r="4" fill="#2563EB"/>
+                </svg>
+            </div>
+            <span class="brand">IT Ticket Automation Simulator</span>
+        </div>
+        <nav class="nav-right">
+            <a href="index.html">Home</a>
+            <a href="simulator.html">Ticket Simulator</a>
+            <a href="scripts.html">Scripts</a>
+            <a href="kb.html" class="active">Knowledge Base</a>
+            <a href="labs.html">IT Labs</a>
+        </nav>
+    </header>
+
+    <div class="main-content" style="max-width: 1400px; margin: 0 auto;">
+        <div class="content-header">
+            <h1>IT Knowledge Base</h1>
+            <p>Comprehensive troubleshooting guides and documentation</p>
+        </div>
+
+        <div class="grid-container" style="padding: 20px 0;">
+            <!-- Network Troubleshooting -->
+            <div class="card">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none"/>
+                        <circle cx="12" cy="12" r="5" fill="white"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 16px;">Network & Connectivity</h2>
+                
+                <div class="kb-article" onclick="openArticle('dns')">
+                    <h3>DNS Resolution Issues</h3>
+                    <p>Troubleshooting steps for websites not loading or DNS errors</p>
+                    <span class="badge">Network</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('wifi')">
+                    <h3>WiFi Connected but No Internet</h3>
+                    <p>Resolving connectivity issues when WiFi shows connected</p>
+                    <span class="badge">Network</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('vpn')">
+                    <h3>VPN Connection Failures</h3>
+                    <p>Common VPN authentication and connection problems</p>
+                    <span class="badge">Network</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('slow-network')">
+                    <h3>Slow Network Performance</h3>
+                    <p>Diagnosing and resolving network speed issues</p>
+                    <span class="badge">Network</span>
+                </div>
+            </div>
+
+            <!-- Microsoft Office -->
+            <div class="card">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <rect x="4" y="4" width="16" height="16" rx="2" stroke="white" stroke-width="2" fill="none"/>
+                        <path d="M8 9h8M8 13h5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 16px;">Microsoft Office & 365</h2>
+                
+                <div class="kb-article" onclick="openArticle('outlook-crash')">
+                    <h3>Outlook Won't Open or Crashes</h3>
+                    <p>Steps to repair Outlook profile and resolve startup issues</p>
+                    <span class="badge">Office 365</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('teams-loading')">
+                    <h3>Teams Stuck on Loading Screen</h3>
+                    <p>Clearing Teams cache and resolving startup problems</p>
+                    <span class="badge">Teams</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('office-activation')">
+                    <h3>Office Activation Issues</h3>
+                    <p>Troubleshooting Office 365 licensing and activation errors</p>
+                    <span class="badge">Office 365</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('excel-performance')">
+                    <h3>Excel Running Slow</h3>
+                    <p>Optimizing large Excel files and improving performance</p>
+                    <span class="badge">Office</span>
+                </div>
+            </div>
+
+            <!-- Windows System -->
+            <div class="card">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #059669 0%, #047857 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <rect x="3" y="3" width="8" height="8" fill="white"/>
+                        <rect x="13" y="3" width="8" height="8" fill="white"/>
+                        <rect x="3" y="13" width="8" height="8" fill="white"/>
+                        <rect x="13" y="13" width="8" height="8" fill="white"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 16px;">Windows System</h2>
+                
+                <div class="kb-article" onclick="openArticle('profile-corruption')">
+                    <h3>User Profile Corruption</h3>
+                    <p>Repairing corrupted profiles and recovering user data</p>
+                    <span class="badge">Windows</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('windows-update')">
+                    <h3>Windows Update Stuck or Failing</h3>
+                    <p>Resolving Windows Update errors and stuck downloads</p>
+                    <span class="badge">Windows</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('blue-screen')">
+                    <h3>Blue Screen of Death (BSOD)</h3>
+                    <p>Analyzing and resolving Windows crash dumps</p>
+                    <span class="badge">Windows</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('disk-space')">
+                    <h3>Low Disk Space Issues</h3>
+                    <p>Cleaning up disk space and optimizing storage</p>
+                    <span class="badge">Windows</span>
+                </div>
+            </div>
+
+            <!-- Hardware & Devices -->
+            <div class="card">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <rect x="5" y="3" width="14" height="18" rx="2" stroke="white" stroke-width="2" fill="none"/>
+                        <rect x="7" y="15" width="10" height="4" fill="white"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 16px;">Hardware & Devices</h2>
+                
+                <div class="kb-article" onclick="openArticle('printer-offline')">
+                    <h3>Printer Shows Offline</h3>
+                    <p>Resolving printer connectivity and spooler issues</p>
+                    <span class="badge">Printer</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('monitor-issues')">
+                    <h3>Monitor Display Problems</h3>
+                    <p>Troubleshooting screen resolution and display issues</p>
+                    <span class="badge">Hardware</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('audio-not-working')">
+                    <h3>No Sound or Audio Issues</h3>
+                    <p>Fixing audio driver and playback device problems</p>
+                    <span class="badge">Hardware</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('usb-devices')">
+                    <h3>USB Devices Not Recognized</h3>
+                    <p>Troubleshooting USB connectivity and driver issues</p>
+                    <span class="badge">Hardware</span>
+                </div>
+            </div>
+
+            <!-- Security & Access -->
+            <div class="card">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #D97706 0%, #B45309 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="white" stroke-width="2" fill="none"/>
+                        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 16px;">Security & Access</h2>
+                
+                <div class="kb-article" onclick="openArticle('account-lockout')">
+                    <h3>Account Locked Out</h3>
+                    <p>Unlocking user accounts and resetting passwords</p>
+                    <span class="badge">Identity</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('mfa-issues')">
+                    <h3>MFA Authentication Problems</h3>
+                    <p>Troubleshooting multi-factor authentication issues</p>
+                    <span class="badge">Security</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('permissions')">
+                    <h3>Permission Denied Errors</h3>
+                    <p>Resolving file and folder access permission issues</p>
+                    <span class="badge">Security</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('bitlocker')">
+                    <h3>BitLocker Recovery</h3>
+                    <p>Accessing BitLocker encrypted drives and recovery keys</p>
+                    <span class="badge">Security</span>
+                </div>
+            </div>
+
+            <!-- Applications -->
+            <div class="card">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #0891B2 0%, #0E7490 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <rect x="3" y="3" width="7" height="7" rx="1" fill="white"/>
+                        <rect x="3" y="13" width="7" height="7" rx="1" fill="white"/>
+                        <rect x="13" y="3" width="7" height="7" rx="1" fill="white"/>
+                        <rect x="13" y="13" width="7" height="7" rx="1" fill="white"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 16px;">Applications</h2>
+                
+                <div class="kb-article" onclick="openArticle('browser-crash')">
+                    <h3>Browser Crashes or Freezes</h3>
+                    <p>Fixing Chrome, Edge, and Firefox browser issues</p>
+                    <span class="badge">Applications</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('software-install')">
+                    <h3>Software Installation Failures</h3>
+                    <p>Resolving application install and update errors</p>
+                    <span class="badge">Applications</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('app-compatibility')">
+                    <h3>Application Compatibility Issues</h3>
+                    <p>Running legacy applications on Windows 11</p>
+                    <span class="badge">Applications</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('remote-desktop')">
+                    <h3>Remote Desktop Connection Problems</h3>
+                    <p>Troubleshooting RDP and remote access issues</p>
+                    <span class="badge">Applications</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .kb-article {
+            padding: 14px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border: 1px solid var(--card-border);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .kb-article:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            transform: translateX(4px);
+        }
+
+        .kb-article h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #0F172A;
+            margin-bottom: 4px;
+        }
+
+        .kb-article p {
+            font-size: 0.85rem;
+            color: #64748B;
+            margin: 0 0 8px 0;
+        }
+    </style>
+
+    <script>
+        function openArticle(articleId) {
+            alert(`Knowledge Base article: ${articleId}\n\nThis would open detailed troubleshooting steps and documentation.`);
+        }
+    </script>
+</body>
+</html>

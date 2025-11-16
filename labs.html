@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Labs - ITAS</title>
+    <link rel="stylesheet" href="css/fluent-core.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/simulator.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="6" fill="#2563EB"/>
+                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="white"/>
+                    <circle cx="16" cy="16" r="4" fill="#2563EB"/>
+                </svg>
+            </div>
+            <span class="brand">IT Ticket Automation Simulator</span>
+        </div>
+        <nav class="nav-right">
+            <a href="index.html">Home</a>
+            <a href="simulator.html">Ticket Simulator</a>
+            <a href="scripts.html">Scripts</a>
+            <a href="kb.html">Knowledge Base</a>
+            <a href="labs.html" class="active">IT Labs</a>
+        </nav>
+    </header>
+
+    <div class="main-content" style="max-width: 1400px; margin: 0 auto;">
+        <div class="content-header">
+            <h1>IT Scenario Labs</h1>
+            <p>Hands-on training scenarios with step-by-step walkthroughs</p>
+        </div>
+
+        <div class="grid-container" style="padding: 20px 0;">
+            <!-- Lab 1: Outlook Won't Open -->
+            <div class="card" onclick="startLab(1)" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <rect x="4" y="4" width="16" height="16" rx="2" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <span class="badge">Beginner</span>
+                </div>
+                <h2 style="margin-bottom: 12px;">Lab 1: Outlook Won't Open</h2>
+                <p style="color: #64748B; margin-bottom: 16px;">User reports that Outlook crashes immediately upon launch. Learn to diagnose and resolve profile corruption issues.</p>
+                <div style="display: flex; gap: 8px;">
+                    <span class="badge">Office 365</span>
+                    <span class="badge success">15 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 2: VPN Not Connecting -->
+            <div class="card" onclick="startLab(2)" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #059669 0%, #047857 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none"/>
+                            <circle cx="12" cy="12" r="5" fill="white"/>
+                        </svg>
+                    </div>
+                    <span class="badge">Intermediate</span>
+                </div>
+                <h2 style="margin-bottom: 12px;">Lab 2: VPN Connection Failure</h2>
+                <p style="color: #64748B; margin-bottom: 16px;">Remote worker cannot connect to corporate VPN. Troubleshoot authentication and network configuration issues.</p>
+                <div style="display: flex; gap: 8px;">
+                    <span class="badge">Network</span>
+                    <span class="badge warning">20 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 3: WiFi Connected, No Internet -->
+            <div class="card" onclick="startLab(3)" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M1 9l11 11L23 9" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <path d="M5 5l7 7 7-7" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span class="badge">Beginner</span>
+                </div>
+                <h2 style="margin-bottom: 12px;">Lab 3: WiFi Connected But No Internet</h2>
+                <p style="color: #64748B; margin-bottom: 16px;">User's laptop shows WiFi connected but cannot access websites. Diagnose DNS and network adapter issues.</p>
+                <div style="display: flex; gap: 8px;">
+                    <span class="badge">Network</span>
+                    <span class="badge success">12 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 4: Printer Offline -->
+            <div class="card" onclick="startLab(4)" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <rect x="5" y="3" width="14" height="18" rx="2" stroke="white" stroke-width="2" fill="none"/>
+                            <rect x="7" y="15" width="10" height="4" fill="white"/>
+                        </svg>
+                    </div>
+                    <span class="badge">Beginner</span>
+                </div>
+                <h2 style="margin-bottom: 12px;">Lab 4: Printer Shows Offline</h2>
+                <p style="color: #64748B; margin-bottom: 16px;">Network printer appears offline despite being powered on. Reset print spooler and reinstall drivers.</p>
+                <div style="display: flex; gap: 8px;">
+                    <span class="badge">Hardware</span>
+                    <span class="badge success">10 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 5: User Profile Corrupted -->
+            <div class="card" onclick="startLab(5)" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #D97706 0%, #B45309 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <rect x="4" y="4" width="7" height="7" fill="white"/>
+                            <rect x="13" y="4" width="7" height="7" fill="white"/>
+                            <rect x="4" y="13" width="7" height="7" fill="white"/>
+                            <rect x="13" y="13" width="7" height="7" fill="white"/>
+                        </svg>
+                    </div>
+                    <span class="badge">Advanced</span>
+                </div>
+                <h2 style="margin-bottom: 12px;">Lab 5: Windows Profile Corruption</h2>
+                <p style="color: #64748B; margin-bottom: 16px;">User logged into temporary profile. Repair corrupted profile and migrate user data safely.</p>
+                <div style="display: flex; gap: 8px;">
+                    <span class="badge">Windows</span>
+                    <span class="badge error">30 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 6: Teams Stuck Loading -->
+            <div class="card" onclick="startLab(6)" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #0891B2 0%, #0E7490 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none"/>
+                            <path d="M12 7v5l3 3" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <span class="badge">Beginner</span>
+                </div>
+                <h2 style="margin-bottom: 12px;">Lab 6: Teams Stuck on Loading</h2>
+                <p style="color: #64748B; margin-bottom: 16px;">Microsoft Teams frozen on 'Getting things ready' screen. Clear cache and reset application.</p>
+                <div style="display: flex; gap: 8px;">
+                    <span class="badge">Office 365</span>
+                    <span class="badge success">10 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 7: Permission Denied Error -->
+            <div class="card" onclick="startLab(7)" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <span class="badge">Intermediate</span>
+                </div>
+                <h2 style="margin-bottom: 12px;">Lab 7: Permission Denied Error</h2>
+                <p style="color: #64748B; margin-bottom: 16px;">User cannot access shared network folder. Troubleshoot NTFS permissions and security groups.</p>
+                <div style="display: flex; gap: 8px;">
+                    <span class="badge">Security</span>
+                    <span class="badge warning">18 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 8: RDP Cannot Connect -->
+            <div class="card" onclick="startLab(8)" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <rect x="3" y="5" width="18" height="14" rx="2" stroke="white" stroke-width="2" fill="none"/>
+                            <path d="M8 9h8M8 13h5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span class="badge">Advanced</span>
+                </div>
+                <h2 style="margin-bottom: 12px;">Lab 8: Remote Desktop Connection Failed</h2>
+                <p style="color: #64748B; margin-bottom: 16px;">User cannot RDP to workstation. Verify firewall rules, credentials, and RDP service status.</p>
+                <div style="display: flex; gap: 8px;">
+                    <span class="badge">Network</span>
+                    <span class="badge warning">25 min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lab Modal -->
+    <div id="labModal" class="drawer">
+        <div class="drawer-header">
+            <h2 id="labModalTitle">Lab Scenario</h2>
+            <button class="drawer-close" onclick="closeLab()">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
+                    <path d="M6 6l8 8M14 6l-8 8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body" id="labContent">
+            <!-- Lab content will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const labs = {
+            1: {
+                title: "Lab 1: Outlook Won't Open",
+                scenario: "User Sarah Johnson reports that Outlook crashes immediately upon launch. The application briefly appears in Task Manager but then closes.",
+                steps: [
+                    {
+                        title: "Verify Issue",
+                        description: "Confirm Outlook crashes on startup and check Event Viewer for error logs",
+                        action: "Open Event Viewer → Application Logs → Filter for Outlook errors"
+                    },
+                    {
+                        title: "Safe Mode Test",
+                        description: "Launch Outlook in safe mode to determine if add-ins are causing the issue",
+                        action: "Run: outlook.exe /safe"
+                    },
+                    {
+                        title: "Reset Outlook Profile",
+                        description: "Clear corrupted profile data and recreate mail profile",
+                        action: "Execute: Reset-OutlookProfile.ps1"
+                    },
+                    {
+                        title: "Clear Cache",
+                        description: "Remove temporary Outlook files and cache",
+                        action: "Delete: %localappdata%\\Microsoft\\Outlook\\*.ost"
+                    },
+                    {
+                        title: "Validate Fix",
+                        description: "Launch Outlook normally and verify it opens successfully",
+                        action: "Test: Open Outlook and send test email"
+                    }
+                ],
+                resolution: "Outlook profile was corrupted. Reset profile and cleared cache successfully resolved the issue."
+            },
+            2: {
+                title: "Lab 2: VPN Connection Failure",
+                scenario: "Remote worker John Wilson cannot connect to corporate VPN. Error: 'Authentication failed - credentials not recognized'",
+                steps: [
+                    {
+                        title: "Verify Credentials",
+                        description: "Confirm username and password are correct, check for account lockout",
+                        action: "Check Active Directory → Account Status"
+                    },
+                    {
+                        title: "Clear Credential Cache",
+                        description: "Remove stored credentials that may be outdated",
+                        action: "Execute: Clear-CredentialCache.ps1"
+                    },
+                    {
+                        title: "Test Network Connectivity",
+                        description: "Verify user can reach VPN gateway",
+                        action: "Run: Test-NetConnection vpn.company.com -Port 443"
+                    },
+                    {
+                        title: "Reset VPN Configuration",
+                        description: "Remove and recreate VPN connection with fresh settings",
+                        action: "Execute: Reset-VPNConfiguration.ps1"
+                    },
+                    {
+                        title: "Validate Connection",
+                        description: "Connect to VPN and verify access to internal resources",
+                        action: "Test: Access \\\\fileserver\\shares"
+                    }
+                ],
+                resolution: "Cached credentials were stale. Cleared credential cache and reset VPN configuration resolved authentication issue."
+            },
+            3: {
+                title: "Lab 3: WiFi Connected But No Internet",
+                scenario: "User's laptop shows 'Connected, No Internet' on WiFi. Can see network but cannot browse websites.",
+                steps: [
+                    {
+                        title: "Verify Network Status",
+                        description: "Check WiFi connection status and IP configuration",
+                        action: "Run: ipconfig /all"
+                    },
+                    {
+                        title: "Test DNS Resolution",
+                        description: "Verify DNS is working correctly",
+                        action: "Run: nslookup google.com"
+                    },
+                    {
+                        title: "Flush DNS Cache",
+                        description: "Clear DNS resolver cache",
+                        action: "Execute: Flush-DNSCache.ps1"
+                    },
+                    {
+                        title: "Reset Network Adapter",
+                        description: "Disable and re-enable network adapter",
+                        action: "Execute: Reset-NetworkAdapter.ps1"
+                    },
+                    {
+                        title: "Validate Internet Access",
+                        description: "Test browsing and network connectivity",
+                        action: "Test: Open browser and navigate to websites"
+                    }
+                ],
+                resolution: "DNS cache corruption prevented internet access. Flushing DNS cache and resetting adapter restored connectivity."
+            }
+        };
+
+        function startLab(labNumber) {
+            const lab = labs[labNumber];
+            if (!lab) {
+                alert(`Lab ${labNumber} content coming soon!`);
+                return;
+            }
+
+            const modal = document.getElementById('labModal');
+            const title = document.getElementById('labModalTitle');
+            const content = document.getElementById('labContent');
+
+            title.textContent = lab.title;
+
+            let stepsHTML = `
+                <div style="background: #FEF3C7; padding: 16px; border-radius: 8px; border-left: 4px solid #D97706; margin-bottom: 24px;">
+                    <h3 style="color: #92400E; margin-bottom: 8px; font-size: 1rem;">Scenario</h3>
+                    <p style="color: #78350F; margin: 0;">${lab.scenario}</p>
+                </div>
+
+                <h3 style="margin-bottom: 20px; font-size: 1.2rem; font-weight: 600;">Troubleshooting Steps</h3>
+                <div class="timeline">
+            `;
+
+            lab.steps.forEach((step, index) => {
+                stepsHTML += `
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-time">Step ${index + 1}</div>
+                            <h4 style="font-weight: 600; color: #0F172A; margin-bottom: 8px;">${step.title}</h4>
+                            <p style="color: #64748B; margin-bottom: 8px; font-size: 0.9rem;">${step.description}</p>
+                            <div style="background: #0F172A; color: #10B981; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem;">
+                                ${step.action}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            stepsHTML += `
+                </div>
+                
+                <div style="background: #D1FAE5; padding: 16px; border-radius: 8px; border-left: 4px solid #059669; margin-top: 24px;">
+                    <h3 style="color: #065F46; margin-bottom: 8px; font-size: 1rem;">Resolution</h3>
+                    <p style="color: #047857; margin: 0;">${lab.resolution}</p>
+                </div>
+
+                <button class="primary-btn" onclick="closeLab()" style="width: 100%; margin-top: 24px;">
+                    Complete Lab
+                </button>
+            `;
+
+            content.innerHTML = stepsHTML;
+            modal.classList.add('open');
+        }
+
+        function closeLab() {
+            document.getElementById('labModal').classList.remove('open');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Ticket Automation Simulator (ITAS)</title>
+    <link rel="stylesheet" href="css/fluent-core.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="6" fill="#2563EB"/>
+                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="white"/>
+                    <circle cx="16" cy="16" r="4" fill="#2563EB"/>
+                </svg>
+            </div>
+            <span class="brand">IT Ticket Automation Simulator</span>
+        </div>
+        <nav class="nav-right">
+            <a href="index.html" class="active">Home</a>
+            <a href="simulator.html">Ticket Simulator</a>
+            <a href="scripts.html">Scripts</a>
+            <a href="kb.html">Knowledge Base</a>
+            <a href="labs.html">IT Labs</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>IT Ticket Automation Simulator</h1>
+            <p>A modern Fluent-styled platform for IT ticket handling, automation, and troubleshooting</p>
+            <button class="primary-btn" onclick="location.href='simulator.html'">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 8px;">
+                    <path d="M10 2L3 7V13C3 16.3137 6.13401 19 10 19C13.866 19 17 16.3137 17 13V7L10 2Z" fill="white"/>
+                </svg>
+                Start Simulation
+            </button>
+            <button class="secondary-btn" onclick="location.href='labs.html'" style="margin-left: 12px;">
+                Explore IT Labs
+            </button>
+        </div>
+    </section>
+
+    <!-- FEATURE CARDS -->
+    <section class="grid-container">
+        <div class="card feature-card" onclick="location.href='simulator.html'">
+            <div class="card-icon" style="background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
+                    <path d="M8 10H16M8 14H13" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h2>Ticket Simulator</h2>
+            <p>Generate realistic IT tickets with automated troubleshooting workflows, diagnostic logs, and resolution tracking</p>
+            <div class="card-footer">
+                <span class="badge">Interactive</span>
+                <span class="badge">Real-time</span>
+            </div>
+        </div>
+
+        <div class="card feature-card" onclick="location.href='scripts.html'">
+            <div class="card-icon" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 4L4 8L8 12M16 4L20 8L16 12M14 2L10 14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h2>Automation Scripts</h2>
+            <p>Run simulated PowerShell scripts to resolve common IT issues with live console output and validation</p>
+            <div class="card-footer">
+                <span class="badge">PowerShell</span>
+                <span class="badge">Automated</span>
+            </div>
+        </div>
+
+        <div class="card feature-card" onclick="location.href='kb.html'">
+            <div class="card-icon" style="background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L4 5V11C4 16 8 20 12 22C16 20 20 16 20 11V5L12 2Z" stroke="white" stroke-width="2"/>
+                    <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h2>Knowledge Base</h2>
+            <p>Comprehensive IT troubleshooting guides for Windows, network, software, and hardware issues</p>
+            <div class="card-footer">
+                <span class="badge">Documentation</span>
+                <span class="badge">Best Practices</span>
+            </div>
+        </div>
+
+        <div class="card feature-card" onclick="location.href='labs.html'">
+            <div class="card-icon" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/>
+                    <path d="M12 7V12L15 15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h2>IT Labs</h2>
+            <p>Hands-on scenario-based training with step-by-step walkthroughs and automated resolution notes</p>
+            <div class="card-footer">
+                <span class="badge">Training</span>
+                <span class="badge">Scenarios</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+        <div class="stat-card">
+            <h3>8</h3>
+            <p>IT Lab Scenarios</p>
+        </div>
+        <div class="stat-card">
+            <h3>25+</h3>
+            <p>PowerShell Scripts</p>
+        </div>
+        <div class="stat-card">
+            <h3>50+</h3>
+            <p>KB Articles</p>
+        </div>
+        <div class="stat-card">
+            <h3>100%</h3>
+            <p>Automation Ready</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Built with Microsoft Fluent Design • Powered by IT Operations Excellence</p>
+    </footer>
+</body>
+</html>
