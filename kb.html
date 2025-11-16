@@ -35,38 +35,32 @@
         </div>
 
         <div class="grid-container" style="padding: 20px 0;">
-            <!-- Network Troubleshooting -->
+            <!-- Security & Access -->
             <div class="card">
-                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #D97706 0%, #B45309 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                        <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none"/>
-                        <circle cx="12" cy="12" r="5" fill="white"/>
+                        <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="white" stroke-width="2" fill="none"/>
+                        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
                     </svg>
                 </div>
-                <h2 style="margin-bottom: 16px;">Network & Connectivity</h2>
+                <h2 style="margin-bottom: 16px;">Security & Access</h2>
                 
-                <div class="kb-article" onclick="openArticle('dns')">
-                    <h3>DNS Resolution Issues</h3>
-                    <p>Troubleshooting steps for websites not loading or DNS errors</p>
-                    <span class="badge">Network</span>
+                <div class="kb-article" onclick="openArticle('account-lockout')">
+                    <h3>Account Locked Out</h3>
+                    <p>Unlocking user accounts and resetting passwords</p>
+                    <span class="badge">Identity</span>
                 </div>
 
-                <div class="kb-article" onclick="openArticle('wifi')">
-                    <h3>WiFi Connected but No Internet</h3>
-                    <p>Resolving connectivity issues when WiFi shows connected</p>
-                    <span class="badge">Network</span>
+                <div class="kb-article" onclick="openArticle('mfa-issues')">
+                    <h3>MFA Authentication Problems</h3>
+                    <p>Troubleshooting multi-factor authentication issues</p>
+                    <span class="badge">Security</span>
                 </div>
 
-                <div class="kb-article" onclick="openArticle('vpn')">
-                    <h3>VPN Connection Failures</h3>
-                    <p>Common VPN authentication and connection problems</p>
-                    <span class="badge">Network</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('slow-network')">
-                    <h3>Slow Network Performance</h3>
-                    <p>Diagnosing and resolving network speed issues</p>
-                    <span class="badge">Network</span>
+                <div class="kb-article" onclick="openArticle('permissions')">
+                    <h3>Permission Denied Errors</h3>
+                    <p>Resolving file and folder access permission issues</p>
+                    <span class="badge">Security</span>
                 </div>
             </div>
 
@@ -97,157 +91,22 @@
                     <p>Troubleshooting Office 365 licensing and activation errors</p>
                     <span class="badge">Office 365</span>
                 </div>
-
-                <div class="kb-article" onclick="openArticle('excel-performance')">
-                    <h3>Excel Running Slow</h3>
-                    <p>Optimizing large Excel files and improving performance</p>
-                    <span class="badge">Office</span>
-                </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Windows System -->
-            <div class="card">
-                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #059669 0%, #047857 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                        <rect x="3" y="3" width="8" height="8" fill="white"/>
-                        <rect x="13" y="3" width="8" height="8" fill="white"/>
-                        <rect x="3" y="13" width="8" height="8" fill="white"/>
-                        <rect x="13" y="13" width="8" height="8" fill="white"/>
+    <!-- KB Article Modal -->
+    <div id="kbModal" class="kb-modal">
+        <div class="kb-modal-content">
+            <div class="kb-modal-header">
+                <h2 id="kbModalTitle"></h2>
+                <button class="kb-modal-close" onclick="closeKBModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
-                </div>
-                <h2 style="margin-bottom: 16px;">Windows System</h2>
-                
-                <div class="kb-article" onclick="openArticle('profile-corruption')">
-                    <h3>User Profile Corruption</h3>
-                    <p>Repairing corrupted profiles and recovering user data</p>
-                    <span class="badge">Windows</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('windows-update')">
-                    <h3>Windows Update Stuck or Failing</h3>
-                    <p>Resolving Windows Update errors and stuck downloads</p>
-                    <span class="badge">Windows</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('blue-screen')">
-                    <h3>Blue Screen of Death (BSOD)</h3>
-                    <p>Analyzing and resolving Windows crash dumps</p>
-                    <span class="badge">Windows</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('disk-space')">
-                    <h3>Low Disk Space Issues</h3>
-                    <p>Cleaning up disk space and optimizing storage</p>
-                    <span class="badge">Windows</span>
-                </div>
+                </button>
             </div>
-
-            <!-- Hardware & Devices -->
-            <div class="card">
-                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                        <rect x="5" y="3" width="14" height="18" rx="2" stroke="white" stroke-width="2" fill="none"/>
-                        <rect x="7" y="15" width="10" height="4" fill="white"/>
-                    </svg>
-                </div>
-                <h2 style="margin-bottom: 16px;">Hardware & Devices</h2>
-                
-                <div class="kb-article" onclick="openArticle('printer-offline')">
-                    <h3>Printer Shows Offline</h3>
-                    <p>Resolving printer connectivity and spooler issues</p>
-                    <span class="badge">Printer</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('monitor-issues')">
-                    <h3>Monitor Display Problems</h3>
-                    <p>Troubleshooting screen resolution and display issues</p>
-                    <span class="badge">Hardware</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('audio-not-working')">
-                    <h3>No Sound or Audio Issues</h3>
-                    <p>Fixing audio driver and playback device problems</p>
-                    <span class="badge">Hardware</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('usb-devices')">
-                    <h3>USB Devices Not Recognized</h3>
-                    <p>Troubleshooting USB connectivity and driver issues</p>
-                    <span class="badge">Hardware</span>
-                </div>
-            </div>
-
-            <!-- Security & Access -->
-            <div class="card">
-                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #D97706 0%, #B45309 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                        <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="white" stroke-width="2" fill="none"/>
-                        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-                    </svg>
-                </div>
-                <h2 style="margin-bottom: 16px;">Security & Access</h2>
-                
-                <div class="kb-article" onclick="openArticle('account-lockout')">
-                    <h3>Account Locked Out</h3>
-                    <p>Unlocking user accounts and resetting passwords</p>
-                    <span class="badge">Identity</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('mfa-issues')">
-                    <h3>MFA Authentication Problems</h3>
-                    <p>Troubleshooting multi-factor authentication issues</p>
-                    <span class="badge">Security</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('permissions')">
-                    <h3>Permission Denied Errors</h3>
-                    <p>Resolving file and folder access permission issues</p>
-                    <span class="badge">Security</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('bitlocker')">
-                    <h3>BitLocker Recovery</h3>
-                    <p>Accessing BitLocker encrypted drives and recovery keys</p>
-                    <span class="badge">Security</span>
-                </div>
-            </div>
-
-            <!-- Applications -->
-            <div class="card">
-                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #0891B2 0%, #0E7490 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                        <rect x="3" y="3" width="7" height="7" rx="1" fill="white"/>
-                        <rect x="3" y="13" width="7" height="7" rx="1" fill="white"/>
-                        <rect x="13" y="3" width="7" height="7" rx="1" fill="white"/>
-                        <rect x="13" y="13" width="7" height="7" rx="1" fill="white"/>
-                    </svg>
-                </div>
-                <h2 style="margin-bottom: 16px;">Applications</h2>
-                
-                <div class="kb-article" onclick="openArticle('browser-crash')">
-                    <h3>Browser Crashes or Freezes</h3>
-                    <p>Fixing Chrome, Edge, and Firefox browser issues</p>
-                    <span class="badge">Applications</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('software-install')">
-                    <h3>Software Installation Failures</h3>
-                    <p>Resolving application install and update errors</p>
-                    <span class="badge">Applications</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('app-compatibility')">
-                    <h3>Application Compatibility Issues</h3>
-                    <p>Running legacy applications on Windows 11</p>
-                    <span class="badge">Applications</span>
-                </div>
-
-                <div class="kb-article" onclick="openArticle('remote-desktop')">
-                    <h3>Remote Desktop Connection Problems</h3>
-                    <p>Troubleshooting RDP and remote access issues</p>
-                    <span class="badge">Applications</span>
-                </div>
-            </div>
+            <div class="kb-modal-body" id="kbModalBody"></div>
         </div>
     </div>
 
@@ -279,12 +138,695 @@
             color: #64748B;
             margin: 0 0 8px 0;
         }
+
+        .kb-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .kb-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s ease-in;
+        }
+
+        .kb-modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .kb-modal-header {
+            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            color: white;
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .kb-modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .kb-modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .kb-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .kb-modal-body {
+            padding: 32px;
+            overflow-y: auto;
+            max-height: calc(90vh - 92px);
+        }
+
+        .kb-step {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .kb-step:last-child {
+            border-bottom: none;
+        }
+
+        .kb-step-number {
+            background: var(--accent);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 12px;
+        }
+
+        .kb-step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0F172A;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .kb-step-content {
+            margin-left: 44px;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .kb-step-content ul {
+            margin: 12px 0;
+            padding-left: 20px;
+        }
+
+        .kb-step-content li {
+            margin: 8px 0;
+        }
+
+        .kb-note {
+            background: #FEF3C7;
+            border-left: 4px solid #D97706;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 6px;
+        }
+
+        .kb-note strong {
+            color: #92400E;
+        }
+
+        .kb-command {
+            background: #0F172A;
+            color: #10B981;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 12px 0;
+            display: block;
+            overflow-x: auto;
+        }
+
+        .kb-tip {
+            background: #DBEAFE;
+            border-left: 4px solid #2563EB;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 6px;
+        }
+
+        .kb-tip strong {
+            color: #1E40AF;
+        }
     </style>
 
     <script>
+        const kbArticles = {
+            'account-lockout': {
+                title: 'Account Locked Out - Password Reset',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify the System and Gather Information',
+                        content: `
+                            <ul>
+                                <li><strong>Ask the user:</strong> "What system are you trying to access?" (Email, VPN, computer login, etc.)</li>
+                                <li><strong>Confirm the error message:</strong> "What exact error message do you see?"
+                                    <ul>
+                                        <li>"Account is locked out"</li>
+                                        <li>"Too many failed login attempts"</li>
+                                        <li>"Your account has been disabled"</li>
+                                        <li>"Authentication failed"</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Verify user identity:</strong> Confirm through secure process per your organization's policies
+                                    <ul>
+                                        <li>Employee ID verification</li>
+                                        <li>Security questions</li>
+                                        <li>Manager verification</li>
+                                        <li>Multi-factor authentication</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Gather account details:</strong> Full name, email address, username, employee ID, department</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Security Note:</strong> Never reset a password without properly verifying the user's identity. This is critical for preventing unauthorized access and social engineering attacks.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Locate and Unlock the Account',
+                        content: `
+                            <p><strong>Using Active Directory Users and Computers (ADUC):</strong></p>
+                            <ul>
+                                <li>Open Active Directory Users and Computers (ADUC)</li>
+                                <li>Search for the user's account (Right-click domain → Find)</li>
+                                <li>Right-click the user account → Properties</li>
+                                <li>Go to the <strong>Account</strong> tab</li>
+                                <li>Look for "Account is locked out" checkbox</li>
+                                <li>If checked, <strong>uncheck it</strong> to unlock</li>
+                                <li>Verify "Account is disabled" is <strong>NOT</strong> checked</li>
+                                <li>Click <strong>Apply</strong>, then <strong>OK</strong></li>
+                            </ul>
+                            <div class="kb-command">
+# PowerShell method to unlock account:
+Unlock-ADAccount -Identity "username"
+
+# Verify account is unlocked:
+Get-ADUser -Identity "username" -Properties LockedOut | Select Name, LockedOut
+                            </div>
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> Always verify the account is successfully unlocked before proceeding to password reset. You can check the "Account" tab again to confirm the checkbox is gone.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Reset Password (if needed)',
+                        content: `
+                            <p><strong>When to reset password:</strong></p>
+                            <ul>
+                                <li>User forgot their password</li>
+                                <li>Password is expired</li>
+                                <li>User wants to change it as a security measure</li>
+                            </ul>
+                            
+                            <p><strong>Password complexity requirements (typical):</strong></p>
+                            <ul>
+                                <li>Minimum 8-12 characters</li>
+                                <li>At least one uppercase letter (A-Z)</li>
+                                <li>At least one lowercase letter (a-z)</li>
+                                <li>At least one number (0-9)</li>
+                                <li>At least one special character (!@#$%^&*)</li>
+                                <li>Cannot contain username or parts of full name</li>
+                                <li>Cannot be same as previous passwords</li>
+                            </ul>
+
+                            <p><strong>Steps to reset:</strong></p>
+                            <ul>
+                                <li>In ADUC, right-click user → <strong>Reset Password</strong></li>
+                                <li>Enter new temporary password (meeting complexity requirements)</li>
+                                <li><strong>Check:</strong> "User must change password at next logon"</li>
+                                <li>Click <strong>OK</strong></li>
+                                <li>Provide password securely (phone, encrypted email, or in-person)</li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell method to reset password:
+Set-ADAccountPassword -Identity "username" -Reset
+
+# Force password change at next logon:
+Set-ADUser -Identity "username" -ChangePasswordAtLogon $true
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Instruct User on Next Steps (CRITICAL)',
+                        content: `
+                            <p><strong>This is the most important step to prevent repeated lockouts!</strong></p>
+                            
+                            <p><strong>Immediate actions:</strong></p>
+                            <ul>
+                                <li>"Please log in <strong>right now</strong> using your new password on the device you're currently using"</li>
+                                <li>"Do this before hanging up the phone or ending this chat"</li>
+                                <li>"Confirm to me that you can successfully log in"</li>
+                            </ul>
+
+                            <p><strong>Update all devices and applications:</strong></p>
+                            <ul>
+                                <li><strong>Mobile devices (MOST IMPORTANT):</strong>
+                                    <ul>
+                                        <li>iPhone Mail app</li>
+                                        <li>Android Mail/Gmail app</li>
+                                        <li>Outlook mobile app</li>
+                                        <li>Teams mobile app</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Desktop applications:</strong>
+                                    <ul>
+                                        <li>Microsoft Outlook (desktop)</li>
+                                        <li>Microsoft Teams</li>
+                                        <li>VPN client</li>
+                                        <li>OneDrive</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Web browsers:</strong>
+                                    <ul>
+                                        <li>Clear any saved passwords</li>
+                                        <li>Sign out and back in to Office 365</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>Set proper expectations:</strong> "It may take 5-15 minutes for the password change to sync across all systems. If you keep using your old password anywhere, your account will lock again immediately."
+                            </div>
+
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> 80% of repeated lockouts are caused by mobile devices still using the old password. ALWAYS emphasize updating mobile email apps!
+                            </div>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Document and Follow Up',
+                        content: `
+                            <p><strong>Update the ticket with:</strong></p>
+                            <ul>
+                                <li>Date and time of unlock/reset</li>
+                                <li>Method used (ADUC, PowerShell, etc.)</li>
+                                <li>Whether password was reset</li>
+                                <li>User confirmed successful login</li>
+                                <li>Instructions provided to user</li>
+                            </ul>
+
+                            <p><strong>Check for patterns:</strong></p>
+                            <ul>
+                                <li>If user locks out frequently (3+ times in a month), investigate root cause</li>
+                                <li>Common causes: Old mobile device, shared account, compromised password</li>
+                                <li>Consider password complexity education or MFA enrollment</li>
+                            </ul>
+
+                            <p><strong>Verify resolution:</strong></p>
+                            <ul>
+                                <li>"Can you confirm you're now able to log in successfully?"</li>
+                                <li>"Please try accessing your email and let me know if it works"</li>
+                                <li>"Do you have any questions about updating your other devices?"</li>
+                            </ul>
+
+                            <p><strong>Educate the user:</strong></p>
+                            <ul>
+                                <li>Briefly explain why the lockout occurred</li>
+                                <li>Emphasize the importance of updating all devices</li>
+                                <li>Provide tips for preventing future lockouts</li>
+                                <li>Remind them to contact IT if it happens again</li>
+                            </ul>
+
+                            <p><strong>Close ticket:</strong></p>
+                            <ul>
+                                <li>Mark as <strong>Resolved</strong></li>
+                                <li>Include detailed resolution notes</li>
+                                <li>Note time spent for metrics</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            'outlook-crash': {
+                title: 'Outlook Won\'t Open or Crashes',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Gather Information and Identify Symptoms',
+                        content: `
+                            <p><strong>Ask specific diagnostic questions:</strong></p>
+                            <ul>
+                                <li>"Does Outlook start at all, or does it crash immediately?"</li>
+                                <li>"Do you see any error messages? If yes, what do they say exactly?"</li>
+                                <li>"When did this start happening?" (Today, after update, after crash, etc.)</li>
+                                <li>"Did anything change recently?"
+                                    <ul>
+                                        <li>Windows updates installed</li>
+                                        <li>Office updates installed</li>
+                                        <li>New software installed</li>
+                                        <li>Computer crashed or was forcefully shut down</li>
+                                    </ul>
+                                </li>
+                                <li>"Do other Office applications work?" (Word, Excel, PowerPoint)</li>
+                            </ul>
+
+                            <p><strong>Gather system information:</strong></p>
+                            <ul>
+                                <li>Windows version (Windows 10/11, build number)</li>
+                                <li>Outlook version (if accessible: File → Office Account → About Outlook)</li>
+                                <li>Whether this is Office 365 or standalone Office 2016/2019/2021</li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>Quick test:</strong> Ask user to try opening Word or Excel. If those work fine, the issue is Outlook-specific (not a general Office problem).
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Try Safe Mode First (Quick Diagnostic)',
+                        content: `
+                            <p><strong>Why Safe Mode?</strong> It starts Outlook without add-ins, which cause 50% of crash issues.</p>
+
+                            <p><strong>Steps to start in Safe Mode:</strong></p>
+                            <ul>
+                                <li><strong>Close Outlook completely</strong> (check Task Manager - Ctrl+Shift+Esc - to ensure OUTLOOK.EXE is not running)</li>
+                                <li><strong>Press Windows Key + R</strong> to open Run dialog</li>
+                                <li><strong>Type:</strong> <code>outlook.exe /safe</code> (exactly as shown)</li>
+                                <li><strong>Press Enter</strong></li>
+                                <li><strong>If prompted:</strong> Select your profile and click OK</li>
+                            </ul>
+
+                            <div class="kb-command">
+outlook.exe /safe
+                            </div>
+
+                            <p><strong>If Outlook opens successfully in Safe Mode:</strong></p>
+                            <ul>
+                                <li>✅ The issue is caused by a problematic add-in</li>
+                                <li>Close Outlook and reopen normally</li>
+                                <li>Go to <strong>File → Options → Add-ins</strong></li>
+                                <li>At bottom, select <strong>COM Add-ins</strong> → Click <strong>Go</strong></li>
+                                <li>Uncheck add-ins one by one, restarting Outlook each time</li>
+                                <li>When Outlook works, you've found the problematic add-in</li>
+                            </ul>
+
+                            <p><strong>If it still crashes in Safe Mode:</strong></p>
+                            <ul>
+                                <li>❌ Issue is NOT add-in related</li>
+                                <li>Proceed to next troubleshooting steps</li>
+                                <li>Likely causes: Corrupted profile, corrupted PST/OST file, or Office installation issue</li>
+                            </ul>
+
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> Common problematic add-ins include older antivirus plugins, PDF converters, and third-party integrations. Keep add-ins to a minimum.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Check Event Viewer for Error Details',
+                        content: `
+                            <p><strong>Event Viewer provides specific error codes that help identify the cause:</strong></p>
+
+                            <p><strong>Steps to check:</strong></p>
+                            <ul>
+                                <li><strong>Open Event Viewer:</strong> Windows Key + X → Event Viewer (or search for it)</li>
+                                <li><strong>Navigate to:</strong> Windows Logs → <strong>Application</strong></li>
+                                <li><strong>Look for recent errors</strong> (red X icons) around the time Outlook crashed</li>
+                                <li><strong>Filter by source:</strong>
+                                    <ul>
+                                        <li>Source: "Outlook"</li>
+                                        <li>Source: "Microsoft Office"</li>
+                                        <li>Source: "Application Error"</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <p><strong>Common error codes and meanings:</strong></p>
+                            <ul>
+                                <li><strong>Event ID 1000:</strong> Application crash
+                                    <ul>
+                                        <li>Faulting application: OUTLOOK.EXE</li>
+                                        <li>Note the faulting module (which DLL caused the crash)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Faulting module: mspst32.dll or mso.dll:</strong> Corrupted Office files</li>
+                                <li><strong>Faulting module: outlook.exe:</strong> Corrupted Outlook installation</li>
+                                <li><strong>Error code like 0xc0000005:</strong> Access violation (often profile corruption)</li>
+                            </ul>
+
+                            <p><strong>Document the error details:</strong></p>
+                            <ul>
+                                <li>Event ID number</li>
+                                <li>Faulting module name</li>
+                                <li>Error code</li>
+                                <li>Time of crash</li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>Note:</strong> Event Viewer errors help determine whether to repair Office, recreate profile, or reinstall Outlook. Don't skip this step!
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Repair or Recreate Outlook Profile',
+                        content: `
+                            <p><strong>Option A: Repair Existing Profile (Try this first - faster)</strong></p>
+                            <ul>
+                                <li>Close Outlook completely</li>
+                                <li><strong>Control Panel</strong> → <strong>Mail (Microsoft Outlook)</strong></li>
+                                <li>If you don't see "Mail", change "View by" to "Small icons"</li>
+                                <li>Click <strong>Show Profiles</strong></li>
+                                <li>Select the profile → <strong>Properties</strong></li>
+                                <li>Click <strong>Data Files</strong> tab</li>
+                                <li>Select the OST file → <strong>Settings</strong> → <strong>Advanced</strong></li>
+                                <li>Note the file location, then close</li>
+                                <li>Navigate to the OST file location in File Explorer</li>
+                                <li><strong>Delete the .ost file</strong> (it will be recreated automatically)</li>
+                                <li>Restart Outlook (it will rebuild the OST file from the server)</li>
+                            </ul>
+
+                            <div class="kb-command">
+# PowerShell: Clear Outlook cache (OST files)
+Remove-Item "$env:LOCALAPPDATA\\Microsoft\\Outlook\\*.ost" -Force
+
+# This deletes all OST files - Outlook will recreate them
+                            </div>
+
+                            <p><strong>Option B: Create New Profile (If repair doesn't work)</strong></p>
+                            <ul>
+                                <li>Control Panel → Mail → <strong>Show Profiles</strong></li>
+                                <li>Click <strong>Add</strong></li>
+                                <li>Profile name: "Outlook-New" (or similar)</li>
+                                <li>Enter email address and let Outlook auto-configure</li>
+                                <li>Wait for setup to complete (this downloads mailbox data)</li>
+                                <li>Once complete, click <strong>Prompt for a profile to be used</strong></li>
+                                <li>Click <strong>OK</strong></li>
+                                <li>Start Outlook, select the new profile</li>
+                                <li>If it works, set it as default and delete the old profile</li>
+                            </ul>
+
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> Deleting the OST file is safe - it's just a local cache. The real email data is on the Exchange server and will re-download automatically.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: 'Run Office Repair (If profile fix doesn\'t work)',
+                        content: `
+                            <p><strong>When to use Office Repair:</strong></p>
+                            <ul>
+                                <li>Profile recreation didn't fix the issue</li>
+                                <li>Multiple Office apps are crashing</li>
+                                <li>Event Viewer shows corrupted Office DLL files</li>
+                                <li>Recent Windows update may have damaged Office</li>
+                            </ul>
+
+                            <p><strong>Steps to repair Office:</strong></p>
+                            <ul>
+                                <li><strong>Close all Office applications</strong> completely</li>
+                                <li><strong>Control Panel</strong> → <strong>Programs</strong> → <strong>Programs and Features</strong></li>
+                                <li>Find <strong>Microsoft Office</strong> or <strong>Microsoft 365</strong> in the list</li>
+                                <li><strong>Right-click</strong> → <strong>Change</strong></li>
+                                <li>You'll see two options:</li>
+                            </ul>
+
+                            <p><strong>Quick Repair (Try first):</strong></p>
+                            <ul>
+                                <li>✅ Faster (5-10 minutes)</li>
+                                <li>✅ Doesn't require internet</li>
+                                <li>✅ Fixes most common issues</li>
+                                <li>❌ Doesn't replace all files</li>
+                            </ul>
+
+                            <p><strong>Online Repair (If Quick Repair fails):</strong></p>
+                            <ul>
+                                <li>✅ Most thorough repair</li>
+                                <li>✅ Replaces all Office files</li>
+                                <li>❌ Requires internet connection</li>
+                                <li>❌ Takes 20-30 minutes</li>
+                                <li>❌ Downloads 2-3 GB of data</li>
+                            </ul>
+
+                            <p><strong>After repair completes:</strong></p>
+                            <ul>
+                                <li><strong>Restart computer</strong> (important!)</li>
+                                <li>Open Outlook and test</li>
+                                <li>Check if the issue is resolved</li>
+                            </ul>
+
+                            <div class="kb-note">
+                                <strong>Time estimate:</strong> Always inform the user that Online Repair takes 20-30 minutes. Don't let them think their computer is frozen!
+                            </div>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: 'Verify Resolution and Document',
+                        content: `
+                            <p><strong>Test thoroughly before closing the ticket:</strong></p>
+                            <ul>
+                                <li>✅ Outlook opens successfully</li>
+                                <li>✅ Can send and receive emails</li>
+                                <li>✅ Calendar loads and displays appointments</li>
+                                <li>✅ Contacts are accessible</li>
+                                <li>✅ No error messages appear</li>
+                                <li>✅ Outlook doesn't crash after 5+ minutes of use</li>
+                            </ul>
+
+                            <p><strong>Educate the user:</strong></p>
+                            <ul>
+                                <li>Explain what caused the issue in simple terms</li>
+                                <li>If add-in related: "A plugin was causing Outlook to crash"</li>
+                                <li>If profile corruption: "Your Outlook profile got damaged, we rebuilt it"</li>
+                                <li>Provide prevention tips:
+                                    <ul>
+                                        <li>"Always close Outlook properly before shutting down"</li>
+                                        <li>"Don't force shutdown your computer while Outlook is syncing"</li>
+                                        <li>"Keep Windows and Office updated"</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <p><strong>Document in ticket:</strong></p>
+                            <ul>
+                                <li><strong>Symptoms:</strong> "Outlook crashed on startup, Event ID 1000, faulting module: mso.dll"</li>
+                                <li><strong>Troubleshooting steps:</strong>
+                                    <ul>
+                                        <li>Tested Safe Mode - crashed</li>
+                                        <li>Checked Event Viewer - found error</li>
+                                        <li>Deleted OST file - didn't resolve</li>
+                                        <li>Created new Outlook profile - didn't resolve</li>
+                                        <li>Ran Office Online Repair - resolved</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Resolution:</strong> "Office Online Repair successfully fixed corrupted Office files. Outlook now opens and functions normally."</li>
+                                <li><strong>Time spent:</strong> 45 minutes</li>
+                            </ul>
+
+                            <p><strong>Set expectations for follow-up:</strong></p>
+                            <ul>
+                                <li>"If this happens again within 24 hours, contact us immediately"</li>
+                                <li>"Your emails will re-download, this may take 10-15 minutes"</li>
+                                <li>"Your signatures, rules, and settings should remain intact"</li>
+                            </ul>
+
+                            <div class="kb-tip">
+                                <strong>Prevention Tip:</strong> Corrupted Outlook profiles most commonly occur after forced shutdowns, crashes, or interrupted Windows updates. Educate users on proper shutdown procedures!
+                            </div>
+                        `
+                    }
+                ]
+            }
+        };
+
         function openArticle(articleId) {
-            alert(`Knowledge Base article: ${articleId}\n\nThis would open detailed troubleshooting steps and documentation.`);
+            const modal = document.getElementById('kbModal');
+            const title = document.getElementById('kbModalTitle');
+            const body = document.getElementById('kbModalBody');
+            
+            const article = kbArticles[articleId];
+            
+            if (!article) {
+                body.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">📚</div>
+                        <h3 style="color: #0F172A; margin-bottom: 16px; font-size: 1.5rem;">Article Coming Soon</h3>
+                        <p style="color: #64748B; font-size: 1.1rem;">This comprehensive troubleshooting guide is being developed.</p>
+                        <p style="color: #64748B;">Check back soon for detailed step-by-step instructions!</p>
+                    </div>
+                `;
+                title.textContent = 'Knowledge Base Article';
+            } else {
+                title.textContent = article.title;
+                
+                let stepsHTML = '';
+                article.steps.forEach(step => {
+                    stepsHTML += `
+                        <div class="kb-step">
+                            <div class="kb-step-title">
+                                <span class="kb-step-number">${step.number}</span>
+                                ${step.title}
+                            </div>
+                            <div class="kb-step-content">
+                                ${step.content}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                body.innerHTML = stepsHTML;
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
+
+        function closeKBModal() {
+            document.getElementById('kbModal').classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('kbModal');
+            if (event.target === modal) {
+                closeKBModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeKBModal();
+            }
+        });
     </script>
 </body>
 </html>
