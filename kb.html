@@ -6,22 +6,26 @@
     <title>Knowledge Base - ITAS</title>
     <link rel="stylesheet" href="css/fluent-core.css">
     <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/simulator.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2300d4aa'/%3E%3Cpath d='M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z' fill='%230a0a0f'/%3E%3C/svg%3E">
 </head>
 <body>
     <header class="navbar">
         <div class="nav-left">
             <div class="logo">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <rect width="32" height="32" rx="6" fill="#2563EB"/>
-                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="white"/>
-                    <circle cx="16" cy="16" r="4" fill="#2563EB"/>
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="#0a0a0f"/>
+                    <circle cx="16" cy="16" r="3" fill="#00d4aa"/>
                 </svg>
             </div>
-            <span class="brand">IT Ticket Automation Simulator</span>
+            <div>
+                <span class="brand">ITAS</span>
+                <div class="brand-subtitle">IT Automation Simulator</div>
+            </div>
         </div>
         <nav class="nav-right">
             <a href="index.html">Home</a>
-            <a href="simulator.html">Ticket Simulator</a>
+            <a href="simulator.html">Simulator</a>
             <a href="scripts.html">Scripts</a>
             <a href="kb.html" class="active">Knowledge Base</a>
             <a href="labs.html">IT Labs</a>
@@ -30,66 +34,226 @@
 
     <div class="main-content" style="max-width: 1400px; margin: 0 auto;">
         <div class="content-header">
-            <h1>IT Knowledge Base</h1>
-            <p>Comprehensive troubleshooting guides and documentation</p>
+            <h1 style="display: flex; align-items: center; gap: 12px;">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="6" fill="var(--warning)"/>
+                    <path d="M8 26a4 4 0 014-4h12" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 4h12v24H12a4 4 0 01-4-4V8a4 4 0 014-4z" stroke="#0a0a0f" stroke-width="2"/>
+                    <path d="M14 10h8M14 14h6" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                IT Knowledge Base
+            </h1>
+            <p>Comprehensive troubleshooting guides and documentation for IT professionals</p>
         </div>
 
-        <div class="grid-container" style="padding: 20px 0;">
+        <!-- SEARCH -->
+        <div style="margin-bottom: 32px;">
+            <input type="search" placeholder="Search knowledge base articles..." id="kbSearch" onkeyup="searchKB()" style="max-width: 500px; padding-left: 44px; background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 viewBox=%270 0 20 20%27 fill=%27none%27%3E%3Ccircle cx=%278%27 cy=%278%27 r=%276%27 stroke=%27%2364748b%27 stroke-width=%272%27/%3E%3Cpath d=%27M12 12l5 5%27 stroke=%27%2364748b%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: 14px center;">
+        </div>
+
+        <div class="grid-container" style="padding: 0;">
             <!-- Security & Access -->
             <div class="card">
-                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #D97706 0%, #B45309 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                        <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="white" stroke-width="2" fill="none"/>
-                        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="#0a0a0f" stroke-width="2"/>
+                        <path d="M9 12l2 2 4-4" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </div>
-                <h2 style="margin-bottom: 16px;">Security & Access</h2>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Security & Access</h2>
                 
                 <div class="kb-article" onclick="openArticle('account-lockout')">
                     <h3>Account Locked Out</h3>
-                    <p>Unlocking user accounts and resetting passwords</p>
-                    <span class="badge">Identity</span>
+                    <p>Unlocking user accounts and resetting passwords in Active Directory</p>
+                    <span class="badge warning">Identity</span>
                 </div>
 
                 <div class="kb-article" onclick="openArticle('mfa-issues')">
                     <h3>MFA Authentication Problems</h3>
-                    <p>Troubleshooting multi-factor authentication issues</p>
-                    <span class="badge">Security</span>
+                    <p>Troubleshooting multi-factor authentication failures and resets</p>
+                    <span class="badge warning">Security</span>
                 </div>
 
                 <div class="kb-article" onclick="openArticle('permissions')">
                     <h3>Permission Denied Errors</h3>
-                    <p>Resolving file and folder access permission issues</p>
-                    <span class="badge">Security</span>
+                    <p>Resolving file, folder, and share access permission issues</p>
+                    <span class="badge warning">Security</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('password-policy')">
+                    <h3>Password Policy Compliance</h3>
+                    <p>Understanding and implementing password complexity requirements</p>
+                    <span class="badge warning">Policy</span>
                 </div>
             </div>
 
             <!-- Microsoft Office -->
             <div class="card">
-                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                        <rect x="4" y="4" width="16" height="16" rx="2" stroke="white" stroke-width="2" fill="none"/>
-                        <path d="M8 9h8M8 13h5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <rect x="4" y="4" width="16" height="16" rx="2"/>
                     </svg>
                 </div>
-                <h2 style="margin-bottom: 16px;">Microsoft Office & 365</h2>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Microsoft Office & 365</h2>
                 
                 <div class="kb-article" onclick="openArticle('outlook-crash')">
                     <h3>Outlook Won't Open or Crashes</h3>
                     <p>Steps to repair Outlook profile and resolve startup issues</p>
-                    <span class="badge">Office 365</span>
+                    <span class="badge error">Office 365</span>
                 </div>
 
                 <div class="kb-article" onclick="openArticle('teams-loading')">
                     <h3>Teams Stuck on Loading Screen</h3>
                     <p>Clearing Teams cache and resolving startup problems</p>
-                    <span class="badge">Teams</span>
+                    <span class="badge purple">Teams</span>
                 </div>
 
                 <div class="kb-article" onclick="openArticle('office-activation')">
                     <h3>Office Activation Issues</h3>
                     <p>Troubleshooting Office 365 licensing and activation errors</p>
-                    <span class="badge">Office 365</span>
+                    <span class="badge error">Licensing</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('onedrive-sync')">
+                    <h3>OneDrive Sync Problems</h3>
+                    <p>Fixing OneDrive sync errors and file conflicts</p>
+                    <span class="badge info">OneDrive</span>
+                </div>
+            </div>
+
+            <!-- Network & Connectivity -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--accent) 0%, #00a88a 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="#0a0a0f" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="4" fill="#0a0a0f"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Network & Connectivity</h2>
+                
+                <div class="kb-article" onclick="openArticle('vpn-connection')">
+                    <h3>VPN Connection Failures</h3>
+                    <p>Diagnosing and resolving VPN authentication and connection issues</p>
+                    <span class="badge">VPN</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('wifi-no-internet')">
+                    <h3>WiFi Connected, No Internet</h3>
+                    <p>Troubleshooting network connectivity when WiFi shows connected</p>
+                    <span class="badge">Network</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('dns-issues')">
+                    <h3>DNS Resolution Problems</h3>
+                    <p>Fixing DNS configuration and name resolution failures</p>
+                    <span class="badge">DNS</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('network-drives')">
+                    <h3>Network Drives Not Connecting</h3>
+                    <p>Resolving mapped drive and file share connection issues</p>
+                    <span class="badge">Shares</span>
+                </div>
+            </div>
+
+            <!-- Windows System -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <rect x="3" y="3" width="8" height="8"/>
+                        <rect x="13" y="3" width="8" height="8"/>
+                        <rect x="3" y="13" width="8" height="8"/>
+                        <rect x="13" y="13" width="8" height="8"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Windows System</h2>
+                
+                <div class="kb-article" onclick="openArticle('profile-corruption')">
+                    <h3>User Profile Corruption</h3>
+                    <p>Repairing corrupted Windows profiles and migrating user data</p>
+                    <span class="badge info">Windows</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('windows-update')">
+                    <h3>Windows Update Issues</h3>
+                    <p>Fixing stuck updates and Windows Update component errors</p>
+                    <span class="badge info">Updates</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('slow-performance')">
+                    <h3>System Running Slow</h3>
+                    <p>Diagnosing and optimizing Windows performance issues</p>
+                    <span class="badge info">Performance</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('blue-screen')">
+                    <h3>Blue Screen Errors (BSOD)</h3>
+                    <p>Analyzing and resolving Windows stop errors and crashes</p>
+                    <span class="badge error">Critical</span>
+                </div>
+            </div>
+
+            <!-- Hardware & Printers -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--accent-secondary) 0%, #7c3aed 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <rect x="6" y="3" width="12" height="18" rx="1"/>
+                        <rect x="8" y="15" width="8" height="4"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Hardware & Printers</h2>
+                
+                <div class="kb-article" onclick="openArticle('printer-offline')">
+                    <h3>Printer Shows Offline</h3>
+                    <p>Resolving printer offline status and connection issues</p>
+                    <span class="badge purple">Printer</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('print-spooler')">
+                    <h3>Print Jobs Stuck in Queue</h3>
+                    <p>Clearing print spooler and resolving stuck print jobs</p>
+                    <span class="badge purple">Printer</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('disk-health')">
+                    <h3>Disk Health and Errors</h3>
+                    <p>Checking disk health and repairing file system errors</p>
+                    <span class="badge purple">Storage</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('driver-issues')">
+                    <h3>Device Driver Problems</h3>
+                    <p>Updating and troubleshooting hardware drivers</p>
+                    <span class="badge purple">Drivers</span>
+                </div>
+            </div>
+
+            <!-- Remote Access -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="5" width="18" height="14" rx="2" stroke="#0a0a0f" stroke-width="2"/>
+                        <path d="M8 10h8M8 14h5" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Remote Access</h2>
+                
+                <div class="kb-article" onclick="openArticle('rdp-connection')">
+                    <h3>Remote Desktop Connection Failed</h3>
+                    <p>Troubleshooting RDP connection and authentication issues</p>
+                    <span class="badge success">RDP</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('rdp-firewall')">
+                    <h3>RDP Blocked by Firewall</h3>
+                    <p>Configuring Windows Firewall for Remote Desktop access</p>
+                    <span class="badge success">Firewall</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('remote-support')">
+                    <h3>Remote Support Tools Setup</h3>
+                    <p>Setting up and using remote support and screen sharing tools</p>
+                    <span class="badge success">Tools</span>
                 </div>
             </div>
         </div>
@@ -110,1273 +274,360 @@
         </div>
     </div>
 
-    <style>
-        .kb-article {
-            padding: 14px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            border: 1px solid var(--card-border);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .kb-article:hover {
-            border-color: var(--accent);
-            background: var(--accent-light);
-            transform: translateX(4px);
-        }
-
-        .kb-article h3 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #0F172A;
-            margin-bottom: 4px;
-        }
-
-        .kb-article p {
-            font-size: 0.85rem;
-            color: #64748B;
-            margin: 0 0 8px 0;
-        }
-
-        .kb-modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-        }
-
-        .kb-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.2s ease-in;
-        }
-
-        .kb-modal-content {
-            background: white;
-            border-radius: 12px;
-            max-width: 900px;
-            width: 90%;
-            max-height: 90vh;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideInUp 0.3s ease-out;
-        }
-
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .kb-modal-header {
-            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
-            color: white;
-            padding: 24px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .kb-modal-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .kb-modal-close {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .kb-modal-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .kb-modal-body {
-            padding: 32px;
-            overflow-y: auto;
-            max-height: calc(90vh - 92px);
-        }
-
-        .kb-step {
-            margin-bottom: 32px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid #E2E8F0;
-        }
-
-        .kb-step:last-child {
-            border-bottom: none;
-        }
-
-        .kb-step-number {
-            background: var(--accent);
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin-right: 12px;
-        }
-
-        .kb-step-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #0F172A;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-
-        .kb-step-content {
-            margin-left: 44px;
-            color: #475569;
-            line-height: 1.7;
-        }
-
-        .kb-step-content ul {
-            margin: 12px 0;
-            padding-left: 20px;
-        }
-
-        .kb-step-content li {
-            margin: 8px 0;
-        }
-
-        .kb-note {
-            background: #FEF3C7;
-            border-left: 4px solid #D97706;
-            padding: 16px;
-            margin: 16px 0;
-            border-radius: 6px;
-        }
-
-        .kb-note strong {
-            color: #92400E;
-        }
-
-        .kb-command {
-            background: #0F172A;
-            color: #10B981;
-            padding: 12px 16px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            margin: 12px 0;
-            display: block;
-            overflow-x: auto;
-        }
-
-        .kb-tip {
-            background: #DBEAFE;
-            border-left: 4px solid #2563EB;
-            padding: 16px;
-            margin: 16px 0;
-            border-radius: 6px;
-        }
-
-        .kb-tip strong {
-            color: #1E40AF;
-        }
-    </style>
-
     <script>
         const kbArticles = {
-    'account-lockout': {
-        title: 'Account Locked Out - Password Reset',
-        steps: [
-            {
-                number: 1,
-                title: 'Identify the System and Gather Information',
-                content: `
-                    <ul>
-                        <li><strong>Ask the user:</strong> "What system are you trying to access?" (Email, VPN, computer login, etc.)</li>
-                        <li><strong>Confirm the error message:</strong> "What exact error message do you see?"
+            'account-lockout': {
+                title: 'Account Locked Out - Password Reset',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify the System and Gather Information',
+                        content: `
                             <ul>
-                                <li>"Account is locked out"</li>
-                                <li>"Too many failed login attempts"</li>
-                                <li>"Your account has been disabled"</li>
-                                <li>"Authentication failed"</li>
+                                <li><strong>Ask the user:</strong> "What system are you trying to access?" (Email, VPN, computer login)</li>
+                                <li><strong>Confirm the error message:</strong> "What exact error message do you see?"</li>
+                                <li><strong>Verify user identity:</strong> Confirm through secure process per organization policies</li>
+                                <li><strong>Gather account details:</strong> Full name, email, username, employee ID</li>
                             </ul>
-                        </li>
-                        <li><strong>Verify user identity:</strong> Confirm through secure process per your organization's policies
+                            <div class="kb-note">
+                                <strong>Security Note:</strong> Never reset a password without properly verifying the user's identity.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Locate and Unlock the Account',
+                        content: `
+                            <p><strong>Using Active Directory Users and Computers:</strong></p>
                             <ul>
-                                <li>Employee ID verification</li>
-                                <li>Security questions</li>
-                                <li>Manager verification</li>
-                                <li>Multi-factor authentication</li>
+                                <li>Open ADUC and search for the user account</li>
+                                <li>Right-click → Properties → Account tab</li>
+                                <li>Uncheck "Account is locked out"</li>
+                                <li>Click Apply, then OK</li>
                             </ul>
-                        </li>
-                        <li><strong>Gather account details:</strong> Full name, email address, username, employee ID, department</li>
-                    </ul>
-                    <div class="kb-note">
-                        <strong>Security Note:</strong> Never reset a password without properly verifying the user's identity. This is critical for preventing unauthorized access and social engineering attacks.
-                    </div>
-                `
-            },
-            {
-                number: 2,
-                title: 'Locate and Unlock the Account',
-                content: `
-                    <p><strong>Using Active Directory Users and Computers (ADUC):</strong></p>
-                    <ul>
-                        <li>Open Active Directory Users and Computers (ADUC)</li>
-                        <li>Search for the user's account (Right-click domain → Find)</li>
-                        <li>Right-click the user account → Properties</li>
-                        <li>Go to the <strong>Account</strong> tab</li>
-                        <li>Look for "Account is locked out" checkbox</li>
-                        <li>If checked, <strong>uncheck it</strong> to unlock</li>
-                        <li>Verify "Account is disabled" is <strong>NOT</strong> checked</li>
-                        <li>Click <strong>Apply</strong>, then <strong>OK</strong></li>
-                    </ul>
-                    <div class="kb-command">
-# PowerShell method to unlock account:
+                            <div class="kb-command">
+# PowerShell method:
 Unlock-ADAccount -Identity "username"
-
-# Verify account is unlocked:
 Get-ADUser -Identity "username" -Properties LockedOut | Select Name, LockedOut
-                    </div>
-                    <div class="kb-tip">
-                        <strong>Pro Tip:</strong> Always verify the account is successfully unlocked before proceeding to password reset. You can check the "Account" tab again to confirm the checkbox is gone.
-                    </div>
-                `
-            },
-            {
-                number: 3,
-                title: 'Reset Password (if needed)',
-                content: `
-                    <p><strong>When to reset password:</strong></p>
-                    <ul>
-                        <li>User forgot their password</li>
-                        <li>Password is expired</li>
-                        <li>User wants to change it as a security measure</li>
-                    </ul>
-                    
-                    <p><strong>Password complexity requirements (typical):</strong></p>
-                    <ul>
-                        <li>Minimum 8-12 characters</li>
-                        <li>At least one uppercase letter (A-Z)</li>
-                        <li>At least one lowercase letter (a-z)</li>
-                        <li>At least one number (0-9)</li>
-                        <li>At least one special character (!@#$%^&*)</li>
-                        <li>Cannot contain username or parts of full name</li>
-                        <li>Cannot be same as previous passwords</li>
-                    </ul>
-
-                    <p><strong>Steps to reset:</strong></p>
-                    <ul>
-                        <li>In ADUC, right-click user → <strong>Reset Password</strong></li>
-                        <li>Enter new temporary password (meeting complexity requirements)</li>
-                        <li><strong>Check:</strong> "User must change password at next logon"</li>
-                        <li>Click <strong>OK</strong></li>
-                        <li>Provide password securely (phone, encrypted email, or in-person)</li>
-                    </ul>
-
-                    <div class="kb-command">
-# PowerShell method to reset password:
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Reset Password (if needed)',
+                        content: `
+                            <p><strong>Password requirements:</strong></p>
+                            <ul>
+                                <li>Minimum 8-12 characters</li>
+                                <li>Uppercase, lowercase, number, special character</li>
+                                <li>Cannot contain username or previous passwords</li>
+                            </ul>
+                            <div class="kb-command">
+# Reset password and force change at logon:
 Set-ADAccountPassword -Identity "username" -Reset
-
-# Force password change at next logon:
 Set-ADUser -Identity "username" -ChangePasswordAtLogon $true
-                    </div>
-                `
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Instruct User on Next Steps',
+                        content: `
+                            <p><strong>Critical instructions for user:</strong></p>
+                            <ul>
+                                <li>"Log in right now using your new password"</li>
+                                <li>"Update password on ALL devices" - especially mobile devices</li>
+                                <li>Update: iPhone/Android mail, Outlook mobile, Teams, VPN client</li>
+                            </ul>
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> 80% of repeated lockouts are caused by mobile devices still using old passwords!
+                            </div>
+                        `
+                    }
+                ]
             },
-            {
-                number: 4,
-                title: 'Instruct User on Next Steps (CRITICAL)',
-                content: `
-                    <p><strong>This is the most important step to prevent repeated lockouts!</strong></p>
-                    
-                    <p><strong>Immediate actions:</strong></p>
-                    <ul>
-                        <li>"Please log in <strong>right now</strong> using your new password on the device you're currently using"</li>
-                        <li>"Do this before hanging up the phone or ending this chat"</li>
-                        <li>"Confirm to me that you can successfully log in"</li>
-                    </ul>
-
-                    <p><strong>Update all devices and applications:</strong></p>
-                    <ul>
-                        <li><strong>Mobile devices (MOST IMPORTANT):</strong>
+            'outlook-crash': {
+                title: 'Outlook Won\'t Open or Crashes',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Gather Information and Identify Symptoms',
+                        content: `
+                            <p><strong>Ask diagnostic questions:</strong></p>
                             <ul>
-                                <li>iPhone Mail app</li>
-                                <li>Android Mail/Gmail app</li>
-                                <li>Outlook mobile app</li>
-                                <li>Teams mobile app</li>
+                                <li>"Does Outlook start at all, or crash immediately?"</li>
+                                <li>"Do you see any error messages?"</li>
+                                <li>"When did this start?" (After update, crash, etc.)</li>
+                                <li>"Do other Office applications work?"</li>
                             </ul>
-                        </li>
-                        <li><strong>Desktop applications:</strong>
+                            <div class="kb-note">
+                                <strong>Quick test:</strong> If Word/Excel work fine, the issue is Outlook-specific.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Try Safe Mode First',
+                        content: `
+                            <p><strong>Safe Mode starts Outlook without add-ins:</strong></p>
                             <ul>
-                                <li>Microsoft Outlook (desktop)</li>
-                                <li>Microsoft Teams</li>
-                                <li>VPN client</li>
-                                <li>OneDrive</li>
+                                <li>Close Outlook completely (check Task Manager)</li>
+                                <li>Press Windows + R to open Run dialog</li>
+                                <li>Type: <code>outlook.exe /safe</code></li>
+                                <li>If it works in Safe Mode → add-in issue</li>
                             </ul>
-                        </li>
-                        <li><strong>Web browsers:</strong>
-                            <ul>
-                                <li>Clear any saved passwords</li>
-                                <li>Sign out and back in to Office 365</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Set proper expectations:</strong> "It may take 5-15 minutes for the password change to sync across all systems. If you keep using your old password anywhere, your account will lock again immediately."
-                    </div>
-
-                    <div class="kb-tip">
-                        <strong>Pro Tip:</strong> 80% of repeated lockouts are caused by mobile devices still using the old password. ALWAYS emphasize updating mobile email apps!
-                    </div>
-                `
-            },
-            {
-                number: 5,
-                title: 'Document and Follow Up',
-                content: `
-                    <p><strong>Update the ticket with:</strong></p>
-                    <ul>
-                        <li>Date and time of unlock/reset</li>
-                        <li>Method used (ADUC, PowerShell, etc.)</li>
-                        <li>Whether password was reset</li>
-                        <li>User confirmed successful login</li>
-                        <li>Instructions provided to user</li>
-                    </ul>
-
-                    <p><strong>Check for patterns:</strong></p>
-                    <ul>
-                        <li>If user locks out frequently (3+ times in a month), investigate root cause</li>
-                        <li>Common causes: Old mobile device, shared account, compromised password</li>
-                        <li>Consider password complexity education or MFA enrollment</li>
-                    </ul>
-
-                    <p><strong>Verify resolution:</strong></p>
-                    <ul>
-                        <li>"Can you confirm you're now able to log in successfully?"</li>
-                        <li>"Please try accessing your email and let me know if it works"</li>
-                        <li>"Do you have any questions about updating your other devices?"</li>
-                    </ul>
-
-                    <p><strong>Educate the user:</strong></p>
-                    <ul>
-                        <li>Briefly explain why the lockout occurred</li>
-                        <li>Emphasize the importance of updating all devices</li>
-                        <li>Provide tips for preventing future lockouts</li>
-                        <li>Remind them to contact IT if it happens again</li>
-                    </ul>
-
-                    <p><strong>Close ticket:</strong></p>
-                    <ul>
-                        <li>Mark as <strong>Resolved</strong></li>
-                        <li>Include detailed resolution notes</li>
-                        <li>Note time spent for metrics</li>
-                    </ul>
-                `
-            }
-        ]
-    },
-    'outlook-crash': {
-        title: 'Outlook Won\'t Open or Crashes',
-        steps: [
-            {
-                number: 1,
-                title: 'Gather Information and Identify Symptoms',
-                content: `
-                    <p><strong>Ask specific diagnostic questions:</strong></p>
-                    <ul>
-                        <li>"Does Outlook start at all, or does it crash immediately?"</li>
-                        <li>"Do you see any error messages? If yes, what do they say exactly?"</li>
-                        <li>"When did this start happening?" (Today, after update, after crash, etc.)</li>
-                        <li>"Did anything change recently?"
-                            <ul>
-                                <li>Windows updates installed</li>
-                                <li>Office updates installed</li>
-                                <li>New software installed</li>
-                                <li>Computer crashed or was forcefully shut down</li>
-                            </ul>
-                        </li>
-                        <li>"Do other Office applications work?" (Word, Excel, PowerPoint)</li>
-                    </ul>
-
-                    <p><strong>Gather system information:</strong></p>
-                    <ul>
-                        <li>Windows version (Windows 10/11, build number)</li>
-                        <li>Outlook version (if accessible: File → Office Account → About Outlook)</li>
-                        <li>Whether this is Office 365 or standalone Office 2016/2019/2021</li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Quick test:</strong> Ask user to try opening Word or Excel. If those work fine, the issue is Outlook-specific (not a general Office problem).
-                    </div>
-                `
-            },
-            {
-                number: 2,
-                title: 'Try Safe Mode First (Quick Diagnostic)',
-                content: `
-                    <p><strong>Why Safe Mode?</strong> It starts Outlook without add-ins, which cause 50% of crash issues.</p>
-
-                    <p><strong>Steps to start in Safe Mode:</strong></p>
-                    <ul>
-                        <li><strong>Close Outlook completely</strong> (check Task Manager - Ctrl+Shift+Esc - to ensure OUTLOOK.EXE is not running)</li>
-                        <li><strong>Press Windows Key + R</strong> to open Run dialog</li>
-                        <li><strong>Type:</strong> <code>outlook.exe /safe</code> (exactly as shown)</li>
-                        <li><strong>Press Enter</strong></li>
-                        <li><strong>If prompted:</strong> Select your profile and click OK</li>
-                    </ul>
-
-                    <div class="kb-command">
+                            <div class="kb-command">
 outlook.exe /safe
-                    </div>
-
-                    <p><strong>If Outlook opens successfully in Safe Mode:</strong></p>
-                    <ul>
-                        <li>✅ The issue is caused by a problematic add-in</li>
-                        <li>Close Outlook and reopen normally</li>
-                        <li>Go to <strong>File → Options → Add-ins</strong></li>
-                        <li>At bottom, select <strong>COM Add-ins</strong> → Click <strong>Go</strong></li>
-                        <li>Uncheck add-ins one by one, restarting Outlook each time</li>
-                        <li>When Outlook works, you've found the problematic add-in</li>
-                    </ul>
-
-                    <p><strong>If it still crashes in Safe Mode:</strong></p>
-                    <ul>
-                        <li>❌ Issue is NOT add-in related</li>
-                        <li>Proceed to next troubleshooting steps</li>
-                        <li>Likely causes: Corrupted profile, corrupted PST/OST file, or Office installation issue</li>
-                    </ul>
-
-                    <div class="kb-tip">
-                        <strong>Pro Tip:</strong> Common problematic add-ins include older antivirus plugins, PDF converters, and third-party integrations. Keep add-ins to a minimum.
-                    </div>
-                `
-            },
-            {
-                number: 3,
-                title: 'Check Event Viewer for Error Details',
-                content: `
-                    <p><strong>Event Viewer provides specific error codes that help identify the cause:</strong></p>
-
-                    <p><strong>Steps to check:</strong></p>
-                    <ul>
-                        <li><strong>Open Event Viewer:</strong> Windows Key + X → Event Viewer (or search for it)</li>
-                        <li><strong>Navigate to:</strong> Windows Logs → <strong>Application</strong></li>
-                        <li><strong>Look for recent errors</strong> (red X icons) around the time Outlook crashed</li>
-                        <li><strong>Filter by source:</strong>
+                            </div>
+                            <div class="kb-tip">
+                                <strong>If Safe Mode works:</strong> Go to File → Options → Add-ins → Disable add-ins one by one to find the culprit.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Repair or Recreate Outlook Profile',
+                        content: `
+                            <p><strong>Option A: Delete OST file (faster)</strong></p>
                             <ul>
-                                <li>Source: "Outlook"</li>
-                                <li>Source: "Microsoft Office"</li>
-                                <li>Source: "Application Error"</li>
+                                <li>Navigate to: %localappdata%\\Microsoft\\Outlook</li>
+                                <li>Delete the .ost file</li>
+                                <li>Outlook will recreate it from server</li>
                             </ul>
-                        </li>
-                    </ul>
-
-                    <p><strong>Common error codes and meanings:</strong></p>
-                    <ul>
-                        <li><strong>Event ID 1000:</strong> Application crash
-                            <ul>
-                                <li>Faulting application: OUTLOOK.EXE</li>
-                                <li>Note the faulting module (which DLL caused the crash)</li>
-                            </ul>
-                        </li>
-                        <li><strong>Faulting module: mspst32.dll or mso.dll:</strong> Corrupted Office files</li>
-                        <li><strong>Faulting module: outlook.exe:</strong> Corrupted Outlook installation</li>
-                        <li><strong>Error code like 0xc0000005:</strong> Access violation (often profile corruption)</li>
-                    </ul>
-
-                    <p><strong>Document the error details:</strong></p>
-                    <ul>
-                        <li>Event ID number</li>
-                        <li>Faulting module name</li>
-                        <li>Error code</li>
-                        <li>Time of crash</li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Note:</strong> Event Viewer errors help determine whether to repair Office, recreate profile, or reinstall Outlook. Don't skip this step!
-                    </div>
-                `
-            },
-            {
-                number: 4,
-                title: 'Repair or Recreate Outlook Profile',
-                content: `
-                    <p><strong>Option A: Repair Existing Profile (Try this first - faster)</strong></p>
-                    <ul>
-                        <li>Close Outlook completely</li>
-                        <li><strong>Control Panel</strong> → <strong>Mail (Microsoft Outlook)</strong></li>
-                        <li>If you don't see "Mail", change "View by" to "Small icons"</li>
-                        <li>Click <strong>Show Profiles</strong></li>
-                        <li>Select the profile → <strong>Properties</strong></li>
-                        <li>Click <strong>Data Files</strong> tab</li>
-                        <li>Select the OST file → <strong>Settings</strong> → <strong>Advanced</strong></li>
-                        <li>Note the file location, then close</li>
-                        <li>Navigate to the OST file location in File Explorer</li>
-                        <li><strong>Delete the .ost file</strong> (it will be recreated automatically)</li>
-                        <li>Restart Outlook (it will rebuild the OST file from the server)</li>
-                    </ul>
-
-                    <div class="kb-command">
-# PowerShell: Clear Outlook cache (OST files)
+                            <div class="kb-command">
+# PowerShell: Clear Outlook cache
 Remove-Item "$env:LOCALAPPDATA\\Microsoft\\Outlook\\*.ost" -Force
-
-# This deletes all OST files - Outlook will recreate them
-                    </div>
-
-                    <p><strong>Option B: Create New Profile (If repair doesn't work)</strong></p>
-                    <ul>
-                        <li>Control Panel → Mail → <strong>Show Profiles</strong></li>
-                        <li>Click <strong>Add</strong></li>
-                        <li>Profile name: "Outlook-New" (or similar)</li>
-                        <li>Enter email address and let Outlook auto-configure</li>
-                        <li>Wait for setup to complete (this downloads mailbox data)</li>
-                        <li>Once complete, click <strong>Prompt for a profile to be used</strong></li>
-                        <li>Click <strong>OK</strong></li>
-                        <li>Start Outlook, select the new profile</li>
-                        <li>If it works, set it as default and delete the old profile</li>
-                    </ul>
-
-                    <div class="kb-tip">
-                        <strong>Pro Tip:</strong> Deleting the OST file is safe - it's just a local cache. The real email data is on the Exchange server and will re-download automatically.
-                    </div>
-                `
-            },
-            {
-                number: 5,
-                title: 'Run Office Repair (If profile fix doesn\'t work)',
-                content: `
-                    <p><strong>When to use Office Repair:</strong></p>
-                    <ul>
-                        <li>Profile recreation didn't fix the issue</li>
-                        <li>Multiple Office apps are crashing</li>
-                        <li>Event Viewer shows corrupted Office DLL files</li>
-                        <li>Recent Windows update may have damaged Office</li>
-                    </ul>
-
-                    <p><strong>Steps to repair Office:</strong></p>
-                    <ul>
-                        <li><strong>Close all Office applications</strong> completely</li>
-                        <li><strong>Control Panel</strong> → <strong>Programs</strong> → <strong>Programs and Features</strong></li>
-                        <li>Find <strong>Microsoft Office</strong> or <strong>Microsoft 365</strong> in the list</li>
-                        <li><strong>Right-click</strong> → <strong>Change</strong></li>
-                        <li>You'll see two options:</li>
-                    </ul>
-
-                    <p><strong>Quick Repair (Try first):</strong></p>
-                    <ul>
-                        <li>✅ Faster (5-10 minutes)</li>
-                        <li>✅ Doesn't require internet</li>
-                        <li>✅ Fixes most common issues</li>
-                        <li>❌ Doesn't replace all files</li>
-                    </ul>
-
-                    <p><strong>Online Repair (If Quick Repair fails):</strong></p>
-                    <ul>
-                        <li>✅ Most thorough repair</li>
-                        <li>✅ Replaces all Office files</li>
-                        <li>❌ Requires internet connection</li>
-                        <li>❌ Takes 20-30 minutes</li>
-                        <li>❌ Downloads 2-3 GB of data</li>
-                    </ul>
-
-                    <p><strong>After repair completes:</strong></p>
-                    <ul>
-                        <li><strong>Restart computer</strong> (important!)</li>
-                        <li>Open Outlook and test</li>
-                        <li>Check if the issue is resolved</li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Time estimate:</strong> Always inform the user that Online Repair takes 20-30 minutes. Don't let them think their computer is frozen!
-                    </div>
-                `
-            },
-            {
-                number: 6,
-                title: 'Verify Resolution and Document',
-                content: `
-                    <p><strong>Test thoroughly before closing the ticket:</strong></p>
-                    <ul>
-                        <li>✅ Outlook opens successfully</li>
-                        <li>✅ Can send and receive emails</li>
-                        <li>✅ Calendar loads and displays appointments</li>
-                        <li>✅ Contacts are accessible</li>
-                        <li>✅ No error messages appear</li>
-                        <li>✅ Outlook doesn't crash after 5+ minutes of use</li>
-                    </ul>
-
-                    <p><strong>Educate the user:</strong></p>
-                    <ul>
-                        <li>Explain what caused the issue in simple terms</li>
-                        <li>If add-in related: "A plugin was causing Outlook to crash"</li>
-                        <li>If profile corruption: "Your Outlook profile got damaged, we rebuilt it"</li>
-                        <li>Provide prevention tips:
+                            </div>
+                            <p><strong>Option B: Create new profile</strong></p>
                             <ul>
-                                <li>"Always close Outlook properly before shutting down"</li>
-                                <li>"Don't force shutdown your computer while Outlook is syncing"</li>
-                                <li>"Keep Windows and Office updated"</li>
+                                <li>Control Panel → Mail → Show Profiles</li>
+                                <li>Add new profile, enter email</li>
+                                <li>Set as default and delete old profile</li>
                             </ul>
-                        </li>
-                    </ul>
-
-                    <p><strong>Document in ticket:</strong></p>
-                    <ul>
-                        <li><strong>Symptoms:</strong> "Outlook crashed on startup, Event ID 1000, faulting module: mso.dll"</li>
-                        <li><strong>Troubleshooting steps:</strong>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Run Office Repair',
+                        content: `
+                            <p><strong>If profile fix doesn't work:</strong></p>
                             <ul>
-                                <li>Tested Safe Mode - crashed</li>
-                                <li>Checked Event Viewer - found error</li>
-                                <li>Deleted OST file - didn't resolve</li>
-                                <li>Created new Outlook profile - didn't resolve</li>
-                                <li>Ran Office Online Repair - resolved</li>
+                                <li>Control Panel → Programs → Programs and Features</li>
+                                <li>Find Microsoft Office/365</li>
+                                <li>Right-click → Change</li>
+                                <li>Try Quick Repair first (5-10 min)</li>
+                                <li>If that fails, try Online Repair (20-30 min)</li>
                             </ul>
-                        </li>
-                        <li><strong>Resolution:</strong> "Office Online Repair successfully fixed corrupted Office files. Outlook now opens and functions normally."</li>
-                        <li><strong>Time spent:</strong> 45 minutes</li>
-                    </ul>
-
-                    <p><strong>Set expectations for follow-up:</strong></p>
-                    <ul>
-                        <li>"If this happens again within 24 hours, contact us immediately"</li>
-                        <li>"Your emails will re-download, this may take 10-15 minutes"</li>
-                        <li>"Your signatures, rules, and settings should remain intact"</li>
-                    </ul>
-
-                    <div class="kb-tip">
-                        <strong>Prevention Tip:</strong> Corrupted Outlook profiles most commonly occur after forced shutdowns, crashes, or interrupted Windows updates. Educate users on proper shutdown procedures!
-                    </div>
-                `
-            }
-        ]
-    },
-    'mfa-issues': {
-        title: 'MFA Authentication Problems',
-        steps: [
-            {
-                number: 1,
-                title: 'Identify the MFA Issue Type',
-                content: `
-                    <p><strong>Gather specific information about the failure:</strong></p>
-                    <ul>
-                        <li>"Which MFA method are you using?"
-                            <ul>
-                                <li>Microsoft Authenticator app</li>
-                                <li>SMS text message codes</li>
-                                <li>Phone call verification</li>
-                                <li>Hardware token (YubiKey, RSA token)</li>
-                                <li>Backup codes</li>
-                            </ul>
-                        </li>
-                        <li>"What exact error message do you see?"
-                            <ul>
-                                <li>"Code expired"</li>
-                                <li>"Invalid code"</li>
-                                <li>"Too many failed attempts"</li>
-                                <li>"Authentication timed out"</li>
-                                <li>"This account doesn't support MFA"</li>
-                            </ul>
-                        </li>
-                        <li>"When did this start?" (Today, after phone change, after app update)</li>
-                        <li>"Are you trying to access from a new device or location?"</li>
-                    </ul>
-
-                    <p><strong>Common scenarios:</strong></p>
-                    <ul>
-                        <li><strong>New phone/Lost phone:</strong> User replaced device and Authenticator app not transferred</li>
-                        <li><strong>Time sync issue:</strong> Device time is incorrect (causes TOTP codes to fail)</li>
-                        <li><strong>App deleted:</strong> Authenticator app removed accidentally</li>
-                        <li><strong>Number changed:</strong> Phone number for SMS changed</li>
-                        <li><strong>No service:</strong> User in area with no cell signal</li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Security Note:</strong> MFA reset requests require enhanced identity verification. Use multiple verification methods before resetting MFA.
-                    </div>
-                `
+                            <div class="kb-note">
+                                <strong>Time estimate:</strong> Online Repair downloads 2-3 GB and takes 20-30 minutes. Inform the user!
+                            </div>
+                        `
+                    }
+                ]
             },
-            {
-                number: 2,
-                title: 'Verify Identity with Alternative Methods',
-                content: `
-                    <p><strong>Before resetting MFA, confirm user identity:</strong></p>
-
-                    <p><strong>Primary verification methods:</strong></p>
-                    <ul>
-                        <li><strong>Manager approval:</strong> Get confirmation from user's direct manager via email</li>
-                        <li><strong>Secondary email:</strong> Send verification code to registered backup email</li>
-                        <li><strong>Security questions:</strong> Ask pre-registered security questions</li>
-                        <li><strong>Employee badge/ID:</strong> Request photo of employee badge with today's date written on paper</li>
-                        <li><strong>Video call:</strong> Schedule Teams/Zoom call to verify face matches employee photo</li>
-                        <li><strong>Ticket history:</strong> Ask details from previous support tickets only they would know</li>
-                    </ul>
-
-                    <p><strong>Documentation required:</strong></p>
-                    <ul>
-                        <li>Full name and employee ID</li>
-                        <li>Current location and department</li>
-                        <li>Business justification for MFA reset</li>
-                        <li>Manager name and contact information</li>
-                        <li>Verification method used (document this in ticket)</li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Red flags - DO NOT reset MFA if:</strong>
-                        <ul>
-                            <li>User refuses video verification</li>
-                            <li>Manager cannot be reached for approval</li>
-                            <li>User pressures for immediate reset citing "emergency"</li>
-                            <li>Details don't match employee records</li>
-                            <li>Request comes from personal email only</li>
-                        </ul>
-                        When in doubt, escalate to security team!
-                    </div>
-                `
-            },
-            {
-                number: 3,
-                title: 'Check for Common Quick Fixes First',
-                content: `
-                    <p><strong>Before resetting MFA, try these troubleshooting steps:</strong></p>
-
-                    <p><strong>For Authenticator App Issues:</strong></p>
-                    <ul>
-                        <li><strong>Time sync problem (most common!):</strong>
+            'mfa-issues': {
+                title: 'MFA Authentication Problems',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify the MFA Issue Type',
+                        content: `
+                            <p><strong>Common MFA issues:</strong></p>
                             <ul>
-                                <li>Have user verify device time is set to <strong>Automatic</strong></li>
+                                <li>New phone - Authenticator app not transferred</li>
+                                <li>Time sync issue - Device time incorrect</li>
+                                <li>App deleted accidentally</li>
+                                <li>Phone number changed</li>
+                                <li>No cell service for SMS</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Security Note:</strong> MFA resets require enhanced identity verification.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Try Quick Fixes First',
+                        content: `
+                            <p><strong>Most common fix - Time sync:</strong></p>
+                            <ul>
                                 <li>iPhone: Settings → General → Date & Time → Set Automatically</li>
-                                <li>Android: Settings → System → Date & Time → Automatic date & time</li>
-                                <li>Even 1-2 minutes off will cause TOTP codes to fail!</li>
+                                <li>Android: Settings → System → Date & Time → Automatic</li>
                             </ul>
-                        </li>
-                        <li><strong>Re-sync the Authenticator app:</strong>
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> 70% of MFA issues are time sync problems! Even 1-2 minutes off causes failures.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Reset MFA Registration',
+                        content: `
+                            <p><strong>Azure AD Portal method:</strong></p>
                             <ul>
-                                <li>Open Microsoft Authenticator</li>
-                                <li>Tap account → Tap refresh/sync icon</li>
-                                <li>Try code again immediately</li>
+                                <li>Azure AD Admin Center → Users</li>
+                                <li>Find user → Authentication methods</li>
+                                <li>Click "Require re-register MFA"</li>
                             </ul>
-                        </li>
-                        <li><strong>Update the app:</strong>
-                            <ul>
-                                <li>Check App Store/Play Store for updates</li>
-                                <li>Outdated app versions can cause authentication failures</li>
-                            </ul>
-                        </li>
-                        <li><strong>Try push notification instead:</strong>
-                            <ul>
-                                <li>Select "Use a verification code" instead of entering code manually</li>
-                                <li>Approve push notification on phone</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <p><strong>For SMS/Phone Call Issues:</strong></p>
-                    <ul>
-                        <li>Check phone has cell signal and SMS capability</li>
-                        <li>Check "Do Not Disturb" is not blocking verification calls</li>
-                        <li>Verify phone number in system matches current number</li>
-                        <li>Ask user to try alternate MFA method (app, call vs SMS)</li>
-                        <li>Wait 5 minutes - sometimes SMS delivery is delayed</li>
-                    </ul>
-
-                    <div class="kb-tip">
-                        <strong>Pro Tip:</strong> 70% of MFA issues are time sync problems! Always check device time settings before resetting MFA.
-                    </div>
-                `
-            },
-            {
-                number: 4,
-                title: 'Reset MFA Registration (Admin Portal)',
-                content: `
-                    <p><strong>If troubleshooting doesn't work, reset MFA registration:</strong></p>
-
-                    <p><strong>Azure AD/Microsoft 365 Portal:</strong></p>
-                    <ul>
-                        <li>Sign into <strong>Azure AD Admin Center</strong> (portal.azure.com)</li>
-                        <li>Navigate to: <strong>Azure Active Directory → Users</strong></li>
-                        <li>Search for and select the user</li>
-                        <li>In left menu, click <strong>Authentication methods</strong></li>
-                        <li>Click <strong>Require re-register multifactor authentication</strong></li>
-                        <li>Confirm the action</li>
-                        <li>Optionally, click <strong>Revoke MFA sessions</strong> to force immediate re-auth</li>
-                    </ul>
-
-                    <div class="kb-command">
-# PowerShell method to reset MFA:
+                            <div class="kb-command">
+# PowerShell method:
 Connect-MsolService
-
-# Reset MFA for specific user:
 Get-MsolUser -UserPrincipalName "user@company.com" | Set-MsolUser -StrongAuthenticationMethods @()
-
-# Force re-registration:
-Set-MsolUser -UserPrincipalName "user@company.com" -StrongAuthenticationRequirements @()
-
-# Verify MFA was reset:
-Get-MsolUser -UserPrincipalName "user@company.com" | Select-Object UserPrincipalName, StrongAuthenticationMethods
-                    </div>
-
-                    <p><strong>What this does:</strong></p>
-                    <ul>
-                        <li>Removes all registered MFA methods</li>
-                        <li>User will be prompted to re-register MFA on next sign-in</li>
-                        <li>Previous Authenticator app entries are invalidated</li>
-                        <li>User must set up MFA from scratch</li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Important:</strong> User will be prompted to set up MFA immediately on next login. Make sure they have their phone ready!
-                    </div>
-                `
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Guide MFA Re-enrollment',
+                        content: `
+                            <p><strong>Have user set up MFA again:</strong></p>
+                            <ul>
+                                <li>Sign in - system prompts "More information required"</li>
+                                <li>Choose: Microsoft Authenticator app (recommended)</li>
+                                <li>Download app, scan QR code, test</li>
+                                <li><strong>Set up backup method!</strong> (SMS as backup)</li>
+                            </ul>
+                            <div class="kb-tip">
+                                <strong>Best Practice:</strong> Always have users set up TWO MFA methods to prevent future lockouts.
+                            </div>
+                        `
+                    }
+                ]
             },
-            {
-                number: 5,
-                title: 'Guide User Through MFA Re-enrollment',
-                content: `
-                    <p><strong>Walk user through setting up MFA again:</strong></p>
+            'permissions': {
+                title: 'Permission Denied Errors',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Gather Information',
+                        content: `
+                            <ul>
+                                <li>What are they trying to access? (Network share, SharePoint, etc.)</li>
+                                <li>What error message exactly?</li>
+                                <li>Did they ever have access before?</li>
+                                <li>Do colleagues have access?</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Check Group Membership',
+                        content: `
+                            <div class="kb-command">
+# Check user's groups:
+Get-ADUser -Identity "username" -Properties MemberOf | Select -ExpandProperty MemberOf
 
-                    <p><strong>Step-by-step enrollment process:</strong></p>
-                    <ul>
-                        <li><strong>User signs in:</strong>
-                            <ul>
-                                <li>Go to login page (office.com, portal.azure.com, etc.)</li>
-                                <li>Enter username and password</li>
-                                <li>System will prompt: "More information required"</li>
-                            </ul>
-                        </li>
-                        <li><strong>Choose verification method:</strong>
-                            <ul>
-                                <li>Recommended: <strong>Microsoft Authenticator app</strong> (most reliable)</li>
-                                <li>Alternative: Phone (call or SMS)</li>
-                                <li>Not recommended: Office phone (can't receive when working remote)</li>
-                            </ul>
-                        </li>
-                        <li><strong>For Microsoft Authenticator:</strong>
-                            <ul>
-                                <li>Download app from App Store/Play Store</li>
-                                <li>Open app → Add account → Work or school account</li>
-                                <li>Scan QR code shown on computer screen</li>
-                                <li>Test: Enter code or approve push notification</li>
-                            </ul>
-                        </li>
-                        <li><strong>Set up backup method:</strong>
-                            <ul>
-                                <li>Always add a second verification method!</li>
-                                <li>Phone number (SMS) as backup</li>
-                                <li>This prevents lockout if primary method fails</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <p><strong>Provide backup codes (if supported):</strong></p>
-                    <ul>
-                        <li>Some organizations provide one-time backup codes</li>
-                        <li>User should save these in secure location</li>
-                        <li>Use these if phone is lost/stolen</li>
-                    </ul>
-
-                    <div class="kb-tip">
-                        <strong>Best Practice:</strong> Always have users set up TWO MFA methods during enrollment - primary (Authenticator app) and backup (SMS). This prevents future lockouts!
-                    </div>
-                `
+# Check if user is in specific group:
+Get-ADGroupMember -Identity "Finance_Users" | Where {$_.SamAccountName -eq "username"}
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Add User to Required Group',
+                        content: `
+                            <p><strong>With manager approval:</strong></p>
+                            <div class="kb-command">
+# Add user to security group:
+Add-ADGroupMember -Identity "SG-Finance-ReadOnly" -Members "username"
+                            </div>
+                            <p>User must log off and back on for change to take effect.</p>
+                        `
+                    }
+                ]
             },
-            {
-                number: 6,
-                title: 'Verify, Educate, and Document',
-                content: `
-                    <p><strong>Confirm MFA is working before closing ticket:</strong></p>
-                    <ul>
-                        <li>✅ User successfully logged in with new MFA setup</li>
-                        <li>✅ Both primary and backup methods tested and working</li>
-                        <li>✅ User can access required applications (Outlook, Teams, etc.)</li>
-                        <li>✅ User understands how to use MFA going forward</li>
-                    </ul>
-
-                    <p><strong>Educate the user on prevention:</strong></p>
-                    <ul>
-                        <li><strong>Phone replacement:</strong>
-                            <ul>
-                                <li>"If you get a new phone, contact IT BEFORE removing Authenticator app"</li>
-                                <li>"We can help you transfer your account to the new device"</li>
-                                <li>"Don't delete the app from old phone until new one is working"</li>
-                            </ul>
-                        </li>
-                        <li><strong>Backup methods:</strong>
-                            <ul>
-                                <li>"Always keep your backup phone number up to date"</li>
-                                <li>"Save backup codes in a secure location (password manager)"</li>
-                                <li>"If traveling internationally, test MFA before leaving"</li>
-                            </ul>
-                        </li>
-                        <li><strong>Time sync:</strong>
-                            <ul>
-                                <li>"Keep 'Automatic time' enabled on your phone"</li>
-                                <li>"If codes suddenly stop working, check time settings first"</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <p><strong>Document in ticket:</strong></p>
-                    <ul>
-                        <li><strong>Verification method used:</strong> "Manager email approval + video call verification"</li>
-                        <li><strong>Root cause:</strong> "User got new iPhone, didn't transfer Authenticator app"</li>
-                        <li><strong>Resolution:</strong> "Reset MFA registration via Azure AD portal, guided user through re-enrollment"</li>
-                        <li><strong>MFA methods configured:</strong>
-                            <ul>
-                                <li>Primary: Microsoft Authenticator (push notifications)</li>
-                                <li>Backup: SMS to +1-555-0123</li>
-                            </ul>
-                        </li>
-                        <li><strong>Validation:</strong> "User successfully logged into Office 365 and tested both MFA methods"</li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Security Reminder:</strong> Log all MFA resets in your ticketing system. Some organizations require security team notification for MFA resets due to potential account compromise risk.
-                    </div>
-                `
-            }
-        ]
-    },
-    'permissions': {
-        title: 'Permission Denied Errors',
-        steps: [
-            {
-                number: 1,
-                title: 'Identify the Permission Issue Type and Scope',
-                content: `
-                    <p><strong>Gather detailed information about the access problem:</strong></p>
-                    <ul>
-                        <li>"What are you trying to access?"
-                            <ul>
-                                <li>Network share/folder path</li>
-                                <li>SharePoint site or document library</li>
-                                <li>Application or system</li>
-                                <li>Printer or network resource</li>
-                                <li>Database or file server</li>
-                            </ul>
-                        </li>
-                        <li>"What exact error message do you see?"
-                            <ul>
-                                <li>"Access Denied"</li>
-                                <li>"You don't have permission to access this folder"</li>
-                                <li>"Contact your administrator to obtain access"</li>
-                                <li>"Network path not found"</li>
-                                <li>"Logon failure: unknown user name or bad password"</li>
-                            </ul>
-                        </li>
-                        <li>"What are you trying to do?"
-                            <ul>
-                                <li>Read files only</li>
-                                <li>Edit/modify files</li>
-                                <li>Delete files</li>
-                                <li>Create new folders</li>
-                            </ul>
-                        </li>
-                        <li>"Did you ever have access to this before?"</li>
-                        <li>"Do your colleagues have access to the same resource?"</li>
-                    </ul>
-
-                    <p><strong>Common permission issue scenarios:</strong></p>
-                    <ul>
-                        <li><strong>User not in correct Active Directory group</strong></li>
-                        <li><strong>NTFS permissions not configured</strong></li>
-                        <li><strong>Share permissions too restrictive</strong></li>
-                        <li><strong>User accessing with wrong credentials</strong></li>
-                        <li><strong>Permission inheritance broken</strong></li>
-                        <li><strong>Recent organizational change (job role, department move)</strong></li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Important:</strong> Always verify the user actually needs access before granting permissions. Check with their manager if uncertain.
-                    </div>
-                `
+            'teams-loading': {
+                title: 'Teams Stuck on Loading Screen',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Force Close Teams',
+                        content: `<p>Task Manager → End all Teams processes</p>`
+                    },
+                    {
+                        number: 2,
+                        title: 'Clear Teams Cache',
+                        content: `
+                            <div class="kb-command">
+# Delete Teams cache:
+rmdir /s /q "%appdata%\\Microsoft\\Teams"
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Clear Credentials',
+                        content: `<p>Credential Manager → Remove Teams entries</p>`
+                    }
+                ]
             },
-            {
-                number: 2,
-                title: 'Verify User Credentials and Group Membership',
-                content: `
-                    <p><strong>Check Active Directory group membership:</strong></p>
-                    <ul>
-                        <li>Open <strong>Active Directory Users and Computers</strong></li>
-                        <li>Find the user account</li>
-                        <li>Right-click → <strong>Properties</strong> → <strong>Member Of</strong> tab</li>
-                        <li>Check if user is member of security group that grants access</li>
-                        <li>Example: "Finance_Users", "HR_ReadOnly", "IT_Admins"</li>
-                    </ul>
-
-                    <div class="kb-command">
-# PowerShell: Check user's group memberships
-Get-ADUser -Identity "username" -Properties MemberOf | Select-Object -ExpandProperty MemberOf
-
-# Check if user is in a specific group:
-Get-ADGroupMember -Identity "Finance_Users" | Where-Object {$_.SamAccountName -eq "username"}
-
-# List all groups user belongs to (formatted):
-Get-ADPrincipalGroupMembership -Identity "username" | Select-Object Name, GroupScope | Sort-Object Name
-                    </div>
-
-                    <p><strong>Common group naming conventions:</strong></p>
-                    <ul>
-                        <li><strong>DL-</strong> Distribution Lists (email only, not for permissions)</li>
-                        <li><strong>SG-</strong> Security Groups (used for permissions)</li>
-                        <li><strong>Department name:</strong> Finance, HR, IT, Sales</li>
-                        <li><strong>Access level:</strong> ReadOnly, Modify, FullControl</li>
-                    </ul>
-
-                    <p><strong>Verify user is logging in with correct account:</strong></p>
-                    <ul>
-                        <li>Ask user to run: <code>whoami</code> in Command Prompt</li>
-                        <li>Verify output matches expected domain\\username</li>
-                        <li>If wrong account, have user sign out and sign back in with correct credentials</li>
-                    </ul>
-
-                    <div class="kb-tip">
-                        <strong>Pro Tip:</strong> Group membership changes can take 15-20 minutes to replicate. After adding user to group, have them sign out and back in to refresh their access token.
-                    </div>
-                `
-            },
-            {
-                number: 3,
-                title: 'Check NTFS and Share Permissions',
-                content: `
-                    <p><strong>Understanding the permission layers:</strong></p>
-                    <ul>
-                        <li><strong>Share Permissions:</strong> Control network access to the folder</li>
-                        <li><strong>NTFS Permissions:</strong> Control local and network access to files/folders</li>
-                        <li><strong>Most restrictive wins:</strong> If Share allows Full Control but NTFS allows Read, user gets Read only</li>
-                    </ul>
-
-                    <p><strong>Check Share Permissions:</strong></p>
-                    <ul>
-                        <li>On file server, navigate to shared folder</li>
-                        <li>Right-click folder → <strong>Properties</strong></li>
-                        <li><strong>Sharing</strong> tab → <strong>Advanced Sharing</strong> → <strong>Permissions</strong></li>
-                        <li>Verify the security group has appropriate share permissions:
-                            <ul>
-                                <li><strong>Read:</strong> View files only</li>
-                                <li><strong>Change:</strong> Read, write, delete files</li>
-                                <li><strong>Full Control:</strong> All permissions including changing permissions</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <p><strong>Check NTFS Permissions:</strong></p>
-                    <ul>
-                        <li>Right-click folder → <strong>Properties</strong></li>
-                        <li><strong>Security</strong> tab</li>
-                        <li>Look for user's groups in the list</li>
-                        <li>Click <strong>Advanced</strong> to see inherited vs explicit permissions</li>
-                        <li>Common NTFS permissions:
-                            <ul>
-                                <li><strong>Read & Execute:</strong> View and run files</li>
-                                <li><strong>Modify:</strong> Read, write, delete files</li>
-                                <li><strong>Full Control:</strong> All permissions including ownership</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <div class="kb-command">
-# PowerShell: Check effective permissions for a user
-$Path = "\\\\server\\share\\folder"
-$User = "DOMAIN\\username"
-
-# Get ACL (Access Control List):
-Get-Acl -Path $Path | Select-Object -ExpandProperty Access | Where-Object {$_.IdentityReference -like "*$User*"}
-                    </div>
-
-                    <p><strong>Common permission problems:</strong></p>
-                    <ul>
-                        <li><strong>Deny permission set:</strong> Deny always overrides Allow - remove Deny entries</li>
-                        <li><strong>Inheritance disabled:</strong> Folder not inheriting permissions from parent</li>
-                        <li><strong>Group nested too deep:</strong> User in Group A, Group A in Group B, Group B in Group C (can cause delays)</li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Best Practice:</strong> Always grant permissions to groups, not individual users. This makes management much easier when employees change roles.
-                    </div>
-                `
-            },
-            {
-                number: 4,
-                title: 'Grant Appropriate Permissions',
-                content: `
-                    <p><strong>Before granting access, verify approval:</strong></p>
-                    <ul>
-                        <li>Check if request is in ticket system with manager approval</li>
-                        <li>Confirm user's job role requires this access</li>
-                        <li>Follow principle of least privilege (grant minimum needed access)</li>
-                        <li>Check company policy for access approval workflow</li>
-                    </ul>
-
-                    <p><strong>Option 1: Add user to existing security group (recommended):</strong></p>
-                    <ul>
-                        <li>Open <strong>Active Directory Users and Computers</strong></li>
-                        <li>Find the appropriate security group (e.g., "SG-Finance-Modify")</li>
-                        <li>Right-click group → <strong>Properties</strong> → <strong>Members</strong> tab</li>
-                        <li>Click <strong>Add</strong>, search for user, click <strong>OK</strong></li>
-                        <li>User must log off and back on for change to take effect</li>
-                    </ul>
-
-                    <div class="kb-command">
-# PowerShell: Add user to security group
-Add-ADGroupMember -Identity "SG-Finance-Modify" -Members "username"
-
-# Verify user was added:
-Get-ADGroupMember -Identity "SG-Finance-Modify" | Where-Object {$_.SamAccountName -eq "username"}
-
-# Add multiple users at once:
-$users = "user1", "user2", "user3"
-Add-ADGroupMember -Identity "SG-Finance-Modify" -Members $users
-                    </div>
-
-                    <p><strong>Option 2: Modify NTFS permissions directly (only if no group exists):</strong></p>
-                    <ul>
-                        <li>Right-click folder → <strong>Properties</strong> → <strong>Security</strong> tab</li>
-                        <li>Click <strong>Edit</strong> → <strong>Add</strong></li>
-                        <li>Type the security group name (preferred) or username</li>
-                        <li>Click <strong>Check Names</strong> to verify</li>
-                        <li>Set appropriate permission level:
-                            <ul>
-                                <li><strong>Read & Execute:</strong> For viewing only</li>
-                                <li><strong>Modify:</strong> For editing and deleting</li>
-                                <li><strong>Full Control:</strong> Rarely needed for standard users</li>
-                            </ul>
-                        </li>
-                        <li>Click <strong>OK</strong>, then <strong>Apply</strong></li>
-                    </ul>
-
-                    <div class="kb-tip">
-                        <strong>Time for permissions to propagate:</strong>
-                        <ul>
-                            <li>Adding to group: User must log off/on (5 minutes)</li>
-                            <li>NTFS changes: Immediate for new connections</li>
-                            <li>Share permissions: May require disconnecting mapped drives</li>
-                        </ul>
-                    </div>
-                `
-            },
-            {
-                number: 5,
-                title: 'Test Access and Refresh Credentials',
-                content: `
-                    <p><strong>Have user refresh their access token:</strong></p>
-                    <ul>
-                        <li><strong>Option 1: Full sign-out (most reliable):</strong>
-                            <ul>
-                                <li>User clicks Start → Profile icon → <strong>Sign out</strong></li>
-                                <li>Wait 30 seconds</li>
-                                <li>Sign back in with domain credentials</li>
-                            </ul>
-                        </li>
-                        <li><strong>Option 2: Lock and unlock (faster but less reliable):</strong>
-                            <ul>
-                                <li>Windows + L to lock screen</li>
-                                <li>Unlock with password</li>
-                                <li>Works for some permission changes</li>
-                            </ul>
-                        </li>
-                        <li><strong>Option 3: Restart computer (if above doesn't work):</strong>
-                            <ul>
-                                <li>Some complex group nesting requires full restart</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <p><strong>Clear cached credentials (if still having issues):</strong></p>
-                    <div class="kb-command">
-# Clear cached network credentials
+            'vpn-connection': {
+                title: 'VPN Connection Failures',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Check Account Status',
+                        content: `<p>Verify AD account is not locked and password is not expired.</p>`
+                    },
+                    {
+                        number: 2,
+                        title: 'Clear Credential Cache',
+                        content: `
+                            <div class="kb-command">
+# Clear stored credentials:
 rundll32.exe keymgr.dll,KRShowKeyMgr
-
-# Or via Command Prompt:
-net use * /delete
-
-# Reconnect to share with fresh credentials:
-net use \\\\server\\share /user:DOMAIN\\username
-                    </div>
-
-                    <p><strong>Test access thoroughly:</strong></p>
-                    <ul>
-                        <li>Navigate to folder: <code>\\\\server\\share\\folder</code></li>
-                        <li><strong>Read test:</strong> Can user open a file?</li>
-                        <li><strong>Write test:</strong> Can user create new file?</li>
-                        <li><strong>Modify test:</strong> Can user edit existing file?</li>
-                        <li><strong>Delete test:</strong> Can user delete test file they created?</li>
-                        <li>Verify user can access all required subfolders</li>
-                    </ul>
-
-                    <p><strong>If still not working:</strong></p>
-                    <ul>
-                        <li>Check Windows Firewall isn't blocking SMB (port 445)</li>
-                        <li>Verify antivirus isn't blocking network access</li>
-                        <li>Check DNS is resolving server name correctly: <code>nslookup servername</code></li>
-                        <li>Try accessing by IP instead of name: <code>\\\\192.168.1.50\\share</code></li>
-                        <li>Review Security Event Logs on file server for access denied events (Event ID 4656)</li>
-                    </ul>
-                `
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Test Network Connectivity',
+                        content: `
+                            <div class="kb-command">
+Test-NetConnection vpn.company.com -Port 443
+                            </div>
+                        `
+                    }
+                ]
             },
-            {
-                number: 6,
-                title: 'Document, Educate, and Schedule Review',
-                content: `
-                    <p><strong>Document the permission grant in ticket:</strong></p>
-                    <ul>
-                        <li><strong>Resource path:</strong> \\\\fileserver\\Finance\\Reports</li>
-                        <li><strong>Approval received from:</strong> Manager name, approval ticket number</li>
-                        <li><strong>Action taken:</strong> "Added user to SG-Finance-ReadOnly security group"</li>
-                        <li><strong>Permission level granted:</strong> Read & Execute (view files only)</li>
-                        <li><strong>Business justification:</strong> "User transferred to Finance dept, needs access to monthly reports"</li>
-                        <li><strong>Validation:</strong> "User confirmed can access and open files in \\\\fileserver\\Finance\\Reports"</li>
-                    </ul>
-
-                    <p><strong>Educate the user:</strong></p>
-                    <ul>
-                        <li>"You now have access to the Finance shared folder"</li>
-                        <li>"You can view and open files, but cannot modify or delete them"</li>
-                        <li>"If you need higher access level in future, submit new request with manager approval"</li>
-                        <li>"Access permissions are reviewed quarterly - if you change roles, contact IT to update access"</li>
-                    </ul>
-
-                    <p><strong>Set up access review (if applicable):</strong></p>
-                    <ul>
-                        <li>For temporary access: Set calendar reminder to revoke after project ends</li>
-                        <li>For contractor access: Document end date and schedule removal</li>
-                        <li>For high-privilege access: Flag for quarterly review</li>
-                        <li>Document review date in ticket notes</li>
-                    </ul>
-
-                    <div class="kb-note">
-                        <strong>Security Best Practices:</strong>
-                        <ul>
-                            <li>Never grant Full Control unless absolutely necessary</li>
-                            <li>Always require manager approval for sensitive data access</li>
-                            <li>Review permissions quarterly and remove unused access</li>
-                            <li>Use groups instead of individual permissions</li>
-                            <li>Document all permission changes for audit trail</li>
-                            <li>For PII/financial data, require additional security approval</li>
-                        </ul>
-                    </div>
-
-                    <div class="kb-tip">
-                        <strong>Pro Tip:</strong> Create a spreadsheet tracking security group memberships for your department. Makes it easy to review who has access to what during audits!
-                    </div>
-                `
+            'wifi-no-internet': {
+                title: 'WiFi Connected, No Internet',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Check IP Configuration',
+                        content: `
+                            <div class="kb-command">
+ipconfig /all
+# Verify valid IP, gateway, DNS
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Test Connectivity',
+                        content: `
+                            <div class="kb-command">
+ping 8.8.8.8
+# If works: DNS issue. If fails: Network issue.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Flush DNS',
+                        content: `
+                            <div class="kb-command">
+ipconfig /flushdns
+ipconfig /release
+ipconfig /renew
+                            </div>
+                        `
+                    }
+                ]
             }
-        ]
-    }
-};
+        };
+
         function openArticle(articleId) {
             const modal = document.getElementById('kbModal');
             const title = document.getElementById('kbModalTitle');
@@ -1388,9 +639,8 @@ net use \\\\server\\share /user:DOMAIN\\username
                 body.innerHTML = `
                     <div style="text-align: center; padding: 60px 20px;">
                         <div style="font-size: 4rem; margin-bottom: 20px;">📚</div>
-                        <h3 style="color: #0F172A; margin-bottom: 16px; font-size: 1.5rem;">Article Coming Soon</h3>
-                        <p style="color: #64748B; font-size: 1.1rem;">This comprehensive troubleshooting guide is being developed.</p>
-                        <p style="color: #64748B;">Check back soon for detailed step-by-step instructions!</p>
+                        <h3 style="color: var(--text-primary); margin-bottom: 16px;">Article Coming Soon</h3>
+                        <p style="color: var(--text-secondary);">This comprehensive troubleshooting guide is being developed.</p>
                     </div>
                 `;
                 title.textContent = 'Knowledge Base Article';
@@ -1416,15 +666,24 @@ net use \\\\server\\share /user:DOMAIN\\username
             }
             
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeKBModal() {
             document.getElementById('kbModal').classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
+            document.body.style.overflow = '';
         }
 
-        // Close modal when clicking outside
+        function searchKB() {
+            const searchTerm = document.getElementById('kbSearch').value.toLowerCase();
+            const articles = document.querySelectorAll('.kb-article');
+            
+            articles.forEach(article => {
+                const text = article.textContent.toLowerCase();
+                article.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        }
+
         window.onclick = function(event) {
             const modal = document.getElementById('kbModal');
             if (event.target === modal) {
@@ -1432,7 +691,6 @@ net use \\\\server\\share /user:DOMAIN\\username
             }
         }
 
-        // Close modal with Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeKBModal();
