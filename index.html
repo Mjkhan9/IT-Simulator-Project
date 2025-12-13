@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Ticket Automation Simulator (ITAS)</title>
+    <title>ITAS - IT Automation Simulator</title>
     <link rel="stylesheet" href="css/fluent-core.css">
     <link rel="stylesheet" href="css/layout.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2300d4aa'/%3E%3Cpath d='M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z' fill='%230a0a0f'/%3E%3C/svg%3E">
 </head>
 <body>
     <!-- NAVBAR -->
     <header class="navbar">
         <div class="nav-left">
             <div class="logo">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="32" height="32" rx="6" fill="#2563EB"/>
-                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="white"/>
-                    <circle cx="16" cy="16" r="4" fill="#2563EB"/>
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="#0a0a0f"/>
+                    <circle cx="16" cy="16" r="3" fill="#00d4aa"/>
                 </svg>
             </div>
-            <span class="brand">IT Ticket Automation Simulator</span>
+            <div>
+                <span class="brand">ITAS</span>
+                <div class="brand-subtitle">IT Automation Simulator</div>
+            </div>
         </div>
         <nav class="nav-right">
             <a href="index.html" class="active">Home</a>
-            <a href="simulator.html">Ticket Simulator</a>
+            <a href="simulator.html">Simulator</a>
             <a href="scripts.html">Scripts</a>
             <a href="kb.html">Knowledge Base</a>
             <a href="labs.html">IT Labs</a>
@@ -32,78 +35,200 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content">
-            <h1>IT Ticket Automation Simulator</h1>
-            <p>A modern Fluent-styled platform for IT ticket handling, automation, and troubleshooting</p>
-            <button class="primary-btn" onclick="location.href='simulator.html'">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 8px;">
-                    <path d="M10 2L3 7V13C3 16.3137 6.13401 19 10 19C13.866 19 17 16.3137 17 13V7L10 2Z" fill="white"/>
-                </svg>
-                Start Simulation
-            </button>
-            <button class="secondary-btn" onclick="location.href='labs.html'" style="margin-left: 12px;">
-                Explore IT Labs
-            </button>
+            <div class="hero-badge">
+                <span class="status-indicator"></span>
+                <span>Production-Ready IT Operations Platform</span>
+            </div>
+            <h1>Master IT Support with<br><span>Realistic Simulations</span></h1>
+            <p>An interactive platform for practicing ticket handling, automation workflows, and troubleshooting scenarios. Built for IT professionals and recruiters.</p>
+            <div class="hero-buttons">
+                <button class="primary-btn" onclick="location.href='simulator.html'">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 7l5 3-5 3V7z" fill="currentColor"/>
+                    </svg>
+                    Launch Simulator
+                </button>
+                <button class="secondary-btn" onclick="location.href='labs.html'">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <rect x="3" y="5" width="14" height="10" rx="1" stroke="currentColor" stroke-width="2"/>
+                        <path d="M7 9l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Explore Labs
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">8</div>
+                    <div class="hero-stat-label">Training Scenarios</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">25+</div>
+                    <div class="hero-stat-label">PowerShell Scripts</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">50+</div>
+                    <div class="hero-stat-label">KB Articles</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">100%</div>
+                    <div class="hero-stat-label">Interactive</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- FEATURE CARDS -->
     <section class="grid-container">
         <div class="card feature-card" onclick="location.href='simulator.html'">
-            <div class="card-icon" style="background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);">
+            <div class="card-icon" style="background: linear-gradient(135deg, #00d4aa 0%, #00a88a 100%);">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
-                    <path d="M8 10H16M8 14H13" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="#0a0a0f" stroke-width="2"/>
+                    <path d="M8 10h8M8 14h5" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
                 </svg>
             </div>
             <h2>Ticket Simulator</h2>
-            <p>Generate realistic IT tickets with automated troubleshooting workflows, diagnostic logs, and resolution tracking</p>
+            <p>Generate realistic IT support tickets with automated troubleshooting workflows, system diagnostics, and real-time resolution tracking.</p>
             <div class="card-footer">
                 <span class="badge">Interactive</span>
-                <span class="badge">Real-time</span>
+                <span class="badge purple">Real-time</span>
             </div>
         </div>
 
         <div class="card feature-card" onclick="location.href='scripts.html'">
-            <div class="card-icon" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+            <div class="card-icon" style="background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                    <path d="M8 4L4 8L8 12M16 4L20 8L16 12M14 2L10 14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M8 5L4 9l4 4M16 5l4 4-4 4M14 3L10 17" stroke="white" stroke-width="2" stroke-linecap="round"/>
                 </svg>
             </div>
-            <h2>Automation Scripts</h2>
-            <p>Run simulated PowerShell scripts to resolve common IT issues with live console output and validation</p>
+            <h2>PowerShell Scripts</h2>
+            <p>Execute simulated automation scripts with live console output. Browse 25+ production-ready scripts for common IT tasks.</p>
             <div class="card-footer">
-                <span class="badge">PowerShell</span>
+                <span class="badge purple">PowerShell</span>
                 <span class="badge">Automated</span>
             </div>
         </div>
 
         <div class="card feature-card" onclick="location.href='kb.html'">
-            <div class="card-icon" style="background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);">
+            <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2L4 5V11C4 16 8 20 12 22C16 20 20 16 20 11V5L12 2Z" stroke="white" stroke-width="2"/>
-                    <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="#0a0a0f" stroke-width="2"/>
+                    <path d="M8 7h8M8 11h6" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
                 </svg>
             </div>
             <h2>Knowledge Base</h2>
-            <p>Comprehensive IT troubleshooting guides for Windows, network, software, and hardware issues</p>
+            <p>Access comprehensive troubleshooting guides covering Windows, networking, Office 365, security, and hardware issues.</p>
             <div class="card-footer">
-                <span class="badge">Documentation</span>
+                <span class="badge warning">50+ Articles</span>
                 <span class="badge">Best Practices</span>
             </div>
         </div>
 
         <div class="card feature-card" onclick="location.href='labs.html'">
-            <div class="card-icon" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);">
+            <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/>
-                    <path d="M12 7V12L15 15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M9 3h6v2H9V3zM12 12v4M8 16h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M5 8h14l-2 13H7L5 8z" stroke="white" stroke-width="2"/>
                 </svg>
             </div>
             <h2>IT Labs</h2>
-            <p>Hands-on scenario-based training with step-by-step walkthroughs and automated resolution notes</p>
+            <p>8 hands-on training scenarios with step-by-step walkthroughs. From beginner to advanced troubleshooting challenges.</p>
             <div class="card-footer">
-                <span class="badge">Training</span>
+                <span class="badge info">Hands-on</span>
                 <span class="badge">Scenarios</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPABILITIES SECTION -->
+    <section style="padding: 60px 40px; max-width: 1200px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 48px;">
+            <h2 style="font-size: 2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Built for IT Operations Excellence</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">Demonstrating real-world IT support workflows and automation capabilities</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="width: 44px; height: 44px; background: var(--accent-muted); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="var(--accent)" stroke-width="2"/>
+                        <path d="M9 12l2 2 4-4" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Active Directory</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">User provisioning, account lockouts, password resets, group management</p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="width: 44px; height: 44px; background: var(--accent-secondary-muted); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="var(--accent-secondary)" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="4" stroke="var(--accent-secondary)" stroke-width="2"/>
+                        <path d="M12 2v4M12 18v4M22 12h-4M6 12H2" stroke="var(--accent-secondary)" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Network Troubleshooting</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">VPN, WiFi, DNS, DHCP, firewall rules, connectivity issues</p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="width: 44px; height: 44px; background: var(--warning-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="var(--warning)" stroke-width="2"/>
+                        <path d="M8 12h8M8 8h4M8 16h6" stroke="var(--warning)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Microsoft 365</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Outlook, Teams, OneDrive, SharePoint, Exchange Online</p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="width: 44px; height: 44px; background: var(--info-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <rect x="4" y="4" width="6" height="6" stroke="var(--info)" stroke-width="2"/>
+                        <rect x="14" y="4" width="6" height="6" stroke="var(--info)" stroke-width="2"/>
+                        <rect x="4" y="14" width="6" height="6" stroke="var(--info)" stroke-width="2"/>
+                        <rect x="14" y="14" width="6" height="6" stroke="var(--info)" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Windows Administration</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Profile repair, updates, performance tuning, registry fixes</p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="width: 44px; height: 44px; background: var(--success-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <rect x="6" y="2" width="12" height="20" rx="1" stroke="var(--success)" stroke-width="2"/>
+                        <path d="M10 18h4" stroke="var(--success)" stroke-width="2" stroke-linecap="round"/>
+                        <rect x="8" y="15" width="8" height="4" fill="var(--success)"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Hardware & Printers</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Print spooler, drivers, peripheral troubleshooting, disk health</p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="width: 44px; height: 44px; background: var(--error-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="var(--error)" stroke-width="2"/>
+                        <path d="M12 8v5M12 16h.01" stroke="var(--error)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Security & MFA</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Multi-factor authentication, access control, security policies</p>
+                </div>
             </div>
         </div>
     </section>
@@ -111,25 +236,34 @@
     <!-- STATS SECTION -->
     <section class="stats-section">
         <div class="stat-card">
-            <h3>8</h3>
-            <p>IT Lab Scenarios</p>
+            <h3>10+</h3>
+            <p>Issue Categories</p>
         </div>
         <div class="stat-card">
-            <h3>25+</h3>
-            <p>PowerShell Scripts</p>
+            <h3>Real</h3>
+            <p>Workflow Automation</p>
         </div>
         <div class="stat-card">
-            <h3>50+</h3>
-            <p>KB Articles</p>
+            <h3>Live</h3>
+            <p>Console Simulation</p>
         </div>
         <div class="stat-card">
-            <h3>100%</h3>
-            <p>Automation Ready</p>
+            <h3>Pro</h3>
+            <p>Documentation</p>
         </div>
     </section>
 
     <footer class="footer">
-        <p>Built with Microsoft Fluent Design • Powered by IT Operations Excellence</p>
+        <div class="footer-content">
+            <div class="footer-brand">ITAS - IT Automation Simulator</div>
+            <p class="footer-text">Built with modern web technologies • Showcasing IT Operations Excellence</p>
+            <div class="footer-links">
+                <a href="simulator.html">Simulator</a>
+                <a href="scripts.html">Scripts</a>
+                <a href="kb.html">Knowledge Base</a>
+                <a href="labs.html">IT Labs</a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

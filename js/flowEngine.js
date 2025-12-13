@@ -178,44 +178,40 @@ function completeWorkflow() {
     setTimeout(() => {
         const canvas = document.getElementById('workflowCanvas');
         const summary = document.createElement('div');
-        summary.className = 'card';
-        summary.style.marginTop = '32px';
-        summary.style.animation = 'fadeIn 0.5s ease-in';
+        summary.className = 'resolution-summary';
         
         summary.innerHTML = `
-            <div style="text-align: center; padding: 20px;">
-                <div style="width: 64px; height: 64px; margin: 0 auto 16px; background: linear-gradient(135deg, #059669 0%, #047857 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <circle cx="16" cy="16" r="14" stroke="white" stroke-width="3"/>
-                        <path d="M10 16l5 5 7-7" stroke="white" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <h2 style="color: #047857; margin-bottom: 12px; font-size: 1.5rem;">Issue Resolved</h2>
-                <p style="color: #64748B; margin-bottom: 24px; line-height: 1.6;">
-                    The automation workflow successfully diagnosed and resolved the issue. 
-                    Resolution notes have been generated and attached to the ticket.
-                </p>
-                <div style="background: #F8FAFC; padding: 20px; border-radius: 8px; text-align: left; margin-bottom: 20px;">
-                    <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: #0F172A;">Resolution Summary</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E2E8F0;">
-                            <strong>Root Cause:</strong> Corrupted Outlook profile
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E2E8F0;">
-                            <strong>Action Taken:</strong> Reset Outlook profile and cleared cache
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E2E8F0;">
-                            <strong>Script Used:</strong> Reset-OutlookProfile.ps1
-                        </li>
-                        <li style="padding: 8px 0;">
-                            <strong>Validation:</strong> Outlook launches successfully
-                        </li>
-                    </ul>
-                </div>
-                <button class="primary-btn" onclick="generateNewTicket(); document.getElementById('workflowContainer').style.display='none';">
-                    Process Next Ticket
-                </button>
+            <div class="resolution-icon">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <circle cx="18" cy="18" r="16" stroke="white" stroke-width="3"/>
+                    <path d="M11 18l5 5 9-9" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                </svg>
             </div>
+            <h2 class="resolution-title">Issue Resolved</h2>
+            <p class="resolution-text">
+                The automation workflow successfully diagnosed and resolved the issue. 
+                Resolution notes have been generated and attached to the ticket.
+            </p>
+            <div class="resolution-details">
+                <h3>Resolution Summary</h3>
+                <ul>
+                    <li>
+                        <strong>Root Cause:</strong> Corrupted Outlook profile
+                    </li>
+                    <li>
+                        <strong>Action Taken:</strong> Reset Outlook profile and cleared cache
+                    </li>
+                    <li>
+                        <strong>Script Used:</strong> Reset-OutlookProfile.ps1
+                    </li>
+                    <li>
+                        <strong>Validation:</strong> Outlook launches successfully
+                    </li>
+                </ul>
+            </div>
+            <button class="primary-btn" onclick="generateNewTicket(); document.getElementById('workflowContainer').style.display='none';">
+                Process Next Ticket
+            </button>
         `;
         
         canvas.appendChild(summary);

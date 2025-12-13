@@ -169,7 +169,10 @@ function openDiagnostics() {
     const content = document.getElementById('diagnosticsContent');
     
     content.innerHTML = `
-        <h3 style="margin-bottom: 20px; font-size: 1.2rem; font-weight: 600;">Running System Diagnostics...</h3>
+        <h3 style="margin-bottom: 24px; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 10px;">
+            <span class="status-indicator"></span>
+            Running System Diagnostics...
+        </h3>
         
         <div class="diagnostic-card">
             <div class="diagnostic-header">
@@ -178,12 +181,12 @@ function openDiagnostics() {
             </div>
             <div class="diagnostic-result success">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="9" stroke="#059669" stroke-width="2"/>
-                    <path d="M6 10l3 3 5-5" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="10" cy="10" r="9" stroke="var(--success)" stroke-width="2"/>
+                    <path d="M6 10l3 3 5-5" stroke="var(--success)" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 <div>
-                    <div style="font-weight: 600; color: #047857;">Connected</div>
-                    <div style="font-size: 0.85rem; color: #065F46;">Network adapter is functioning properly</div>
+                    <div class="diagnostic-result-title" style="color: var(--success);">Connected</div>
+                    <div class="diagnostic-result-text">Network adapter is functioning properly</div>
                 </div>
             </div>
         </div>
@@ -195,12 +198,12 @@ function openDiagnostics() {
             </div>
             <div class="diagnostic-result success">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="9" stroke="#059669" stroke-width="2"/>
-                    <path d="M6 10l3 3 5-5" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="10" cy="10" r="9" stroke="var(--success)" stroke-width="2"/>
+                    <path d="M6 10l3 3 5-5" stroke="var(--success)" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 <div>
-                    <div style="font-weight: 600; color: #047857;">Resolving Correctly</div>
-                    <div style="font-size: 0.85rem; color: #065F46;">Primary DNS: 8.8.8.8 | Secondary DNS: 8.8.4.4</div>
+                    <div class="diagnostic-result-title" style="color: var(--success);">Resolving Correctly</div>
+                    <div class="diagnostic-result-text">Primary DNS: 8.8.8.8 | Secondary: 8.8.4.4</div>
                 </div>
             </div>
         </div>
@@ -212,12 +215,12 @@ function openDiagnostics() {
             </div>
             <div class="diagnostic-result error">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="9" stroke="#DC2626" stroke-width="2"/>
-                    <path d="M10 6v5M10 14h.01" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="10" cy="10" r="9" stroke="var(--error)" stroke-width="2"/>
+                    <path d="M10 6v5M10 14h.01" stroke="var(--error)" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 <div>
-                    <div style="font-weight: 600; color: #B91C1C;">Microsoft Outlook - Not Responding</div>
-                    <div style="font-size: 0.85rem; color: #991B1B;">Process crashes on startup. Corrupted profile detected.</div>
+                    <div class="diagnostic-result-title" style="color: var(--error);">Microsoft Outlook - Not Responding</div>
+                    <div class="diagnostic-result-text">Process crashes on startup. Corrupted profile detected.</div>
                 </div>
             </div>
         </div>
@@ -229,12 +232,12 @@ function openDiagnostics() {
             </div>
             <div class="diagnostic-result success">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="9" stroke="#059669" stroke-width="2"/>
-                    <path d="M6 10l3 3 5-5" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="10" cy="10" r="9" stroke="var(--success)" stroke-width="2"/>
+                    <path d="M6 10l3 3 5-5" stroke="var(--success)" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 <div>
-                    <div style="font-weight: 600; color: #047857;">Healthy</div>
-                    <div style="font-size: 0.85rem; color: #065F46;">C: Drive - 512GB SSD | 278GB Free (54%)</div>
+                    <div class="diagnostic-result-title" style="color: var(--success);">Healthy</div>
+                    <div class="diagnostic-result-text">C: Drive - 512GB SSD | 278GB Free (54%)</div>
                 </div>
             </div>
         </div>
@@ -246,12 +249,12 @@ function openDiagnostics() {
             </div>
             <div class="diagnostic-result warning">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 2l7 12H3l7-12z" stroke="#D97706" stroke-width="2" fill="none"/>
-                    <path d="M10 8v3M10 13h.01" stroke="#D97706" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10 2l7 12H3l7-12z" stroke="var(--warning)" stroke-width="2" fill="none"/>
+                    <path d="M10 8v3M10 13h.01" stroke="var(--warning)" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 <div>
-                    <div style="font-weight: 600; color: #B45309;">78% Utilized</div>
-                    <div style="font-size: 0.85rem; color: #92400E;">12.5GB / 16GB | Consider closing unused applications</div>
+                    <div class="diagnostic-result-title" style="color: var(--warning);">78% Utilized</div>
+                    <div class="diagnostic-result-text">12.5GB / 16GB | Consider closing unused applications</div>
                 </div>
             </div>
         </div>
@@ -418,15 +421,15 @@ function showToast(message, type = 'info') {
     toast.className = `toast ${type}`;
     
     const iconMap = {
-        success: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#059669" stroke-width="2"/><path d="M6 10l3 3 5-5" stroke="#059669" stroke-width="2" stroke-linecap="round"/></svg>',
-        error: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#DC2626" stroke-width="2"/><path d="M10 6v5M10 14h.01" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg>',
-        warning: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l7 12H3l7-12z" stroke="#D97706" stroke-width="2" fill="none"/><path d="M10 8v3M10 13h.01" stroke="#D97706" stroke-width="2" stroke-linecap="round"/></svg>',
-        info: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2563EB" stroke-width="2"/><path d="M10 9h.01M10 12v4" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/></svg>'
+        success: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="var(--success)" stroke-width="2"/><path d="M6 10l3 3 5-5" stroke="var(--success)" stroke-width="2" stroke-linecap="round"/></svg>',
+        error: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="var(--error)" stroke-width="2"/><path d="M10 6v5M10 14h.01" stroke="var(--error)" stroke-width="2" stroke-linecap="round"/></svg>',
+        warning: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l7 12H3l7-12z" stroke="var(--warning)" stroke-width="2" fill="none"/><path d="M10 8v3M10 13h.01" stroke="var(--warning)" stroke-width="2" stroke-linecap="round"/></svg>',
+        info: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="var(--accent)" stroke-width="2"/><path d="M10 9h.01M10 12v4" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>'
     };
     
     toast.innerHTML = `
         ${iconMap[type]}
-        <span style="font-weight: 500; color: #0F172A;">${message}</span>
+        <span class="toast-message">${message}</span>
     `;
     
     document.body.appendChild(toast);

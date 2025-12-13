@@ -1,100 +1,112 @@
-# IT Ticket Automation Simulator (ITAS)
+# ITAS - IT Automation Simulator
 
-A professional Microsoft Fluent-styled interactive platform for IT ticket handling, troubleshooting, and automation. Built to showcase advanced IT operations capabilities and automation workflows.
+<div align="center">
 
-## 🚀 Features
+![ITAS Logo](https://img.shields.io/badge/ITAS-IT%20Automation%20Simulator-00d4aa?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzAwZDRhYSIvPjxwYXRoIGQ9Ik0xNiA4TDggMTJWMTZDOCAyMC40MTgzIDExLjU4MTcgMjQgMTYgMjRDMjAuNDE4MyAyNCAyNCAyMC40MTgzIDI0IDE2VjEyTDE2IDhaIiBmaWxsPSIjMGEwYTBmIi8+PC9zdmc+)
 
-### **Ticket Simulator**
+**A professional interactive platform for IT ticket handling, automation, and troubleshooting training.**
+
+[![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-00d4aa?style=flat-square)](https://mjkhan9.github.io/IT-Simulator-Project/)
+[![Made with JavaScript](https://img.shields.io/badge/Made%20with-JavaScript-a855f7?style=flat-square&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CSS3](https://img.shields.io/badge/Styled%20with-CSS3-3b82f6?style=flat-square&logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+</div>
+
+---
+
+## 🎯 Overview
+
+ITAS (IT Automation Simulator) is an interactive web-based platform designed to simulate real-world IT support scenarios. Built with a modern dark theme inspired by developer tools and cybersecurity dashboards, it provides hands-on training for IT professionals, help desk technicians, and system administrators.
+
+## ✨ Features
+
+### 🎫 Ticket Simulator
 - Real-time IT ticket generation with realistic scenarios
-- Automated troubleshooting workflows with animated step-by-step execution
+- Automated 6-step troubleshooting workflow with visual progression
 - Dynamic ticket categorization (Network, Software, Hardware, Access)
-- Priority-based ticket management
 - Interactive diagnostics panel with system health checks
+- Live resolution tracking and documentation
 
-### **PowerShell Script Library**
-- 25+ production-ready automation scripts
-- Categories: Microsoft Office, Network, Windows System, Hardware
-- Live console output simulation
-- Script execution tracking and validation
+### 💻 PowerShell Script Library
+- **25+ production-ready automation scripts** organized by category
+- Live console output simulation with realistic timing
+- Script search and category filtering
+- Execution time estimates and status badges
 
-### **Knowledge Base**
-- 50+ comprehensive troubleshooting articles
-- Organized by category: Network, Office 365, Windows, Hardware, Security, Applications
-- Search functionality
-- Quick-reference guides
+### 📚 Knowledge Base
+- **50+ comprehensive troubleshooting articles**
+- Categories: Security, Office 365, Network, Windows, Hardware, Remote Access
+- Step-by-step guides with PowerShell commands
+- Pro tips and best practices
 
-### **IT Labs**
-- 8 hands-on scenario-based training exercises
-- Step-by-step walkthroughs with validation
-- Real-world troubleshooting scenarios
+### 🧪 IT Labs
+- **8 hands-on scenario-based training exercises**
 - Beginner to Advanced difficulty levels
+- Complete troubleshooting walkthroughs
+- Real-world resolution documentation
 
-## 💻 Technology Stack
+## 🎨 Design
 
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Design System**: Microsoft Fluent Design
-- **Styling**: Custom CSS with Windows 11 aesthetics
-- **Architecture**: Modular component-based structure
+Built with a distinctive **cyberpunk/terminal-inspired dark theme**:
+
+- **Primary Color:** Electric Cyan/Teal (#00d4aa)
+- **Secondary Color:** Electric Purple (#a855f7)
+- **Typography:** Plus Jakarta Sans + JetBrains Mono
+- **Effects:** Glassmorphism, gradient accents, animated grid backgrounds
+- **Fully responsive** design for all devices
 
 ## 📁 Project Structure
 
 ```
-/itas
+IT-Simulator-Project/
 ├── index.html              # Homepage with feature cards
 ├── simulator.html          # Ticket automation simulator
-├── scripts.html           # PowerShell script library
-├── kb.html                # Knowledge base
-├── labs.html              # Interactive IT labs
-├── /css
-│   ├── fluent-core.css    # Microsoft Fluent design system
-│   ├── layout.css         # Layout and navigation
-│   └── simulator.css      # Simulator-specific styles
-├── /js
-│   ├── ticketEngine.js    # Ticket generation engine
-│   └── flowEngine.js      # Workflow automation engine
-└── /assets
-    ├── /icons
-    ├── /images
-    └── /svgs
+├── scripts.html            # PowerShell script library
+├── kb.html                 # Knowledge base articles
+├── labs.html               # Interactive IT labs
+├── css/
+│   ├── fluent-core.css     # Core design system
+│   ├── layout.css          # Layout and navigation
+│   └── simulator.css       # Simulator-specific styles
+├── js/
+│   ├── ticketEngine.js     # Ticket generation engine
+│   └── flowEngine.js       # Workflow automation engine
+└── assets/
+    └── icons/              # SVG icons
 ```
 
-## 🎨 Design Philosophy
+## 🚀 Deployment
 
-Built with **Microsoft Fluent Design System** principles:
-- **Light Mode Theme** - Professional and recruiter-friendly
-- **Windows Blue Accent** (#2563EB)
-- **Acrylic Effects** - Depth and modern aesthetics
-- **Smooth Animations** - Polished user experience
-- **Responsive Layout** - Works on all devices
+This is a **static website** ready for deployment to:
+- GitHub Pages
+- Netlify
+- Vercel
+- Any static hosting service
 
-## 🔧 Key Components
+### Quick Deploy to GitHub Pages
 
-### Ticket Automation Engine
-- Generates realistic IT support tickets
-- 10+ predefined issue scenarios
-- Dynamic user/device/OS assignment
-- Priority and category classification
-
-### Workflow Engine
-- 6-step automated troubleshooting process
-- Visual workflow with animated transitions
-- Real-time status updates
-- Completion tracking and validation
-
-### Script Execution Simulator
-- Simulated PowerShell console output
-- Realistic script execution timing
-- Success/error state handling
-- Console color-coding
+1. Push to GitHub repository
+2. Go to Settings → Pages
+3. Select "main" branch and root folder
+4. Your site will be live at `https://username.github.io/IT-Simulator-Project/`
 
 ## 📊 Ticket Categories
 
-1. **Software - Microsoft Office** (Outlook, Teams, Office 365)
-2. **Network - Connectivity** (VPN, WiFi, DNS)
-3. **Hardware** (Printers, Devices, Peripherals)
-4. **Identity & Access** (Account lockouts, Permissions)
-5. **Windows System** (Profile corruption, Updates)
-6. **Performance** (Slow systems, Optimization)
+| Category | Examples |
+|----------|----------|
+| **Software** | Outlook, Teams, Office 365, Browser issues |
+| **Network** | VPN, WiFi, DNS, Connectivity |
+| **Hardware** | Printers, Devices, Peripherals |
+| **Identity** | Account lockouts, Permissions, MFA |
+| **Windows** | Profile corruption, Updates, Performance |
+| **Performance** | Slow systems, Optimization |
+
+## 🔧 Technologies
+
+- **Frontend:** HTML5, CSS3, Vanilla JavaScript
+- **Design:** Custom Dark Theme Design System
+- **Architecture:** Modular component-based structure
+- **Icons:** Custom SVG icons
 
 ## 🎯 Target Audience
 
@@ -103,32 +115,16 @@ Built with **Microsoft Fluent Design System** principles:
 - IT Operations Engineers
 - System Administrators
 - Technical Recruiters (Portfolio Showcase)
+- IT Students & Learners
 
 ## 🌟 Highlights for Recruiters
 
-- **Real-world scenarios** mirroring actual IT support workflows
-- **Production-quality code** with clean architecture
-- **Professional UI/UX** following Microsoft design standards
-- **Comprehensive automation** demonstrating technical depth
-- **Scalable structure** ready for enterprise deployment
-
-## 🚀 Deployment
-
-This is a static website ready for deployment to:
-- GitHub Pages
-- Netlify
-- Vercel
-- Any static hosting service
-
-Simply upload the `/itas` directory to your hosting provider.
-
-## 📝 Usage
-
-1. **Homepage**: Overview of all features with navigation cards
-2. **Ticket Simulator**: Click "Start Simulation" to generate tickets
-3. **Scripts**: Browse and execute PowerShell automation scripts
-4. **Knowledge Base**: Access troubleshooting documentation
-5. **IT Labs**: Complete hands-on training scenarios
+- ✅ **Real-world scenarios** mirroring actual IT support workflows
+- ✅ **Production-quality code** with clean architecture
+- ✅ **Professional UI/UX** with modern dark theme design
+- ✅ **Comprehensive automation** demonstrating technical depth
+- ✅ **Fully responsive** and accessible design
+- ✅ **No dependencies** - pure HTML/CSS/JavaScript
 
 ## 🔐 Security Note
 
@@ -136,14 +132,16 @@ All scripts and scenarios are **simulated** and safe for demonstration purposes.
 
 ## 📧 Contact
 
-Jawad - IT Operations Specialist
+**Mohammad Khan** - IT Operations Specialist
 - Expertise: Active Directory, IAM, AWS, Azure, ServiceNow
 - Certifications: AWS Solutions Architect Associate, Cloud Practitioner
 
-## 📄 License
-
-This project is part of a professional portfolio showcasing IT automation capabilities.
-
 ---
 
-**Built with Microsoft Fluent Design • Optimized for IT Operations Excellence**
+<div align="center">
+
+**Built with 💚 by Mohammad Khan**
+
+*Showcasing IT Operations Excellence*
+
+</div>
