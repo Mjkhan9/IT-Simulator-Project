@@ -1,65 +1,47 @@
 # ITAS - IT Automation Simulator
 
-<div align="center">
+An interactive web-based platform for practicing IT ticket handling, automation, and troubleshooting. I built this to create a training environment that mirrors the actual ServiceNow workflows and PowerShell automation I use daily.
 
-![ITAS Logo](https://img.shields.io/badge/ITAS-IT%20Automation%20Simulator-00d4aa?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzAwZDRhYSIvPjxwYXRoIGQ9Ik0xNiA4TDggMTJWMTZDOCAyMC40MTgzIDExLjU4MTcgMjQgMTYgMjRDMjAuNDE4MyAyNCAyNCAyMC40MTgzIDI0IDE2VjEyTDE2IDhaIiBmaWxsPSIjMGEwYTBmIi8+PC9zdmc+)
-
-**A professional interactive platform for IT ticket handling, automation, and troubleshooting training.**
-
-[![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-00d4aa?style=flat-square)](https://mjkhan9.github.io/IT-Simulator-Project/)
-[![Made with JavaScript](https://img.shields.io/badge/Made%20with-JavaScript-a855f7?style=flat-square&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![CSS3](https://img.shields.io/badge/Styled%20with-CSS3-3b82f6?style=flat-square&logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-
-</div>
+**[Live Demo](https://mjkhan9.github.io/IT-Simulator-Project/)**
 
 ---
 
-## 🎯 Overview
+## What It Does
 
-ITAS (IT Automation Simulator) is an interactive web-based platform designed to simulate real-world IT support scenarios. Built with a modern dark theme inspired by developer tools and cybersecurity dashboards, it provides hands-on training for IT professionals, help desk technicians, and system administrators.
+ITAS simulates real IT support scenarios with four main components:
 
-## ✨ Features
+**Ticket Simulator**  
+Generates realistic IT tickets with a 6-step troubleshooting workflow. Covers network issues, software problems, hardware failures, and account access - the same categories I handle in my actual support role.
 
-### 🎫 Ticket Simulator
-- Real-time IT ticket generation with realistic scenarios
-- Automated 6-step troubleshooting workflow with visual progression
-- Dynamic ticket categorization (Network, Software, Hardware, Access)
-- Interactive diagnostics panel with system health checks
-- Live resolution tracking and documentation
+**PowerShell Script Library**  
+25+ automation scripts organized by category - user management, system diagnostics, network troubleshooting, and common fixes. Each script includes execution timing and realistic console output.
 
-### 💻 PowerShell Script Library
-- **25+ production-ready automation scripts** organized by category
-- Live console output simulation with realistic timing
-- Script search and category filtering
-- Execution time estimates and status badges
+**Knowledge Base**  
+50+ troubleshooting articles covering Security, Office 365, Network, Windows, Hardware, and Remote Access. Step-by-step guides with the PowerShell commands I actually use.
 
-### 📚 Knowledge Base
-- **50+ comprehensive troubleshooting articles**
-- Categories: Security, Office 365, Network, Windows, Hardware, Remote Access
-- Step-by-step guides with PowerShell commands
-- Pro tips and best practices
+**IT Labs**  
+8 scenario-based training exercises ranging from beginner to advanced. Complete walkthroughs with resolution documentation.
 
-### 🧪 IT Labs
-- **8 hands-on scenario-based training exercises**
-- Beginner to Advanced difficulty levels
-- Complete troubleshooting walkthroughs
-- Real-world resolution documentation
+---
 
-## 🎨 Design
+## Design
 
-Built with a distinctive **cyberpunk/terminal-inspired dark theme**:
+I went with a dark theme inspired by terminal interfaces and security dashboards:
 
-- **Primary Color:** Electric Cyan/Teal (#00d4aa)
-- **Secondary Color:** Electric Purple (#a855f7)
-- **Typography:** Plus Jakarta Sans + JetBrains Mono
-- **Effects:** Glassmorphism, gradient accents, animated grid backgrounds
-- **Fully responsive** design for all devices
+- Primary: Electric Cyan (#00d4aa)
+- Secondary: Electric Purple (#a855f7)  
+- Typography: Plus Jakarta Sans + JetBrains Mono
+- Glassmorphism effects and gradient accents
 
-## 📁 Project Structure
+The whole thing is responsive and works on mobile - helpful for quick reference when I'm away from my desk.
+
+---
+
+## Project Structure
 
 ```
 IT-Simulator-Project/
-├── index.html              # Homepage with feature cards
+├── index.html              # Homepage with feature overview
 ├── simulator.html          # Ticket automation simulator
 ├── scripts.html            # PowerShell script library
 ├── kb.html                 # Knowledge base articles
@@ -75,73 +57,66 @@ IT-Simulator-Project/
     └── icons/              # SVG icons
 ```
 
-## 🚀 Deployment
+---
 
-This is a **static website** ready for deployment to:
+## Deployment
+
+Static site - no build step required. Works with:
+
 - GitHub Pages
 - Netlify
 - Vercel
-- Any static hosting service
+- Any static hosting
 
-### Quick Deploy to GitHub Pages
+### Deploy to GitHub Pages
 
-1. Push to GitHub repository
-2. Go to Settings → Pages
-3. Select "main" branch and root folder
-4. Your site will be live at `https://username.github.io/IT-Simulator-Project/`
-
-## 📊 Ticket Categories
-
-| Category | Examples |
-|----------|----------|
-| **Software** | Outlook, Teams, Office 365, Browser issues |
-| **Network** | VPN, WiFi, DNS, Connectivity |
-| **Hardware** | Printers, Devices, Peripherals |
-| **Identity** | Account lockouts, Permissions, MFA |
-| **Windows** | Profile corruption, Updates, Performance |
-| **Performance** | Slow systems, Optimization |
-
-## 🔧 Technologies
-
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **Design:** Custom Dark Theme Design System
-- **Architecture:** Modular component-based structure
-- **Icons:** Custom SVG icons
-
-## 🎯 Target Audience
-
-- IT Support Specialists
-- Help Desk Technicians
-- IT Operations Engineers
-- System Administrators
-- Technical Recruiters (Portfolio Showcase)
-- IT Students & Learners
-
-## 🌟 Highlights for Recruiters
-
-- ✅ **Real-world scenarios** mirroring actual IT support workflows
-- ✅ **Production-quality code** with clean architecture
-- ✅ **Professional UI/UX** with modern dark theme design
-- ✅ **Comprehensive automation** demonstrating technical depth
-- ✅ **Fully responsive** and accessible design
-- ✅ **No dependencies** - pure HTML/CSS/JavaScript
-
-## 🔐 Security Note
-
-All scripts and scenarios are **simulated** and safe for demonstration purposes. No actual system changes are made. This is an educational and portfolio showcase tool.
-
-## 📧 Contact
-
-**Mohammad Khan** - IT Operations Specialist
-- Expertise: Active Directory, IAM, AWS, Azure, ServiceNow
-- Certifications: AWS Solutions Architect Associate, Cloud Practitioner
+1. Push to GitHub
+2. Settings → Pages
+3. Select main branch, root folder
+4. Live at `https://username.github.io/IT-Simulator-Project/`
 
 ---
 
-<div align="center">
+## Ticket Categories
 
-**Built with 💚 by Mohammad Khan**
+The simulator covers the same issues I see regularly:
 
-*Showcasing IT Operations Excellence*
+- **Software** - Outlook, Teams, Office 365, browser issues
+- **Network** - VPN, WiFi, DNS, connectivity problems
+- **Hardware** - Printers, devices, peripherals
+- **Identity** - Account lockouts, permissions, MFA
+- **Windows** - Profile corruption, updates, performance
+- **Performance** - Slow systems, optimization
 
-</div>
+---
+
+## Tech Stack
+
+- HTML5, CSS3, Vanilla JavaScript
+- Custom dark theme design system
+- No external dependencies - pure frontend
+
+---
+
+## Who It's For
+
+- IT Support Specialists learning ticket workflows
+- Help Desk Technicians practicing troubleshooting
+- System Administrators exploring automation
+- Anyone studying for IT support certifications
+
+---
+
+## Note on Scripts
+
+All scripts and scenarios are simulated for demonstration purposes. No actual system changes are made - this is a training and portfolio tool.
+
+---
+
+## Author
+
+**Mohammad Khan**  
+IT Operations Specialist  
+AWS Solutions Architect Associate, Cloud Practitioner
+
+[LinkedIn](https://linkedin.com/in/mohammad-jkhan) · [GitHub](https://github.com/Mjkhan9)

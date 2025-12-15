@@ -1,26 +1,25 @@
-# 🚀 ONE-CLICK DEPLOYMENT INSTRUCTIONS
+# Deployment Instructions
 
-## ⚡ Super Simple - 3 Steps!
+## Steps
 
-### Step 1: Download Your Project
-- Download the entire `itas` folder from Claude outputs
-- Save it somewhere on your computer (e.g., Desktop, Documents)
+### 1. Download Your Project
+Download the entire project folder and save it somewhere on your computer.
 
-### Step 2: Run the Script
-1. Open the `itas` folder
-2. **Right-click** on `DEPLOY.ps1`
-3. Select **"Run with PowerShell"**
+### 2. Run the Deployment Script
+1. Open the project folder
+2. Right-click on `DEPLOY.ps1`
+3. Select "Run with PowerShell"
 
-**That's it!** The script will:
-- ✅ Initialize git
-- ✅ Add all your files
-- ✅ Commit with a professional message
-- ✅ Push everything to GitHub
-- ✅ Open the GitHub Pages settings for you
+The script will:
+- Initialize git
+- Add all files
+- Commit with a professional message
+- Push to GitHub
+- Open GitHub Pages settings
 
-### Step 3: Enable GitHub Pages
-The script will automatically open GitHub Pages settings.
-Just:
+### 3. Enable GitHub Pages
+The script opens GitHub Pages settings automatically.
+
 1. Source: **main**
 2. Click **Save**
 3. Wait 2 minutes
@@ -28,25 +27,19 @@ Just:
 
 ---
 
-## 🎉 Done!
-
-Your professional IT automation simulator will be live!
-
----
-
-## ⚠️ If PowerShell Won't Run the Script
+## If PowerShell Won't Run the Script
 
 If you get a security error, run this first:
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
 
-Then run `DEPLOY.ps1` again!
+Then run `DEPLOY.ps1` again.
 
 ---
 
-## 🔗 Your URLs
+## URLs
 
-**Repository**: https://github.com/Mjkhan9/IT-Simulator-Project
-**Live Site**: https://Mjkhan9.github.io/IT-Simulator-Project/
-**Pages Settings**: https://github.com/Mjkhan9/IT-Simulator-Project/settings/pages
+- **Repository**: https://github.com/Mjkhan9/IT-Simulator-Project
+- **Live Site**: https://Mjkhan9.github.io/IT-Simulator-Project/
+- **Pages Settings**: https://github.com/Mjkhan9/IT-Simulator-Project/settings/pages
