@@ -14,7 +14,7 @@ ITAS simulates real IT support scenarios with four main components:
 Generates realistic IT tickets with a 6-step troubleshooting workflow. Covers network issues, software problems, hardware failures, and account access - the same categories I handle in my actual support role.
 
 **PowerShell Script Library**  
-25+ automation scripts organized by category - user management, system diagnostics, network troubleshooting, and common fixes. Each script includes execution timing and realistic console output.
+24 simulated automation scripts organized by category - user management, system diagnostics, network troubleshooting, and common fixes. Each script includes execution timing and realistic console output.
 
 **Knowledge Base**  
 50+ troubleshooting articles covering Security, Office 365, Network, Windows, Hardware, and Remote Access. Step-by-step guides with the PowerShell commands I actually use.
