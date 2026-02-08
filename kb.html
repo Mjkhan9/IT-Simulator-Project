@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base - ITAS</title>
+    <link rel="stylesheet" href="css/fluent-core.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/simulator.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2300d4aa'/%3E%3Cpath d='M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z' fill='%230a0a0f'/%3E%3C/svg%3E">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="#0a0a0f"/>
+                    <circle cx="16" cy="16" r="3" fill="#00d4aa"/>
+                </svg>
+            </div>
+            <div>
+                <span class="brand">ITAS</span>
+                <div class="brand-subtitle">IT Automation Simulator</div>
+            </div>
+        </div>
+        <nav class="nav-right">
+            <a href="index.html">Home</a>
+            <a href="simulator.html">Simulator</a>
+            <a href="scripts.html">Scripts</a>
+            <a href="kb.html" class="active">Knowledge Base</a>
+            <a href="labs.html">IT Labs</a>
+        </nav>
+    </header>
+
+    <div class="main-content" style="max-width: 1400px; margin: 0 auto;">
+        <div class="content-header">
+            <h1 style="display: flex; align-items: center; gap: 12px;">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="6" fill="var(--warning)"/>
+                    <path d="M8 26a4 4 0 014-4h12" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 4h12v24H12a4 4 0 01-4-4V8a4 4 0 014-4z" stroke="#0a0a0f" stroke-width="2"/>
+                    <path d="M14 10h8M14 14h6" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                IT Knowledge Base
+            </h1>
+            <p>Comprehensive troubleshooting guides and documentation for IT professionals</p>
+        </div>
+
+        <!-- SEARCH -->
+        <div style="margin-bottom: 32px;">
+            <input type="search" placeholder="Search knowledge base articles..." id="kbSearch" onkeyup="searchKB()" style="max-width: 500px; padding-left: 44px; background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 viewBox=%270 0 20 20%27 fill=%27none%27%3E%3Ccircle cx=%278%27 cy=%278%27 r=%276%27 stroke=%27%2364748b%27 stroke-width=%272%27/%3E%3Cpath d=%27M12 12l5 5%27 stroke=%27%2364748b%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: 14px center;">
+        </div>
+
+        <div class="grid-container" style="padding: 0;">
+            <!-- Security & Access -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="#0a0a0f" stroke-width="2"/>
+                        <path d="M9 12l2 2 4-4" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Security & Access</h2>
+                
+                <div class="kb-article" onclick="openArticle('account-lockout')">
+                    <h3>Account Locked Out</h3>
+                    <p>Unlocking user accounts and resetting passwords in Active Directory</p>
+                    <span class="badge warning">Identity</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('mfa-issues')">
+                    <h3>MFA Authentication Problems</h3>
+                    <p>Troubleshooting multi-factor authentication failures and resets</p>
+                    <span class="badge warning">Security</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('permissions')">
+                    <h3>Permission Denied Errors</h3>
+                    <p>Resolving file, folder, and share access permission issues</p>
+                    <span class="badge warning">Security</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('password-policy')">
+                    <h3>Password Policy Compliance</h3>
+                    <p>Understanding and implementing password complexity requirements</p>
+                    <span class="badge warning">Policy</span>
+                </div>
+            </div>
+
+            <!-- Microsoft Office -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <rect x="4" y="4" width="16" height="16" rx="2"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Microsoft Office & 365</h2>
+                
+                <div class="kb-article" onclick="openArticle('outlook-crash')">
+                    <h3>Outlook Won't Open or Crashes</h3>
+                    <p>Steps to repair Outlook profile and resolve startup issues</p>
+                    <span class="badge error">Office 365</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('teams-loading')">
+                    <h3>Teams Stuck on Loading Screen</h3>
+                    <p>Clearing Teams cache and resolving startup problems</p>
+                    <span class="badge purple">Teams</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('office-activation')">
+                    <h3>Office Activation Issues</h3>
+                    <p>Troubleshooting Office 365 licensing and activation errors</p>
+                    <span class="badge error">Licensing</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('onedrive-sync')">
+                    <h3>OneDrive Sync Problems</h3>
+                    <p>Fixing OneDrive sync errors and file conflicts</p>
+                    <span class="badge info">OneDrive</span>
+                </div>
+            </div>
+
+            <!-- Network & Connectivity -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--accent) 0%, #00a88a 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="#0a0a0f" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="4" fill="#0a0a0f"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Network & Connectivity</h2>
+                
+                <div class="kb-article" onclick="openArticle('vpn-connection')">
+                    <h3>VPN Connection Failures</h3>
+                    <p>Diagnosing and resolving VPN authentication and connection issues</p>
+                    <span class="badge">VPN</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('wifi-no-internet')">
+                    <h3>WiFi Connected, No Internet</h3>
+                    <p>Troubleshooting network connectivity when WiFi shows connected</p>
+                    <span class="badge">Network</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('dns-issues')">
+                    <h3>DNS Resolution Problems</h3>
+                    <p>Fixing DNS configuration and name resolution failures</p>
+                    <span class="badge">DNS</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('network-drives')">
+                    <h3>Network Drives Not Connecting</h3>
+                    <p>Resolving mapped drive and file share connection issues</p>
+                    <span class="badge">Shares</span>
+                </div>
+            </div>
+
+            <!-- Windows System -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <rect x="3" y="3" width="8" height="8"/>
+                        <rect x="13" y="3" width="8" height="8"/>
+                        <rect x="3" y="13" width="8" height="8"/>
+                        <rect x="13" y="13" width="8" height="8"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Windows System</h2>
+                
+                <div class="kb-article" onclick="openArticle('profile-corruption')">
+                    <h3>User Profile Corruption</h3>
+                    <p>Repairing corrupted Windows profiles and migrating user data</p>
+                    <span class="badge info">Windows</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('windows-update')">
+                    <h3>Windows Update Issues</h3>
+                    <p>Fixing stuck updates and Windows Update component errors</p>
+                    <span class="badge info">Updates</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('slow-performance')">
+                    <h3>System Running Slow</h3>
+                    <p>Diagnosing and optimizing Windows performance issues</p>
+                    <span class="badge info">Performance</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('blue-screen')">
+                    <h3>Blue Screen Errors (BSOD)</h3>
+                    <p>Analyzing and resolving Windows stop errors and crashes</p>
+                    <span class="badge error">Critical</span>
+                </div>
+            </div>
+
+            <!-- Hardware & Printers -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--accent-secondary) 0%, #7c3aed 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <rect x="6" y="3" width="12" height="18" rx="1"/>
+                        <rect x="8" y="15" width="8" height="4"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Hardware & Printers</h2>
+                
+                <div class="kb-article" onclick="openArticle('printer-offline')">
+                    <h3>Printer Shows Offline</h3>
+                    <p>Resolving printer offline status and connection issues</p>
+                    <span class="badge purple">Printer</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('print-spooler')">
+                    <h3>Print Jobs Stuck in Queue</h3>
+                    <p>Clearing print spooler and resolving stuck print jobs</p>
+                    <span class="badge purple">Printer</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('disk-health')">
+                    <h3>Disk Health and Errors</h3>
+                    <p>Checking disk health and repairing file system errors</p>
+                    <span class="badge purple">Storage</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('driver-issues')">
+                    <h3>Device Driver Problems</h3>
+                    <p>Updating and troubleshooting hardware drivers</p>
+                    <span class="badge purple">Drivers</span>
+                </div>
+            </div>
+
+            <!-- Remote Access -->
+            <div class="card">
+                <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="5" width="18" height="14" rx="2" stroke="#0a0a0f" stroke-width="2"/>
+                        <path d="M8 10h8M8 14h5" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Remote Access</h2>
+                
+                <div class="kb-article" onclick="openArticle('rdp-connection')">
+                    <h3>Remote Desktop Connection Failed</h3>
+                    <p>Troubleshooting RDP connection and authentication issues</p>
+                    <span class="badge success">RDP</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('rdp-firewall')">
+                    <h3>RDP Blocked by Firewall</h3>
+                    <p>Configuring Windows Firewall for Remote Desktop access</p>
+                    <span class="badge success">Firewall</span>
+                </div>
+
+                <div class="kb-article" onclick="openArticle('remote-support')">
+                    <h3>Remote Support Tools Setup</h3>
+                    <p>Setting up and using remote support and screen sharing tools</p>
+                    <span class="badge success">Tools</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KB Article Modal -->
+    <div id="kbModal" class="kb-modal">
+        <div class="kb-modal-content">
+            <div class="kb-modal-header">
+                <h2 id="kbModalTitle"></h2>
+                <button class="kb-modal-close" onclick="closeKBModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="kb-modal-body" id="kbModalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        const kbArticles = {
+            'account-lockout': {
+                title: 'Account Locked Out - Password Reset',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify the System and Gather Information',
+                        content: `
+                            <ul>
+                                <li><strong>Ask the user:</strong> "What system are you trying to access?" (Email, VPN, computer login)</li>
+                                <li><strong>Confirm the error message:</strong> "What exact error message do you see?"</li>
+                                <li><strong>Verify user identity:</strong> Confirm through secure process per organization policies</li>
+                                <li><strong>Gather account details:</strong> Full name, email, username, employee ID</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Security Note:</strong> Never reset a password without properly verifying the user's identity.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Locate and Unlock the Account',
+                        content: `
+                            <p><strong>Using Active Directory Users and Computers:</strong></p>
+                            <ul>
+                                <li>Open ADUC and search for the user account</li>
+                                <li>Right-click → Properties → Account tab</li>
+                                <li>Uncheck "Account is locked out"</li>
+                                <li>Click Apply, then OK</li>
+                            </ul>
+                            <div class="kb-command">
+# PowerShell method:
+Unlock-ADAccount -Identity "username"
+Get-ADUser -Identity "username" -Properties LockedOut | Select Name, LockedOut
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Reset Password (if needed)',
+                        content: `
+                            <p><strong>Password requirements:</strong></p>
+                            <ul>
+                                <li>Minimum 8-12 characters</li>
+                                <li>Uppercase, lowercase, number, special character</li>
+                                <li>Cannot contain username or previous passwords</li>
+                            </ul>
+                            <div class="kb-command">
+# Reset password and force change at logon:
+Set-ADAccountPassword -Identity "username" -Reset
+Set-ADUser -Identity "username" -ChangePasswordAtLogon $true
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Instruct User on Next Steps',
+                        content: `
+                            <p><strong>Critical instructions for user:</strong></p>
+                            <ul>
+                                <li>"Log in right now using your new password"</li>
+                                <li>"Update password on ALL devices" - especially mobile devices</li>
+                                <li>Update: iPhone/Android mail, Outlook mobile, Teams, VPN client</li>
+                            </ul>
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> 80% of repeated lockouts are caused by mobile devices still using old passwords!
+                            </div>
+                        `
+                    }
+                ]
+            },
+            'outlook-crash': {
+                title: 'Outlook Won\'t Open or Crashes',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Gather Information and Identify Symptoms',
+                        content: `
+                            <p><strong>Ask diagnostic questions:</strong></p>
+                            <ul>
+                                <li>"Does Outlook start at all, or crash immediately?"</li>
+                                <li>"Do you see any error messages?"</li>
+                                <li>"When did this start?" (After update, crash, etc.)</li>
+                                <li>"Do other Office applications work?"</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Quick test:</strong> If Word/Excel work fine, the issue is Outlook-specific.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Try Safe Mode First',
+                        content: `
+                            <p><strong>Safe Mode starts Outlook without add-ins:</strong></p>
+                            <ul>
+                                <li>Close Outlook completely (check Task Manager)</li>
+                                <li>Press Windows + R to open Run dialog</li>
+                                <li>Type: <code>outlook.exe /safe</code></li>
+                                <li>If it works in Safe Mode → add-in issue</li>
+                            </ul>
+                            <div class="kb-command">
+outlook.exe /safe
+                            </div>
+                            <div class="kb-tip">
+                                <strong>If Safe Mode works:</strong> Go to File → Options → Add-ins → Disable add-ins one by one to find the culprit.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Repair or Recreate Outlook Profile',
+                        content: `
+                            <p><strong>Option A: Delete OST file (faster)</strong></p>
+                            <ul>
+                                <li>Navigate to: %localappdata%\\Microsoft\\Outlook</li>
+                                <li>Delete the .ost file</li>
+                                <li>Outlook will recreate it from server</li>
+                            </ul>
+                            <div class="kb-command">
+# PowerShell: Clear Outlook cache
+Remove-Item "$env:LOCALAPPDATA\\Microsoft\\Outlook\\*.ost" -Force
+                            </div>
+                            <p><strong>Option B: Create new profile</strong></p>
+                            <ul>
+                                <li>Control Panel → Mail → Show Profiles</li>
+                                <li>Add new profile, enter email</li>
+                                <li>Set as default and delete old profile</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Run Office Repair',
+                        content: `
+                            <p><strong>If profile fix doesn't work:</strong></p>
+                            <ul>
+                                <li>Control Panel → Programs → Programs and Features</li>
+                                <li>Find Microsoft Office/365</li>
+                                <li>Right-click → Change</li>
+                                <li>Try Quick Repair first (5-10 min)</li>
+                                <li>If that fails, try Online Repair (20-30 min)</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Time estimate:</strong> Online Repair downloads 2-3 GB and takes 20-30 minutes. Inform the user!
+                            </div>
+                        `
+                    }
+                ]
+            },
+            'mfa-issues': {
+                title: 'MFA Authentication Problems',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Identify the MFA Issue Type',
+                        content: `
+                            <p><strong>Common MFA issues:</strong></p>
+                            <ul>
+                                <li>New phone - Authenticator app not transferred</li>
+                                <li>Time sync issue - Device time incorrect</li>
+                                <li>App deleted accidentally</li>
+                                <li>Phone number changed</li>
+                                <li>No cell service for SMS</li>
+                            </ul>
+                            <div class="kb-note">
+                                <strong>Security Note:</strong> MFA resets require enhanced identity verification.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Try Quick Fixes First',
+                        content: `
+                            <p><strong>Most common fix - Time sync:</strong></p>
+                            <ul>
+                                <li>iPhone: Settings → General → Date & Time → Set Automatically</li>
+                                <li>Android: Settings → System → Date & Time → Automatic</li>
+                            </ul>
+                            <div class="kb-tip">
+                                <strong>Pro Tip:</strong> 70% of MFA issues are time sync problems! Even 1-2 minutes off causes failures.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Reset MFA Registration',
+                        content: `
+                            <p><strong>Azure AD Portal method:</strong></p>
+                            <ul>
+                                <li>Azure AD Admin Center → Users</li>
+                                <li>Find user → Authentication methods</li>
+                                <li>Click "Require re-register MFA"</li>
+                            </ul>
+                            <div class="kb-command">
+# PowerShell method:
+Connect-MsolService
+Get-MsolUser -UserPrincipalName "user@company.com" | Set-MsolUser -StrongAuthenticationMethods @()
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: 'Guide MFA Re-enrollment',
+                        content: `
+                            <p><strong>Have user set up MFA again:</strong></p>
+                            <ul>
+                                <li>Sign in - system prompts "More information required"</li>
+                                <li>Choose: Microsoft Authenticator app (recommended)</li>
+                                <li>Download app, scan QR code, test</li>
+                                <li><strong>Set up backup method!</strong> (SMS as backup)</li>
+                            </ul>
+                            <div class="kb-tip">
+                                <strong>Best Practice:</strong> Always have users set up TWO MFA methods to prevent future lockouts.
+                            </div>
+                        `
+                    }
+                ]
+            },
+            'permissions': {
+                title: 'Permission Denied Errors',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Gather Information',
+                        content: `
+                            <ul>
+                                <li>What are they trying to access? (Network share, SharePoint, etc.)</li>
+                                <li>What error message exactly?</li>
+                                <li>Did they ever have access before?</li>
+                                <li>Do colleagues have access?</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Check Group Membership',
+                        content: `
+                            <div class="kb-command">
+# Check user's groups:
+Get-ADUser -Identity "username" -Properties MemberOf | Select -ExpandProperty MemberOf
+
+# Check if user is in specific group:
+Get-ADGroupMember -Identity "Finance_Users" | Where {$_.SamAccountName -eq "username"}
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Add User to Required Group',
+                        content: `
+                            <p><strong>With manager approval:</strong></p>
+                            <div class="kb-command">
+# Add user to security group:
+Add-ADGroupMember -Identity "SG-Finance-ReadOnly" -Members "username"
+                            </div>
+                            <p>User must log off and back on for change to take effect.</p>
+                        `
+                    }
+                ]
+            },
+            'teams-loading': {
+                title: 'Teams Stuck on Loading Screen',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Force Close Teams',
+                        content: `<p>Task Manager → End all Teams processes</p>`
+                    },
+                    {
+                        number: 2,
+                        title: 'Clear Teams Cache',
+                        content: `
+                            <div class="kb-command">
+# Delete Teams cache:
+rmdir /s /q "%appdata%\\Microsoft\\Teams"
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Clear Credentials',
+                        content: `<p>Credential Manager → Remove Teams entries</p>`
+                    }
+                ]
+            },
+            'vpn-connection': {
+                title: 'VPN Connection Failures',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Check Account Status',
+                        content: `<p>Verify AD account is not locked and password is not expired.</p>`
+                    },
+                    {
+                        number: 2,
+                        title: 'Clear Credential Cache',
+                        content: `
+                            <div class="kb-command">
+# Clear stored credentials:
+rundll32.exe keymgr.dll,KRShowKeyMgr
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Test Network Connectivity',
+                        content: `
+                            <div class="kb-command">
+Test-NetConnection vpn.company.com -Port 443
+                            </div>
+                        `
+                    }
+                ]
+            },
+            'wifi-no-internet': {
+                title: 'WiFi Connected, No Internet',
+                steps: [
+                    {
+                        number: 1,
+                        title: 'Check IP Configuration',
+                        content: `
+                            <div class="kb-command">
+ipconfig /all
+# Verify valid IP, gateway, DNS
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: 'Test Connectivity',
+                        content: `
+                            <div class="kb-command">
+ping 8.8.8.8
+# If works: DNS issue. If fails: Network issue.
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: 'Flush DNS',
+                        content: `
+                            <div class="kb-command">
+ipconfig /flushdns
+ipconfig /release
+ipconfig /renew
+                            </div>
+                        `
+                    }
+                ]
+            }
+        };
+
+        function openArticle(articleId) {
+            const modal = document.getElementById('kbModal');
+            const title = document.getElementById('kbModalTitle');
+            const body = document.getElementById('kbModalBody');
+            
+            const article = kbArticles[articleId];
+            
+            if (!article) {
+                body.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">📚</div>
+                        <h3 style="color: var(--text-primary); margin-bottom: 16px;">Article Coming Soon</h3>
+                        <p style="color: var(--text-secondary);">This comprehensive troubleshooting guide is being developed.</p>
+                    </div>
+                `;
+                title.textContent = 'Knowledge Base Article';
+            } else {
+                title.textContent = article.title;
+                
+                let stepsHTML = '';
+                article.steps.forEach(step => {
+                    stepsHTML += `
+                        <div class="kb-step">
+                            <div class="kb-step-title">
+                                <span class="kb-step-number">${step.number}</span>
+                                ${step.title}
+                            </div>
+                            <div class="kb-step-content">
+                                ${step.content}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                body.innerHTML = stepsHTML;
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeKBModal() {
+            document.getElementById('kbModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function searchKB() {
+            const searchTerm = document.getElementById('kbSearch').value.toLowerCase();
+            const articles = document.querySelectorAll('.kb-article');
+            
+            articles.forEach(article => {
+                const text = article.textContent.toLowerCase();
+                article.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('kbModal');
+            if (event.target === modal) {
+                closeKBModal();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeKBModal();
+            }
+        });
+    </script>
+</body>
+</html>

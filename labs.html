@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Labs - ITAS</title>
+    <link rel="stylesheet" href="css/fluent-core.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/simulator.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2300d4aa'/%3E%3Cpath d='M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z' fill='%230a0a0f'/%3E%3C/svg%3E">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="#0a0a0f"/>
+                    <circle cx="16" cy="16" r="3" fill="#00d4aa"/>
+                </svg>
+            </div>
+            <div>
+                <span class="brand">ITAS</span>
+                <div class="brand-subtitle">IT Automation Simulator</div>
+            </div>
+        </div>
+        <nav class="nav-right">
+            <a href="index.html">Home</a>
+            <a href="simulator.html">Simulator</a>
+            <a href="scripts.html">Scripts</a>
+            <a href="kb.html">Knowledge Base</a>
+            <a href="labs.html" class="active">IT Labs</a>
+        </nav>
+    </header>
+
+    <div class="main-content" style="max-width: 1400px; margin: 0 auto;">
+        <div class="content-header">
+            <h1 style="display: flex; align-items: center; gap: 12px;">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="6" fill="var(--info)"/>
+                    <path d="M12 6h8v3h-8V6zM16 16v5M11 21h10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M8 12h16l-3 14H11L8 12z" stroke="white" stroke-width="2"/>
+                </svg>
+                IT Scenario Labs
+            </h1>
+            <p>Hands-on training scenarios with step-by-step walkthroughs and validation</p>
+        </div>
+
+        <!-- PROGRESS OVERVIEW -->
+        <div style="display: flex; gap: 24px; margin-bottom: 32px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="font-size: 2rem; font-weight: 800; color: var(--accent);">8</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Total Labs</div>
+            </div>
+            <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="font-size: 2rem; font-weight: 800; color: var(--success);">3</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Beginner</div>
+            </div>
+            <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="font-size: 2rem; font-weight: 800; color: var(--warning);">3</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Intermediate</div>
+            </div>
+            <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                <div style="font-size: 2rem; font-weight: 800; color: var(--error);">2</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Advanced</div>
+            </div>
+        </div>
+
+        <div class="grid-container" style="padding: 0;">
+            <!-- Lab 1: Outlook Won't Open -->
+            <div class="card feature-card" onclick="startLab(1)">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/>
+                        </svg>
+                    </div>
+                    <span class="badge success">Beginner</span>
+                </div>
+                <h2 style="margin-bottom: 12px; font-size: 1.2rem;">Lab 1: Outlook Won't Open</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">User reports that Outlook crashes immediately upon launch. Learn to diagnose and resolve profile corruption issues.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge">Office 365</span>
+                    <span class="badge success">~15 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 2: VPN Not Connecting -->
+            <div class="card feature-card" onclick="startLab(2)">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--accent) 0%, #00a88a 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" stroke="#0a0a0f" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="4" fill="#0a0a0f"/>
+                        </svg>
+                    </div>
+                    <span class="badge warning">Intermediate</span>
+                </div>
+                <h2 style="margin-bottom: 12px; font-size: 1.2rem;">Lab 2: VPN Connection Failure</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">Remote worker cannot connect to corporate VPN. Troubleshoot authentication and network configuration issues.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge">Network</span>
+                    <span class="badge warning">~20 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 3: WiFi Connected, No Internet -->
+            <div class="card feature-card" onclick="startLab(3)">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                            <path d="M2 10c4-4 8-6 10-6s6 2 10 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M6 14c2-2 4-3 6-3s4 1 6 3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="18" r="2" fill="white"/>
+                        </svg>
+                    </div>
+                    <span class="badge success">Beginner</span>
+                </div>
+                <h2 style="margin-bottom: 12px; font-size: 1.2rem;">Lab 3: WiFi Connected But No Internet</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">User's laptop shows WiFi connected but cannot access websites. Diagnose DNS and network adapter issues.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge info">Network</span>
+                    <span class="badge success">~12 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 4: Printer Offline -->
+            <div class="card feature-card" onclick="startLab(4)">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, var(--accent-secondary) 0%, #7c3aed 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                            <rect x="6" y="3" width="12" height="18" rx="1"/>
+                            <rect x="8" y="15" width="8" height="4"/>
+                        </svg>
+                    </div>
+                    <span class="badge success">Beginner</span>
+                </div>
+                <h2 style="margin-bottom: 12px; font-size: 1.2rem;">Lab 4: Printer Shows Offline</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">Network printer appears offline despite being powered on. Reset print spooler and reinstall drivers.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge purple">Hardware</span>
+                    <span class="badge success">~10 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 5: User Profile Corrupted -->
+            <div class="card feature-card" onclick="startLab(5)">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0f">
+                            <rect x="4" y="4" width="7" height="7"/>
+                            <rect x="13" y="4" width="7" height="7"/>
+                            <rect x="4" y="13" width="7" height="7"/>
+                            <rect x="13" y="13" width="7" height="7"/>
+                        </svg>
+                    </div>
+                    <span class="badge error">Advanced</span>
+                </div>
+                <h2 style="margin-bottom: 12px; font-size: 1.2rem;">Lab 5: Windows Profile Corruption</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">User logged into temporary profile. Repair corrupted profile and migrate user data safely.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge warning">Windows</span>
+                    <span class="badge error">~30 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 6: Teams Stuck Loading -->
+            <div class="card feature-card" onclick="startLab(6)">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                            <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2" fill="none"/>
+                            <path d="M12 7v5l3 3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span class="badge warning">Intermediate</span>
+                </div>
+                <h2 style="margin-bottom: 12px; font-size: 1.2rem;">Lab 6: Teams Stuck on Loading</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">Microsoft Teams frozen on 'Getting things ready' screen. Clear cache and reset application.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge purple">Office 365</span>
+                    <span class="badge success">~10 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 7: Permission Denied Error -->
+            <div class="card feature-card" onclick="startLab(7)">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z"/>
+                        </svg>
+                    </div>
+                    <span class="badge warning">Intermediate</span>
+                </div>
+                <h2 style="margin-bottom: 12px; font-size: 1.2rem;">Lab 7: Permission Denied Error</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">User cannot access shared network folder. Troubleshoot NTFS permissions and security groups.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge warning">Security</span>
+                    <span class="badge warning">~18 min</span>
+                </div>
+            </div>
+
+            <!-- Lab 8: RDP Cannot Connect -->
+            <div class="card feature-card" onclick="startLab(8)">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="5" width="18" height="14" rx="2" stroke="#0a0a0f" stroke-width="2"/>
+                            <path d="M8 10h8M8 14h5" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span class="badge error">Advanced</span>
+                </div>
+                <h2 style="margin-bottom: 12px; font-size: 1.2rem;">Lab 8: Remote Desktop Connection Failed</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">User cannot RDP to workstation. Verify firewall rules, credentials, and RDP service status.</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span class="badge success">Network</span>
+                    <span class="badge warning">~25 min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lab Modal -->
+    <div id="labModal" class="drawer" style="width: 650px; right: -680px;">
+        <div class="drawer-header">
+            <h2 id="labModalTitle">Lab Scenario</h2>
+            <button class="drawer-close" onclick="closeLab()">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body" id="labContent">
+            <!-- Lab content will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const labs = {
+            1: {
+                title: "Lab 1: Outlook Won't Open",
+                scenario: "User Sarah Johnson reports that Outlook crashes immediately upon launch. The application briefly appears in Task Manager but then closes. User has tried restarting the computer with no success.",
+                steps: [
+                    {
+                        title: "Verify Issue & Gather Information",
+                        description: "Confirm symptoms and check Event Viewer for error logs",
+                        action: "Open Event Viewer → Windows Logs → Application → Filter for 'Outlook' source"
+                    },
+                    {
+                        title: "Test Safe Mode",
+                        description: "Launch Outlook in safe mode to determine if add-ins are causing the issue",
+                        action: "Win+R → Type: outlook.exe /safe → Enter"
+                    },
+                    {
+                        title: "Disable Problematic Add-ins",
+                        description: "If Safe Mode works, identify and disable faulty add-ins",
+                        action: "File → Options → Add-ins → COM Add-ins → Uncheck suspicious items"
+                    },
+                    {
+                        title: "Reset Outlook Profile",
+                        description: "Clear corrupted profile data and recreate mail profile",
+                        action: "Control Panel → Mail → Show Profiles → Add new profile"
+                    },
+                    {
+                        title: "Clear Outlook Cache",
+                        description: "Delete OST file to force full mailbox resync",
+                        action: "Delete: %localappdata%\\Microsoft\\Outlook\\*.ost"
+                    },
+                    {
+                        title: "Validate Fix",
+                        description: "Launch Outlook normally and verify full functionality",
+                        action: "Open Outlook → Send test email → Check calendar loads"
+                    }
+                ],
+                resolution: "Outlook profile was corrupted due to improper shutdown during sync. Created new profile and deleted corrupt OST file. Outlook now launches successfully and email syncs properly."
+            },
+            2: {
+                title: "Lab 2: VPN Connection Failure",
+                scenario: "Remote worker John Wilson cannot connect to corporate VPN. Error: 'The remote connection was denied because the user name and password combination you provided is not recognized'. User confirms password is correct.",
+                steps: [
+                    {
+                        title: "Verify User Credentials",
+                        description: "Check if account is locked or password expired in Active Directory",
+                        action: "ADUC → Find user → Check 'Account' tab for lockout/expiration"
+                    },
+                    {
+                        title: "Test Account Status",
+                        description: "Unlock account if locked and verify it's enabled",
+                        action: "PowerShell: Unlock-ADAccount -Identity 'jwilson'"
+                    },
+                    {
+                        title: "Clear Credential Cache",
+                        description: "Remove stored credentials that may be outdated",
+                        action: "Control Panel → Credential Manager → Remove VPN entries"
+                    },
+                    {
+                        title: "Test Network Connectivity",
+                        description: "Verify user can reach VPN gateway on port 443",
+                        action: "PowerShell: Test-NetConnection vpn.company.com -Port 443"
+                    },
+                    {
+                        title: "Reset VPN Configuration",
+                        description: "Remove and recreate VPN connection with fresh settings",
+                        action: "Settings → Network → VPN → Remove → Add new connection"
+                    },
+                    {
+                        title: "Validate Connection",
+                        description: "Connect to VPN and verify access to internal resources",
+                        action: "Connect VPN → Access \\\\fileserver\\shares"
+                    }
+                ],
+                resolution: "User's Active Directory account was locked due to failed attempts from old mobile device. Unlocked account, cleared cached credentials, and successfully established VPN connection."
+            },
+            3: {
+                title: "Lab 3: WiFi Connected But No Internet",
+                scenario: "User's laptop shows 'Connected, No Internet' on WiFi. User can see the network name and shows as connected but cannot browse websites or access any online resources.",
+                steps: [
+                    {
+                        title: "Verify Network Status",
+                        description: "Check IP configuration and connection details",
+                        action: "CMD: ipconfig /all → Verify valid IP, gateway, DNS"
+                    },
+                    {
+                        title: "Test Basic Connectivity",
+                        description: "Ping gateway and external IPs to isolate the issue",
+                        action: "CMD: ping 8.8.8.8 → If fails, network issue; if works, DNS issue"
+                    },
+                    {
+                        title: "Test DNS Resolution",
+                        description: "Verify DNS is resolving domain names correctly",
+                        action: "CMD: nslookup google.com → Check for resolution"
+                    },
+                    {
+                        title: "Flush DNS Cache",
+                        description: "Clear corrupted DNS resolver cache",
+                        action: "CMD (Admin): ipconfig /flushdns"
+                    },
+                    {
+                        title: "Reset Network Adapter",
+                        description: "Disable and re-enable WiFi adapter to refresh connection",
+                        action: "Device Manager → Network adapters → WiFi → Disable/Enable"
+                    },
+                    {
+                        title: "Validate Internet Access",
+                        description: "Test browsing and network connectivity",
+                        action: "Open browser → Navigate to google.com"
+                    }
+                ],
+                resolution: "DNS cache was corrupted causing failed name resolution. Flushing DNS cache and resetting the network adapter restored full internet connectivity."
+            },
+            4: {
+                title: "Lab 4: Printer Shows Offline",
+                scenario: "Network printer 'HP-LaserJet-3rd-Floor' appears offline in Devices and Printers. User cannot print any documents. Printer is powered on and connected to network. Other users can print successfully.",
+                steps: [
+                    {
+                        title: "Verify Printer Status",
+                        description: "Check printer connectivity and status on the device itself",
+                        action: "Ping printer IP → Print network config page from printer"
+                    },
+                    {
+                        title: "Check Printer in Windows",
+                        description: "Verify printer properties and port configuration",
+                        action: "Devices & Printers → Right-click printer → Printer properties → Ports"
+                    },
+                    {
+                        title: "Reset Print Spooler",
+                        description: "Stop and restart Print Spooler service to clear stuck jobs",
+                        action: "Services.msc → Print Spooler → Stop → Delete files in C:\\Windows\\System32\\spool\\PRINTERS → Start"
+                    },
+                    {
+                        title: "Remove and Re-add Printer",
+                        description: "Delete printer and reinstall with correct IP",
+                        action: "Remove printer → Add printer → TCP/IP → Enter IP"
+                    },
+                    {
+                        title: "Update Printer Driver",
+                        description: "Install latest driver from manufacturer website",
+                        action: "Device Manager → Print queues → Update driver"
+                    },
+                    {
+                        title: "Test Print",
+                        description: "Send test page to verify printer is working",
+                        action: "Printer properties → Print Test Page"
+                    }
+                ],
+                resolution: "Print Spooler service had stuck jobs causing queue corruption. Cleared print queue, restarted spooler service, and printer now shows online with successful test print."
+            },
+            5: {
+                title: "Lab 5: Windows Profile Corruption",
+                scenario: "User Michael Chen is logging into a temporary profile instead of his regular profile. Desktop is empty, all settings reset, and documents folder shows different content. Event Viewer shows 'User Profile Service failed the logon'.",
+                steps: [
+                    {
+                        title: "Identify Profile Issue",
+                        description: "Check Event Viewer for specific error codes",
+                        action: "Event Viewer → Windows Logs → Application → Filter Event ID 1502, 1511, 1515"
+                    },
+                    {
+                        title: "Backup User Data",
+                        description: "Copy important files from corrupted profile before repair",
+                        action: "Navigate to C:\\Users\\mchen.BACKUP → Copy Desktop, Documents, etc."
+                    },
+                    {
+                        title: "Check Profile List Registry",
+                        description: "Identify corrupted profile entries in registry",
+                        action: "regedit → HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList"
+                    },
+                    {
+                        title: "Repair Profile Registry",
+                        description: "Remove .bak extension from correct profile and delete temp entry",
+                        action: "Rename S-1-5-21-xxx.bak to S-1-5-21-xxx → Delete duplicate"
+                    },
+                    {
+                        title: "Reset Profile State",
+                        description: "Modify State value to allow profile load",
+                        action: "Set 'State' DWORD to 0"
+                    },
+                    {
+                        title: "Validate Profile",
+                        description: "Log out and back in to verify profile loads correctly",
+                        action: "Sign out → Sign in → Verify desktop/files restored"
+                    }
+                ],
+                resolution: "Profile registry was corrupted after unexpected shutdown during Windows Update. Repaired ProfileList registry entries, restored user data, and profile now loads correctly with all settings preserved."
+            },
+            6: {
+                title: "Lab 6: Teams Stuck on Loading",
+                scenario: "Microsoft Teams is frozen on the 'Getting things ready...' loading screen. Application does not progress beyond this point even after waiting 15+ minutes. User needs Teams urgently for scheduled meetings.",
+                steps: [
+                    {
+                        title: "Force Close Teams",
+                        description: "Ensure Teams is completely closed before troubleshooting",
+                        action: "Task Manager → End task: Microsoft Teams (all instances)"
+                    },
+                    {
+                        title: "Clear Teams Cache",
+                        description: "Delete cached data that may be corrupted",
+                        action: "Delete contents of: %appdata%\\Microsoft\\Teams"
+                    },
+                    {
+                        title: "Clear Credentials",
+                        description: "Remove stored Teams credentials",
+                        action: "Credential Manager → Windows Credentials → Remove Teams entries"
+                    },
+                    {
+                        title: "Repair Office Installation",
+                        description: "Run Quick Repair on Microsoft 365 apps",
+                        action: "Settings → Apps → Microsoft 365 → Modify → Quick Repair"
+                    },
+                    {
+                        title: "Reinstall Teams (if needed)",
+                        description: "Completely remove and reinstall Teams application",
+                        action: "Uninstall Teams → Download from teams.microsoft.com → Install"
+                    },
+                    {
+                        title: "Verify Teams Works",
+                        description: "Launch Teams and confirm successful sign-in",
+                        action: "Open Teams → Sign in → Join test call"
+                    }
+                ],
+                resolution: "Teams cache was corrupted after recent update. Cleared all Teams data folders, removed cached credentials, and Teams now launches and connects successfully."
+            },
+            7: {
+                title: "Lab 7: Permission Denied Error",
+                scenario: "User Emily Rodriguez cannot access the shared folder \\\\fileserver\\Finance\\Reports. Error: 'You don't have permission to access this folder'. She recently transferred to the Finance department and needs access for her new role.",
+                steps: [
+                    {
+                        title: "Verify User Information",
+                        description: "Confirm user identity and department transfer approval",
+                        action: "Check ticket for manager approval → Verify employee ID"
+                    },
+                    {
+                        title: "Check Current Group Membership",
+                        description: "See which security groups user currently belongs to",
+                        action: "ADUC → User properties → Member Of tab"
+                    },
+                    {
+                        title: "Identify Required Groups",
+                        description: "Determine which groups have access to the folder",
+                        action: "File server → Folder properties → Security tab → Check groups"
+                    },
+                    {
+                        title: "Add User to Security Group",
+                        description: "Add user to appropriate Finance access group",
+                        action: "ADUC → Find 'SG-Finance-ReadOnly' → Add member"
+                    },
+                    {
+                        title: "Refresh User Token",
+                        description: "Have user log off and back on to get new group membership",
+                        action: "User: Sign out → Wait 30 sec → Sign back in"
+                    },
+                    {
+                        title: "Verify Access",
+                        description: "Confirm user can now access the shared folder",
+                        action: "User: Navigate to \\\\fileserver\\Finance\\Reports"
+                    }
+                ],
+                resolution: "User's Active Directory account was not added to Finance security group after department transfer. Added user to SG-Finance-ReadOnly group, and access is now working after token refresh."
+            },
+            8: {
+                title: "Lab 8: Remote Desktop Connection Failed",
+                scenario: "User David Park cannot RDP to his office workstation (DESKTOP-NYC-4521) from home. Error: 'Remote Desktop can't connect to the remote computer'. User successfully connected last week.",
+                steps: [
+                    {
+                        title: "Verify Network Connectivity",
+                        description: "Confirm VPN is connected and workstation is reachable",
+                        action: "ping DESKTOP-NYC-4521 → If fails, check if PC is on"
+                    },
+                    {
+                        title: "Check Remote Desktop Status",
+                        description: "Verify RDP is enabled on target machine",
+                        action: "Remote query: systeminfo on target or check AD computer object"
+                    },
+                    {
+                        title: "Test RDP Port",
+                        description: "Verify port 3389 is accessible on target",
+                        action: "Test-NetConnection DESKTOP-NYC-4521 -Port 3389"
+                    },
+                    {
+                        title: "Check Firewall Rules",
+                        description: "Ensure Windows Firewall allows RDP connections",
+                        action: "Target: Windows Firewall → Allow Remote Desktop"
+                    },
+                    {
+                        title: "Verify User Permissions",
+                        description: "Confirm user is in Remote Desktop Users group",
+                        action: "Target: System Properties → Remote → Select Users → Verify"
+                    },
+                    {
+                        title: "Test RDP Connection",
+                        description: "Attempt Remote Desktop connection with verbose logging",
+                        action: "mstsc /v:DESKTOP-NYC-4521 → Connect"
+                    }
+                ],
+                resolution: "Windows Update had reset Windows Firewall rules, blocking inbound RDP connections. Re-enabled Remote Desktop firewall exception and verified user was in Remote Desktop Users group. Connection now works."
+            }
+        };
+
+        function startLab(labNumber) {
+            const lab = labs[labNumber];
+            if (!lab) {
+                showToast('Lab content coming soon!', 'info');
+                return;
+            }
+
+            const modal = document.getElementById('labModal');
+            const title = document.getElementById('labModalTitle');
+            const content = document.getElementById('labContent');
+
+            title.textContent = lab.title;
+
+            let stepsHTML = `
+                <div class="lab-scenario">
+                    <h3>📋 Scenario</h3>
+                    <p>${lab.scenario}</p>
+                </div>
+
+                <h3 style="margin-bottom: 24px; font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">Troubleshooting Steps</h3>
+                <div class="timeline">
+            `;
+
+            lab.steps.forEach((step, index) => {
+                stepsHTML += `
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-time">Step ${index + 1}</div>
+                            <h4 style="font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">${step.title}</h4>
+                            <p style="color: var(--text-secondary); margin-bottom: 10px; font-size: 0.9rem; line-height: 1.5;">${step.description}</p>
+                            <div class="code-block" style="font-size: 0.85rem;">
+                                ${step.action}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            stepsHTML += `
+                </div>
+                
+                <div class="lab-resolution">
+                    <h3>✅ Resolution</h3>
+                    <p>${lab.resolution}</p>
+                </div>
+
+                <button class="primary-btn" onclick="closeLab()" style="width: 100%; margin-top: 24px;">
+                    Complete Lab
+                </button>
+            `;
+
+            content.innerHTML = stepsHTML;
+            modal.classList.add('open');
+        }
+
+        function closeLab() {
+            document.getElementById('labModal').classList.remove('open');
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<span class="toast-message">${message}</span>`;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideInRight 0.3s ease-out reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

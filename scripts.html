@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerShell Scripts - ITAS</title>
+    <link rel="stylesheet" href="css/fluent-core.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/simulator.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2300d4aa'/%3E%3Cpath d='M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z' fill='%230a0a0f'/%3E%3C/svg%3E">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 8L8 12V16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16V12L16 8Z" fill="#0a0a0f"/>
+                    <circle cx="16" cy="16" r="3" fill="#00d4aa"/>
+                </svg>
+            </div>
+            <div>
+                <span class="brand">ITAS</span>
+                <div class="brand-subtitle">IT Automation Simulator</div>
+            </div>
+        </div>
+        <nav class="nav-right">
+            <a href="index.html">Home</a>
+            <a href="simulator.html">Simulator</a>
+            <a href="scripts.html" class="active">Scripts</a>
+            <a href="kb.html">Knowledge Base</a>
+            <a href="labs.html">IT Labs</a>
+        </nav>
+    </header>
+
+    <div class="main-content" style="max-width: 1400px; margin: 0 auto;">
+        <div class="content-header">
+            <h1 style="display: flex; align-items: center; gap: 12px;">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="6" fill="var(--accent-secondary)"/>
+                    <path d="M10 8L6 12l4 4M22 8l4 4-4 4M18 6L14 22" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                PowerShell Automation Scripts
+            </h1>
+            <p>Production-ready scripts for common IT support tasks and troubleshooting</p>
+        </div>
+
+        <!-- SEARCH AND FILTER -->
+        <div style="display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 280px;">
+                <input type="search" placeholder="Search scripts..." id="scriptSearch" onkeyup="filterScripts()" style="padding-left: 44px; background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 viewBox=%270 0 20 20%27 fill=%27none%27%3E%3Ccircle cx=%278%27 cy=%278%27 r=%276%27 stroke=%27%2364748b%27 stroke-width=%272%27/%3E%3Cpath d=%27M12 12l5 5%27 stroke=%27%2364748b%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: 14px center;">
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <button class="ghost-btn filter-btn active" onclick="filterCategory('all')">All</button>
+                <button class="ghost-btn filter-btn" onclick="filterCategory('office')">Office 365</button>
+                <button class="ghost-btn filter-btn" onclick="filterCategory('network')">Network</button>
+                <button class="ghost-btn filter-btn" onclick="filterCategory('windows')">Windows</button>
+                <button class="ghost-btn filter-btn" onclick="filterCategory('hardware')">Hardware</button>
+            </div>
+        </div>
+
+        <!-- SCRIPT CATEGORIES -->
+        <div class="grid-container" style="padding: 0;">
+            <!-- Microsoft Office Scripts -->
+            <div class="card" data-category="office">
+                <h2 style="color: var(--text-primary); margin-bottom: 24px; display: flex; align-items: center; gap: 14px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/>
+                        </svg>
+                    </div>
+                    Microsoft Office
+                </h2>
+                
+                <div class="script-item" onclick="executeScript('Reset-OutlookProfile')">
+                    <h3>Reset-OutlookProfile</h3>
+                    <p>Resets Outlook profile by clearing cached credentials and recreating mail profile</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Office 365</span>
+                        <span class="badge success">~2 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Repair-OfficeInstallation')">
+                    <h3>Repair-OfficeInstallation</h3>
+                    <p>Runs Office Quick Repair to fix common installation issues</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Office 365</span>
+                        <span class="badge warning">~5 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Reset-TeamsCache')">
+                    <h3>Reset-TeamsCache</h3>
+                    <p>Clears Microsoft Teams cache files and resets application state</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge purple">Teams</span>
+                        <span class="badge success">~2 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Clear-OutlookOST')">
+                    <h3>Clear-OutlookOST</h3>
+                    <p>Removes Outlook OST file to force full mailbox resync from Exchange</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Outlook</span>
+                        <span class="badge warning">~10 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network Scripts -->
+            <div class="card" data-category="network">
+                <h2 style="color: var(--text-primary); margin-bottom: 24px; display: flex; align-items: center; gap: 14px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent) 0%, #00a88a 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" stroke="#0a0a0f" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="4" fill="#0a0a0f"/>
+                        </svg>
+                    </div>
+                    Network & Connectivity
+                </h2>
+                
+                <div class="script-item" onclick="executeScript('Reset-NetworkAdapter')">
+                    <h3>Reset-NetworkAdapter</h3>
+                    <p>Disables and re-enables network adapter to refresh connection</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Network</span>
+                        <span class="badge success">~1 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Flush-DNSCache')">
+                    <h3>Flush-DNSCache</h3>
+                    <p>Clears DNS resolver cache to fix name resolution issues</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">DNS</span>
+                        <span class="badge success">~1 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Reset-VPNConfiguration')">
+                    <h3>Reset-VPNConfiguration</h3>
+                    <p>Removes and reconfigures VPN connection with fresh credentials</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge purple">VPN</span>
+                        <span class="badge success">~3 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Reset-TCPIPStack')">
+                    <h3>Reset-TCPIPStack</h3>
+                    <p>Resets TCP/IP stack to default configuration (requires restart)</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Network</span>
+                        <span class="badge warning">~5 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Test-NetworkConnectivity')">
+                    <h3>Test-NetworkConnectivity</h3>
+                    <p>Runs comprehensive network diagnostics including ping, traceroute, DNS</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Diagnostic</span>
+                        <span class="badge success">~2 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Windows System Scripts -->
+            <div class="card" data-category="windows">
+                <h2 style="color: var(--text-primary); margin-bottom: 24px; display: flex; align-items: center; gap: 14px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <rect x="3" y="3" width="8" height="8"/>
+                            <rect x="13" y="3" width="8" height="8"/>
+                            <rect x="3" y="13" width="8" height="8"/>
+                            <rect x="13" y="13" width="8" height="8"/>
+                        </svg>
+                    </div>
+                    Windows System
+                </h2>
+                
+                <div class="script-item" onclick="executeScript('Repair-UserProfile')">
+                    <h3>Repair-UserProfile</h3>
+                    <p>Fixes corrupted user profiles and restores user data</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge info">Windows</span>
+                        <span class="badge warning">~8 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Reset-WindowsUpdate')">
+                    <h3>Reset-WindowsUpdate</h3>
+                    <p>Resets Windows Update components and clears update cache</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge info">Updates</span>
+                        <span class="badge success">~4 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Optimize-SystemPerformance')">
+                    <h3>Optimize-SystemPerformance</h3>
+                    <p>Disables unnecessary startup programs and services for better performance</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Performance</span>
+                        <span class="badge success">~3 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Clear-TempFiles')">
+                    <h3>Clear-TempFiles</h3>
+                    <p>Removes temporary files, browser cache, and Windows temp directories</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Cleanup</span>
+                        <span class="badge success">~2 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Repair-WindowsImage')">
+                    <h3>Repair-WindowsImage</h3>
+                    <p>Runs DISM and SFC to repair Windows system files</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge info">System</span>
+                        <span class="badge error">~15 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hardware & Printers -->
+            <div class="card" data-category="hardware">
+                <h2 style="color: var(--text-primary); margin-bottom: 24px; display: flex; align-items: center; gap: 14px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent-secondary) 0%, #7c3aed 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <rect x="5" y="3" width="14" height="18" rx="1"/>
+                            <rect x="7" y="15" width="10" height="4"/>
+                        </svg>
+                    </div>
+                    Hardware & Printers
+                </h2>
+                
+                <div class="script-item" onclick="executeScript('Reset-PrintSpooler')">
+                    <h3>Reset-PrintSpooler</h3>
+                    <p>Stops and restarts Print Spooler service, clears stuck print jobs</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge purple">Printer</span>
+                        <span class="badge success">~1 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Reinstall-PrinterDriver')">
+                    <h3>Reinstall-PrinterDriver</h3>
+                    <p>Removes and reinstalls printer driver with latest version</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge purple">Printer</span>
+                        <span class="badge success">~4 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Check-DiskHealth')">
+                    <h3>Check-DiskHealth</h3>
+                    <p>Runs disk diagnostics and reports storage health status using SMART data</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Hardware</span>
+                        <span class="badge success">~2 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Update-DeviceDrivers')">
+                    <h3>Update-DeviceDrivers</h3>
+                    <p>Checks and updates device drivers using Windows Update</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge">Drivers</span>
+                        <span class="badge warning">~10 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Identity & Access -->
+            <div class="card" data-category="windows">
+                <h2 style="color: var(--text-primary); margin-bottom: 24px; display: flex; align-items: center; gap: 14px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L4 6v6c0 5.5 3.84 10.74 8 12 4.16-1.26 8-6.5 8-12V6l-8-4z" stroke="#0a0a0f" stroke-width="2"/>
+                            <path d="M9 12l2 2 4-4" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    Identity & Access
+                </h2>
+                
+                <div class="script-item" onclick="executeScript('Unlock-UserAccount')">
+                    <h3>Unlock-UserAccount</h3>
+                    <p>Unlocks Active Directory user account and clears lockout status</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge warning">AD</span>
+                        <span class="badge success">~1 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Reset-UserPassword')">
+                    <h3>Reset-UserPassword</h3>
+                    <p>Resets user password and forces change at next logon</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge warning">Security</span>
+                        <span class="badge success">~1 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Clear-CredentialCache')">
+                    <h3>Clear-CredentialCache</h3>
+                    <p>Clears cached Windows credentials from Credential Manager</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge warning">Security</span>
+                        <span class="badge success">~1 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Remote Access -->
+            <div class="card" data-category="network">
+                <h2 style="color: var(--text-primary); margin-bottom: 24px; display: flex; align-items: center; gap: 14px;">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="5" width="18" height="14" rx="2" stroke="#0a0a0f" stroke-width="2"/>
+                            <path d="M8 10h8M8 14h5" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    Remote Access
+                </h2>
+                
+                <div class="script-item" onclick="executeScript('Enable-RemoteDesktop')">
+                    <h3>Enable-RemoteDesktop</h3>
+                    <p>Enables Remote Desktop and configures firewall rules</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge success">RDP</span>
+                        <span class="badge success">~2 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Test-RDPConnection')">
+                    <h3>Test-RDPConnection</h3>
+                    <p>Tests RDP connectivity and troubleshoots connection issues</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge success">Diagnostic</span>
+                        <span class="badge success">~1 min</span>
+                    </div>
+                </div>
+
+                <div class="script-item" onclick="executeScript('Reset-RDPSettings')">
+                    <h3>Reset-RDPSettings</h3>
+                    <p>Resets Remote Desktop settings to defaults and clears certificates</p>
+                    <div style="display: flex; gap: 8px; margin-top: 12px;">
+                        <span class="badge success">RDP</span>
+                        <span class="badge success">~2 min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Execution Modal -->
+    <div id="scriptModal" class="drawer">
+        <div class="drawer-header">
+            <h2 id="scriptModalTitle">Executing Script...</h2>
+            <button class="drawer-close" onclick="closeScriptModal()">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M6 6l8 8M14 6l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div id="scriptConsole" class="console-output"></div>
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+                <button class="primary-btn" onclick="closeScriptModal()" style="flex: 1;">
+                    Close Console
+                </button>
+                <button class="secondary-btn" onclick="copyOutput()">
+                    Copy Output
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .filter-btn.active {
+            background: var(--accent-muted);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+    </style>
+
+    <script>
+        function executeScript(scriptName) {
+            const modal = document.getElementById('scriptModal');
+            const title = document.getElementById('scriptModalTitle');
+            const consoleEl = document.getElementById('scriptConsole');
+            
+            title.textContent = `Executing: ${scriptName}`;
+            consoleEl.innerHTML = '';
+            modal.classList.add('open');
+            
+            const commands = [
+                { text: `PS C:\\Scripts> .\\${scriptName}.ps1`, class: 'console-prompt' },
+                { text: `[${new Date().toLocaleTimeString()}] Initializing ${scriptName}...`, class: 'console-info' },
+                { text: `[${new Date().toLocaleTimeString()}] Checking system prerequisites...`, class: 'console-line' },
+                { text: `[${new Date().toLocaleTimeString()}] Prerequisites validated ✓`, class: 'console-success' },
+                { text: `[${new Date().toLocaleTimeString()}] Executing main procedure...`, class: 'console-line' },
+                { text: `[${new Date().toLocaleTimeString()}] Processing system data...`, class: 'console-line' },
+                { text: `[${new Date().toLocaleTimeString()}] Applying configuration changes...`, class: 'console-line' },
+                { text: `[${new Date().toLocaleTimeString()}] Configuration applied ✓`, class: 'console-success' },
+                { text: `[${new Date().toLocaleTimeString()}] Validating results...`, class: 'console-line' },
+                { text: `[${new Date().toLocaleTimeString()}] Validation passed ✓`, class: 'console-success' },
+                { text: ``, class: 'console-line' },
+                { text: `═══════════════════════════════════════════════════`, class: 'console-success' },
+                { text: `  ${scriptName} completed successfully!`, class: 'console-success' },
+                { text: `  Execution Time: ${Math.floor(Math.random() * 45 + 15)} seconds`, class: 'console-line' },
+                { text: `═══════════════════════════════════════════════════`, class: 'console-success' }
+            ];
+            
+            let delay = 0;
+            commands.forEach((cmd, index) => {
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.className = cmd.class;
+                    line.textContent = cmd.text;
+                    consoleEl.appendChild(line);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }, delay);
+                delay += 350;
+            });
+        }
+
+        function closeScriptModal() {
+            document.getElementById('scriptModal').classList.remove('open');
+        }
+
+        function copyOutput() {
+            const consoleEl = document.getElementById('scriptConsole');
+            navigator.clipboard.writeText(consoleEl.innerText);
+            alert('Output copied to clipboard!');
+        }
+
+        function filterScripts() {
+            const searchTerm = document.getElementById('scriptSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.script-item');
+            
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        }
+
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.card[data-category]');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
