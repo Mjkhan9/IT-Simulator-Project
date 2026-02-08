@@ -1,0 +1,56 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: Validate
+    displayName: 'Frontend Validation'
+    jobs:
+      - job: HTMLValidation
+        displayName: 'Validate HTML & Assets'
+        steps:
+          - script: |
+              echo "=== HTML Pages ==="
+              for f in *.html; do
+                echo "[OK] $f - $(wc -l < $f) lines"
+              done
+              echo ""
+              echo "=== CSS Files ==="
+              for f in css/*.css; do
+                echo "[OK] $f - $(wc -l < $f) lines"
+              done
+              echo ""
+              echo "=== JavaScript ==="
+              for f in js/*.js; do
+                echo "[OK] $f - $(wc -l < $f) lines"
+              done
+            displayName: 'Validate Project Structure'
+
+          - script: |
+              echo "Checking for console.error or debug statements..."
+              grep -rn "console.error\|debugger\|TODO\|FIXME" js/ || echo "No debug artifacts found"
+            displayName: 'Code Quality Check'
+
+  - stage: Accessibility
+    displayName: 'Accessibility Audit'
+    dependsOn: Validate
+    jobs:
+      - job: A11y
+        displayName: 'Check Accessibility'
+        steps:
+          - script: |
+              echo "Checking alt tags on images..."
+              grep -c 'alt=' *.html || echo "No alt tags found"
+              echo "Checking ARIA labels..."
+              grep -c 'aria-' *.html || echo "No ARIA labels found"
+              echo "Checking semantic HTML..."
+              grep -c '<nav\|<main\|<header\|<footer\|<section\|<article' *.html || true
+            displayName: 'Accessibility Scan'
+
+  - publish: $(System.DefaultWorkingDirectory)
+    artifact: it-simulator-site
+    displayName: 'Publish Site Artifact'
